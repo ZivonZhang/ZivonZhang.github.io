@@ -8,25 +8,25 @@
 <meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Zhang Zivon">
 <meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
-<meta name="description" content="本文介绍Tranquilpeak主题的Tag的使用方法">
+<meta name="description" content="浙大数据结构的编程题——03-树的同构">
 
 
-<meta property="og:description" content="本文介绍Tranquilpeak主题的Tag的使用方法">
+<meta property="og:description" content="浙大数据结构的编程题——03-树的同构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tranquilpeak主题的Tag">
-<meta name="twitter:title" content="Tranquilpeak主题的Tag">
-<meta property="og:url" content="https://zivonzhang.github.io/2019/10/tranquilpeak%E4%B8%BB%E9%A2%98%E7%9A%84tag/">
-<meta property="twitter:url" content="https://zivonzhang.github.io/2019/10/tranquilpeak%E4%B8%BB%E9%A2%98%E7%9A%84tag/">
+<meta property="og:title" content="数据结构_树的重构">
+<meta name="twitter:title" content="数据结构_树的重构">
+<meta property="og:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/">
 <meta property="og:site_name" content="Zivon的探索之路">
-<meta property="og:description" content="本文介绍Tranquilpeak主题的Tag的使用方法">
-<meta name="twitter:description" content="本文介绍Tranquilpeak主题的Tag的使用方法">
+<meta property="og:description" content="浙大数据结构的编程题——03-树的同构">
+<meta name="twitter:description" content="浙大数据结构的编程题——03-树的同构">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2019-10-22T22:18:28">
+    <meta property="article:published_time" content="2019-11-01T17:20:08">
   
   
-    <meta property="article:modified_time" content="2019-10-22T22:18:28">
+    <meta property="article:modified_time" content="2019-11-01T17:20:08">
   
   
   
@@ -38,7 +38,9 @@
   
   
     
-      <meta property="article:tag" content="网站">
+      <meta property="article:tag" content="数据结构">
+    
+      <meta property="article:tag" content="C&#43;&#43;">
     
   
 
@@ -51,12 +53,12 @@
 
 
 
+  <meta property="og:image" content="https://zivonzhang.github.io/images/data_structure.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/data_structure.jpg">
+
+
   <meta property="og:image" content="https://zivonzhang.github.io/images/cover-2.jpg">
   <meta property="twitter:image" content="https://zivonzhang.github.io/images/cover-2.jpg">
-
-
-  <meta property="og:image" content="https://zivonzhang.github.io/images/cover.jpg">
-  <meta property="twitter:image" content="https://zivonzhang.github.io/images/cover.jpg">
 
 
 
@@ -65,14 +67,14 @@
   <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
 
 
-    <title>Tranquilpeak主题的Tag</title>
+    <title>数据结构_树的重构</title>
 
     <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://zivonzhang.github.io/2019/10/tranquilpeak%E4%B8%BB%E9%A2%98%E7%9A%84tag/">
+    <link rel="canonical" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -217,21 +219,21 @@
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('/images/cover.jpg')"
+       style="background-image:url('/images/cover-2.jpg')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      Tranquilpeak主题的Tag
+      数据结构_树的重构
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-10-22T22:18:28&#43;08:00">
+      <time itemprop="datePublished" datetime="2019-11-01T17:20:08&#43;08:00">
         
-  十月 22, 2019
+  十一月 1, 2019
 
       </time>
     
@@ -264,146 +266,180 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>本文介绍Tranquilpeak主题的Tag的使用方法</p>
+              <p>浙大数据结构的编程题——03-树的同构</p>
 
 <h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#03-树1-树的同构-25-分">03-树1 树的同构 (25 分)</a>
 <ul>
-<li><a href="#alert">Alert</a></li>
-<li><a href="#highlight-text">Highlight Text</a></li>
-<li><a href="#image">Image</a></li>
-<li><a href="#tabbed-code-block">Tabbed code block</a></li>
+<li><a href="#输出格式">输出格式:</a></li>
+<li><a href="#输入样例1-对应图1">输入样例1（对应图1）：</a></li>
+<li><a href="#输出样例1">输出样例1:</a></li>
+<li><a href="#输入样例1-对应图1-1">输入样例1（对应图1）：</a></li>
+<li><a href="#输出样例1-1">输出样例1:</a></li>
+<li><a href="#思路">思路</a></li>
+<li><a href="#code">Code</a></li>
 </ul></li>
 </ul>
 </nav>
 
-<p>Tranquilpeak引入新的标签，以显示警告信息，图像在全宽度和创建美丽的画廊。Tranquilpeak主题的Tag的优先级比Markdown要高</p>
+<h1 id="03-树1-树的同构-25-分">03-树1 树的同构 (25 分)</h1>
 
-<h2 id="alert">Alert</h2>
+<p>给定两棵树T1和T2。如果T1可以通过若干次左右孩子互换就变成T2，则我们称两棵树是“同构”的。例如图1给出的两棵树就是同构的，因为我们把其中一棵树的结点A、B、G的左右孩子互换后，就得到另外一棵树。而图2就不是同构的。</p>
 
-<div class="alert danger ">
-  <p>警报标记用于突出显示内容，如提示或警告。了解更多:<a href="https://tranquilpeak.kakawait.com/2014/10/tags-plugins-showcase/#alert">Alert tag demo</a></p>
-</div>
+<p><img src="https://images.ptausercontent.com/28" alt="image" /></p>
 
-<p>E.g:
-<div class="alert danger no-icon ">
-  <p>Here is a danger alert without icon</p>
-</div></p>
+<p>图1</p>
 
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead>
+<p><img src="https://images.ptausercontent.com/29" alt="image" /></p>
 
-<tbody>
-<tr>
-<td>Classes</td>
-<td>info<br> success<br> warning<br> danger<br> no-icon</td>
-</tr>
-</tbody>
-</table>
+<p>图2</p>
 
-<h2 id="highlight-text">Highlight Text</h2>
+<p>现给定两棵树，请你判断它们是否是同构的。
+输入格式:
+输入给出2棵二叉树树的信息。对于每棵树，首先在一行中给出一个非负整数N (≤10)，即该树的结点数（此时假设结点从0到N−1编号）；随后N行，第i行对应编号第i个结点，给出该结点中存储的1个英文大写字母、其左孩子结点的编号、右孩子结点的编号。如果孩子结点为空，则在相应位置上给出“-”。给出的数据间用一个空格分隔。注意：题目保证每个结点中存储的字母是不同的。</p>
 
-<p>高亮文本标记用于高亮文本中有趣的部分。
-<span class="highlight-text danger">
-your highlighted text
-</span></p>
+<h2 id="输出格式">输出格式:</h2>
 
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Description</th>
-</tr>
-</thead>
+<p>如果两棵树是同构的，输出“Yes”，否则输出“No”。</p>
 
-<tbody>
-<tr>
-<td>Classes</td>
-<td>red green blue purple orange yellow cyan primary</td>
-</tr>
-</tbody>
-</table>
+<h2 id="输入样例1-对应图1">输入样例1（对应图1）：</h2>
 
-<p>重要的是将包含突出显示文本标记的段落放在<p>.</p>中，否则可能不会呈现以下内容。</p>
+<pre><code>8
+A 1 2
+B 3 4
+C 5 -
+D - -
+E 6 -
+G 7 -
+F - -
+H - -
+8
+G - 4
+B 7 6
+F - -
+A 5 1
+H - -
+C 0 -
+D - -
+E 2 -
+</code></pre>
 
-<h2 id="image">Image</h2>
+<h2 id="输出样例1">输出样例1:</h2>
 
-<p>图像标记对于添加图像和创建漂亮的图库非常有用。<a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#writing-posts">详细请看</a></p>
+<pre><code>Yes
+</code></pre>
 
+<h2 id="输入样例1-对应图1-1">输入样例1（对应图1）：</h2>
 
- 
-  
-  
-  
-  
-    
-      
-    
-  
-    
-      
-    
-  
-    
-  
+<pre><code>8
+B 5 7
+F - -
+A 0 3
+C 6 -
+H - -
+D - -
+G 4 -
+E 1 -
+8
+D 6 -
+B 5 -
+E - -
+H - -
+C 0 2
+G - 3
+F - -
+A 1 4
+</code></pre>
 
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
+<h2 id="输出样例1-1">输出样例1:</h2>
 
-<div class="figure right" >
-  
-    <a class="fancybox" href="https://zivonzhang.github.io/images/cover-2.jpg" title="A beautiful sunrise" data-fancybox-group="group:travel">
-  
-    <img class="fig-img" src="https://zivonzhang.github.io/images/cover-2.jpg" style="width: 400px;height: 200px;" alt="A beautiful sunrise">
-  
-    </a>
-  
-   
-    <span class="caption">A beautiful sunrise</span>
-  
-</div>
+<pre><code>No
+</code></pre>
 
-  <div style="clear:both;"></div>
+<h2 id="思路">思路</h2>
 
+<p>此题在Mooc上有详细讲解。大概流程是，输入用结构数组表示二叉树，而实现静态链表。将树的结构存储下来。</p>
 
-<h2 id="tabbed-code-block">Tabbed code block</h2>
+<p>而同构判别部分使用了递归的思路。详细求解思路请看<a href="https://www.icourse163.org/learn/ZJU-93001?tid=1207006212#/learn/content?type=detail&amp;id=1212031634&amp;cid=1215166213">Mooc</a>.</p>
 
-<p>选项卡代码块对于分组与多个代码块相关的代码块非常有用。例如，Web组件的源代码(html、CSS和js)。或者比较不同语言的源代码。</p>
+<h2 id="code">Code</h2>
 
-<p><a href="https://tranquilpeak.kakawait.com/2014/10/tags-plugins-showcase/#tabbed-code-block">详细请看</a></p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;algorithm&gt;
+#include &lt;iterator&gt;
+#include &lt;math.h&gt;
+#include &lt;stack&gt;
+using namespace std;
+struct Node
+{
+	char Data;
+	int leftNode, rightNode;
+};
+int builtTree(vector&lt;Node&gt; &amp;tree, unsigned int N) {
+	int sum = 0;
+	int root = -1;
+	for (int i = 0; i &lt; N; i++) {
+		char  cl, cr;
+		scanf(&quot;%c %c %c\n&quot;, &amp;tree[i].Data, &amp;cl, &amp;cr);
+		if (cl == '-') {
+			tree[i].leftNode = -1;
+		}
+		else {
+			tree[i].leftNode = cl - '0';
+			sum += cl - '0';
+		}
+		if (cr == '-') {
+			tree[i].rightNode = -1;
+		}
+		else {
+			tree[i].rightNode = cr - '0';
+			sum += cr - '0';
+		}
+		root = (0 + N - 1)*N / 2 - sum;
+	}
+	return root;
+}
 
+int isOmorphic(int R1, int R2, vector&lt;Node&gt; &amp;T1, vector&lt;Node&gt; &amp;T2) {
+	if ((R1 == -1) &amp;&amp; (R2 == -1)) return 1;//both empty
+	if ((R1 == -1) || (R2 == -1)) return 0;
+	if (T1[R1].Data != T2[R2].Data) return 0;
+	//当前节点已无问题，检查子节点，递归调用。
+	int T1l = T1[R1].leftNode, T1r = T1[R1].rightNode;
+	int T2l = T2[R2].leftNode, T2r = T2[R2].rightNode;
 
+	if ((T1l == -1) &amp;&amp; (T2l == -1)) return isOmorphic(T1r, T2r, T1, T2);
+	if ((T1l != -1) &amp;&amp; (T2l != -1)) {//left and right both exist
+		if (T1[T1l].Data == T2[T2l].Data) return isOmorphic(T1l, T2l, T1, T2) &amp;&amp; isOmorphic(T1r, T2r, T1, T2);
+	}
+	return isOmorphic(T1l, T2r, T1, T2) &amp;&amp; isOmorphic(T1r, T2l, T1, T2);  //交换左右子节点
+}
 
+int main() {
+	//begin:17:06			end:
+	//ios::sync_with_stdio(false);
 
-  
-  
+	vector&lt;Node&gt; tree1(10), tree2(10);
+	unsigned int N;
+	scanf(&quot;%d\n&quot;, &amp;N);
+	int root1 = builtTree(tree1, N);
+	scanf(&quot;%d\n&quot;, &amp;N);
+	int root2 = builtTree(tree2, N);
 
-<figure class="codeblock codeblock--tabbed">
-  <figcaption>
-    
-    <ul class="tabs">
-      
-    </ul>
-  </figcaption> 
-  <div class="tabs-content">
-    
-  </div>
-</figure>
+	if (isOmorphic(root1, root2, tree1, tree2) == true) {
+		printf(&quot;Yes\n&quot;);
+	}
+	else {
+		printf(&quot;No\n&quot;);
+	}
+	return 0;
+}
+</code></pre>
               
             </div>
           </div>
@@ -415,13 +451,15 @@ your highlighted text
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">标签</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/%E7%BD%91%E7%AB%99/">网站</a>
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
 
                   </div>
                 
               
             
-              <span id="/2019/10/tranquilpeak%E4%B8%BB%E9%A2%98%E7%9A%84tag/" class="leancloud_visitors" data-flag-title="Tranquilpeak主题的Tag">
+              <span id="/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/" class="leancloud_visitors" data-flag-title="数据结构_树的重构">
                 <span class="post-meta-item-text">文章阅读量 </span>
                 <span class="leancloud-visitors-count">1000000</span>
                 <p></p>
@@ -448,7 +486,7 @@ your highlighted text
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/10/hugo%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E4%B8%8E%E5%91%BD%E4%BB%A4/" data-tooltip="Hugo博客常用功能与命令">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/10/tranquilpeak%E4%B8%BB%E9%A2%98%E7%9A%84tag/" data-tooltip="Tranquilpeak主题的Tag">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -456,7 +494,7 @@ your highlighted text
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/" data-tooltip="数据结构_树的重构">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -506,7 +544,7 @@ your highlighted text
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/10/hugo%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E4%B8%8E%E5%91%BD%E4%BB%A4/" data-tooltip="Hugo博客常用功能与命令">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/10/tranquilpeak%E4%B8%BB%E9%A2%98%E7%9A%84tag/" data-tooltip="Tranquilpeak主题的Tag">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -514,7 +552,7 @@ your highlighted text
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/" data-tooltip="数据结构_树的重构">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>

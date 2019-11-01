@@ -6,10 +6,19 @@
     <description>Recent content in 日常记录 on Zivon的探索之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Oct 2019 22:18:28 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 Nov 2019 17:20:08 +0800</lastBuildDate>
     
 	<atom:link href="https://zivonzhang.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数据结构_树的重构</title>
+      <link>https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/</link>
+      <pubDate>Fri, 01 Nov 2019 17:20:08 +0800</pubDate>
+      
+      <guid>https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/</guid>
+      <description>&lt;p&gt;浙大数据结构的编程题——03-树的同构&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Tranquilpeak主题的Tag</title>
