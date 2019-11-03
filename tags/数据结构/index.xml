@@ -6,10 +6,19 @@
     <description>Recent content in 数据结构 on Zivon的探索之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Nov 2019 17:20:08 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 03 Nov 2019 14:06:39 +0800</lastBuildDate>
     
 	<atom:link href="https://zivonzhang.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数据结构 树2 List Leaves 二叉树的层序遍历</title>
+      <link>https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%912-list-leaves-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/</link>
+      <pubDate>Sun, 03 Nov 2019 14:06:39 +0800</pubDate>
+      
+      <guid>https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%912-list-leaves-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/</guid>
+      <description>&lt;p&gt;浙大数据结构的编程题——03-树2 List Leaves&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>数据结构_树的重构</title>
