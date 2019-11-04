@@ -275,6 +275,7 @@
 <li><a href="#输出样例1-1">输出样例1:</a></li>
 <li><a href="#思路">思路</a></li>
 <li><a href="#code">Code</a></li>
+<li><a href="#并查集的方法">并查集的方法</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -434,6 +435,75 @@ int main() {
 		printf(&quot;No\n&quot;);
 	}
 	return 0;
+}
+</code></pre>
+
+<h2 id="并查集的方法">并查集的方法</h2>
+
+<p><a href="https://saquarius.com/">SAquarius</a> 指出了一种用关联容器存储所有的结点的父子关系，当两颗树具有完全相同的父子关系时，即为同构。代码如下：</p>
+
+<p>感谢<a href="https://saquarius.com/">SAquarius</a> 指出更高效的实现方式。</p>
+
+<pre><code>//用并查集更简单直观一点，读入的时候创建并查集，然后，用map容器直接记录每个结点的父节点
+//这样不用左右子树考虑那么多种情况，因为同构的时候父子关系是不变的，变得只是左右位置，直接判定父子关系就行了
+//这样直接用两个map容器是否相等就直到两个树是不是同构
+#include&lt;iostream&gt;
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;math.h&gt;
+#include&lt;string.h&gt;
+#include&lt;algorithm&gt; 
+#include&lt;map&gt;
+#include&lt;unordered_map&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt; 
+#include&lt;stack&gt;
+#include&lt;string&gt; 
+using namespace std;
+typedef struct{
+    char data;
+    int fa;
+}Node;
+map&lt;char,char&gt; mp1;
+map&lt;char,char&gt; mp2;
+void CreatTree(map&lt;char,char&gt; &amp;mp);
+int main(){    
+#ifdef ONLINE_JUDGE    
+#else    
+    freopen(&quot;1.txt&quot;, &quot;r&quot;, stdin);    
+#endif    
+    CreatTree(mp1);
+    CreatTree(mp2);
+    if(mp1==mp2)
+        puts(&quot;Yes&quot;);
+    else
+        puts(&quot;No&quot;);
+    return 0;    
+}
+void CreatTree(map&lt;char,char&gt; &amp;mp)
+{
+    int n;
+    char a,b,c;
+    cin&gt;&gt;n;
+    vector&lt;Node&gt; v(n);
+    getchar();
+    for(int i=0;i&lt;n;i++){
+        v[i].fa=-1;
+    }
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%c %c %c&quot;,&amp;a,&amp;b,&amp;c);
+        getchar();
+        v[i].data=a;
+        if(b!='-')  v[b-'0'].fa=i;
+        if(c!='-')  v[c-'0'].fa=i;
+    }
+    for(int i=0;i&lt;n;i++){
+        int index=v[i].fa;
+        if(index==-1)
+            mp[v[i].data]='#';
+        else
+            mp[v[i].data]=v[index].data;
+    }
 }
 </code></pre>
               
