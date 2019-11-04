@@ -8,25 +8,25 @@
 <meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Zhang Zivon">
 <meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
-<meta name="description" content="浙大数据结构的编程题——03-树2 List Leaves">
+<meta name="description" content="浙大数据结构的编程题——04-树4 是否同一棵二叉搜索树">
 
 
-<meta property="og:description" content="浙大数据结构的编程题——03-树2 List Leaves">
+<meta property="og:description" content="浙大数据结构的编程题——04-树4 是否同一棵二叉搜索树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构 树2 List Leaves 二叉树的层序遍历">
-<meta name="twitter:title" content="数据结构 树2 List Leaves 二叉树的层序遍历">
-<meta property="og:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%912-list-leaves-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/">
-<meta property="twitter:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%912-list-leaves-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/">
+<meta property="og:title" content="数据结构 04 树4 是否同一棵二叉搜索树">
+<meta name="twitter:title" content="数据结构 04 树4 是否同一棵二叉搜索树">
+<meta property="og:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-04-%E6%A0%914-%E6%98%AF%E5%90%A6%E5%90%8C%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-04-%E6%A0%914-%E6%98%AF%E5%90%A6%E5%90%8C%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
 <meta property="og:site_name" content="Zivon的探索之路">
-<meta property="og:description" content="浙大数据结构的编程题——03-树2 List Leaves">
-<meta name="twitter:description" content="浙大数据结构的编程题——03-树2 List Leaves">
+<meta property="og:description" content="浙大数据结构的编程题——04-树4 是否同一棵二叉搜索树">
+<meta name="twitter:description" content="浙大数据结构的编程题——04-树4 是否同一棵二叉搜索树">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2019-11-03T14:06:39">
+    <meta property="article:published_time" content="2019-11-04T11:56:41">
   
   
-    <meta property="article:modified_time" content="2019-11-03T14:06:39">
+    <meta property="article:modified_time" content="2019-11-04T11:56:41">
   
   
   
@@ -65,14 +65,14 @@
   <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
 
 
-    <title>数据结构 树2 List Leaves 二叉树的层序遍历</title>
+    <title>数据结构 04 树4 是否同一棵二叉搜索树</title>
 
     <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%912-list-leaves-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/">
+    <link rel="canonical" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-04-%E6%A0%914-%E6%98%AF%E5%90%A6%E5%90%8C%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -223,15 +223,15 @@
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      数据结构 树2 List Leaves 二叉树的层序遍历
+      数据结构 04 树4 是否同一棵二叉搜索树
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-11-03T14:06:39&#43;08:00">
+      <time itemprop="datePublished" datetime="2019-11-04T11:56:41&#43;08:00">
         
-  十一月 3, 2019
+  十一月 4, 2019
 
       </time>
     
@@ -262,66 +262,95 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>浙大数据结构的编程题——03-树2 List Leaves</p>
+              <p>浙大数据结构的编程题——04-树4 是否同一棵二叉搜索树</p>
 
 <h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
 <ul>
-<li><a href="#树2-list-leaves-二叉树的层序遍历">树2. List Leaves 二叉树的层序遍历</a>
+<li><a href="#04-树4-是否同一棵二叉搜索树-25-分">04-树4 是否同一棵二叉搜索树 (25 分)</a>
 <ul>
-<li><a href="#input-specification">Input Specification:</a></li>
-<li><a href="#output-specification">Output Specification:</a></li>
-<li><a href="#sample-input">Sample Input:</a></li>
-<li><a href="#sample-output">Sample Output:</a></li>
-<li><a href="#思路">思路</a></li>
-<li><a href="#层序遍历">层序遍历</a></li>
+<li><a href="#输入格式">输入格式:</a></li>
+<li><a href="#输出格式">输出格式:</a></li>
+<li><a href="#输入样例">输入样例:</a></li>
+<li><a href="#输出样例">输出样例:</a></li>
+<li><a href="#思路">思路</a>
+<ul>
+<li><a href="#二叉搜索树">二叉搜索树</a></li>
+<li><a href="#求解思路">求解思路</a></li>
+<li><a href="#搜索树表示">搜索树表示</a></li>
+<li><a href="#判别方法">判别方法</a></li>
+</ul></li>
 <li><a href="#code">Code</a></li>
 </ul></li>
 </ul>
 </nav>
 
-<h1 id="树2-list-leaves-二叉树的层序遍历">树2. List Leaves 二叉树的层序遍历</h1>
+<h1 id="04-树4-是否同一棵二叉搜索树-25-分">04-树4 是否同一棵二叉搜索树 (25 分)</h1>
 
-<p>Given a tree, you are supposed to list all the leaves in the order of top down, and left to right.</p>
+<p>给定一个插入序列就可以唯一确定一棵二叉搜索树。然而，一棵给定的二叉搜索树却可以由多种不同的插入序列得到。例如分别按照序列{2, 1, 3}和{2, 3, 1}插入初始为空的二叉搜索树，都得到一样的结果。于是对于输入的各种插入序列，你需要判断它们是否能生成一样的二叉搜索树。</p>
 
-<h2 id="input-specification">Input Specification:</h2>
+<h2 id="输入格式">输入格式:</h2>
 
-<p>Each input file contains one test case. For each case, the first line gives a positive integer N (≤10) which is the total number of nodes in the tree &ndash; and hence the nodes are numbered from 0 to N−1. Then N lines follow, each corresponds to a node, and gives the indices of the left and right children of the node. If the child does not exist, a &ldquo;-&rdquo; will be put at the position. Any pair of children are separated by a space.</p>
+<p>输入包含若干组测试数据。每组数据的第1行给出两个正整数N (≤10)和L，分别是每个序列插入元素的个数和需要检查的序列个数。第2行给出N个以空格分隔的正整数，作为初始插入序列。最后L行，每行给出N个插入的元素，属于L个需要检查的序列。</p>
 
-<h2 id="output-specification">Output Specification:</h2>
+<p>简单起见，我们保证每个插入序列都是1到N的一个排列。当读到N为0时，标志输入结束，这组数据不要处理。</p>
 
-<p>For each test case, print in one line all the leaves&rsquo; indices in the order of top down, and left to right. There must be exactly one space between any adjacent numbers, and no extra space at the end of the line.</p>
+<h2 id="输出格式">输出格式:</h2>
 
-<h2 id="sample-input">Sample Input:</h2>
+<p>对每一组需要检查的序列，如果其生成的二叉搜索树跟对应的初始序列生成的一样，输出“Yes”，否则输出“No”。</p>
 
-<pre><code>8
-1 -
-- -
-0 -
-2 7
-- -
-- -
-5 -
-4 6
+<h2 id="输入样例">输入样例:</h2>
+
+<pre><code>4 2
+3 1 4 2
+3 4 1 2
+3 2 4 1
+2 1
+2 1
+1 2
+0
 </code></pre>
 
-<h2 id="sample-output">Sample Output:</h2>
+<h2 id="输出样例">输出样例:</h2>
 
-<pre><code>4 1 5
+<pre><code>Yes
+No
+No
 </code></pre>
 
 <h2 id="思路">思路</h2>
 
-<p>输入的数是以静态链表表示的，我们以结构数组形式存储树的。以下是范例输入的数样子。
-<img src="https://zivonzhang.github.io/images/211847574724679.png" alt="image" />
-然后输出是从上往下，自左而右，故输出4 1 5.</p>
+<p>首先要明确，什么是二叉搜索树，它是如何构建的。
+<a href="https://www.icourse163.org/learn/ZJU-93001?tid=1207006212#/learn/content?type=detail&amp;id=1212031637&amp;cid=1215166230">具体请看</a></p>
 
-<p>解题思路为层序遍历，当遇到一个叶节点（没有子节点的结点）时，输出当前位置。直到遍历完整棵树。</p>
+<h3 id="二叉搜索树">二叉搜索树</h3>
 
-<h2 id="层序遍历">层序遍历</h2>
+<p>BST（Binary Search Tree）也称二叉排序树或二叉查找树。</p>
 
-<p>队列实现：遍历从根结点开始，首先将根结点入队，然后开始执行循环：结点出队、访问该结点、其左右儿子入队。</p>
+<p>其可用为空，如果不为空，则满足以下性质：
+1. 非空<strong>左子树</strong>的所有键值<strong>小于</strong>其<strong>根结点</strong>的键值
+2. 非空<strong>右子树</strong>的所有键值<strong>大于</strong>其<strong>根结点</strong>的键值
+3. *左右子树*都是二叉搜索树</p>
 
-<p>C++中STL库中含有deque顺序容器结构可用，  另外STL中海油三个顺序容器适配器：stack、queue和priority_queue.其中stack、queue的默认基础容器为deque，priority_queue由于需要随机访问，其基础容器为vector。</p>
+<h3 id="求解思路">求解思路</h3>
+
+<ol>
+<li>分别建立两颗搜索树，再判别树是否一样</li>
+<li>不建树进行判别</li>
+<li>建一棵树，再判别其他序列是否与该树一致</li>
+</ol>
+
+<h3 id="搜索树表示">搜索树表示</h3>
+
+<p>一如既往，数的表示用结构数组实现的静态链表来表示。</p>
+
+<p>构建过程中，满足以下条件：
+1. 新加入的结点会成为叶节点
+2. 如果新结点小于当前结点，转至左子结点，若不存在左子结点，新结点成为左子结点。
+3. 大于当前结点同<code>2.</code>处理。</p>
+
+<h3 id="判别方法">判别方法</h3>
+
+<p>这里采用<strong>分别建立两颗搜索树，再判别树是否一样</strong>的方法。采用递归算法，沿着二叉搜索树，逐层判别，相对容易理解。</p>
 
 <h2 id="code">Code</h2>
 
@@ -337,65 +366,96 @@
 #include &lt;queue&gt;
 using namespace std;
 
+constexpr auto Null = -1;
+struct Node
+{
+	int left = Null;
+	int right = Null;
+	int data;
+}emp;
+
+#define Tree vector&lt;Node&gt;
+
+void Insert(Tree &amp;T, int newpos, int now);
+bool cheak(Tree &amp;T, Tree &amp;tmp, int pos1, int pos2);
+
+
+
+Tree makeTree(int N) {
+	Tree T(N, emp);
+
+	int root;
+	cin &gt;&gt; root;
+	T[0].data = root;
+
+	for (int i = 1; i &lt; N; i++) {
+		cin &gt;&gt; T[i].data;
+		Insert(T, i, 0);
+	}
+
+	return T;
+}
+
+void Insert(Tree &amp;T,int newpos,int now) {
+
+	if (T[newpos].data &lt; T[now].data) {
+		if (T[now].left != Null) {
+			Insert(T, newpos, T[now].left);
+		}
+		else {
+			//成为左子结点
+			T[now].left = newpos;
+		}
+	}
+	else {
+		if (T[now].right != Null) {
+			Insert(T, newpos, T[now].right);
+		}
+		else {
+			//成为右子结点
+			T[now].right = newpos;
+		}
+	}
+}
+
+
+bool cheak(Tree &amp;T, Tree &amp;tmp, int pos1, int pos2) {
+	if ((pos1 == Null)&amp;&amp;(pos2 == Null)) return true;
+	if (pos2 == Null) return false;
+	if (pos1 == Null) return false;
+	if (T[pos1].data != tmp[pos2].data) return false;
+
+	if (T[pos1].left != Null &amp;&amp; T[pos1].right != Null) {
+		return cheak(T, tmp, T[pos1].left, tmp[pos2].left) &amp;&amp; cheak(T, tmp, T[pos1].right, tmp[pos2].right);
+	}
+	else {
+		if (tmp[pos2].left == Null) {
+			return cheak(T, tmp, T[pos1].right, tmp[pos2].right);
+		}
+		else {
+			return cheak(T, tmp, T[pos1].left, tmp[pos2].left);
+		}
+	}
+}
+
 
 
 int main() {
 	//begin:			end:
 	ios::sync_with_stdio(false);
-	struct Node
-	{
-		int left, right;
-	};
-	int N;
+
+	int N,L;
 	cin &gt;&gt; N;
-	vector&lt;Node&gt; tree(N);
-	//built tree
-	int sum = 0;
-	for (int i = 0; i &lt; N; i++) {
-		string cl, cr;
-		cin &gt;&gt; cl &gt;&gt; cr;
-		if (cl != &quot;-&quot;) {
-			tree[i].left = stoi(cl);
-			sum += tree[i].left;
+	while(N!=0){
+		cin &gt;&gt; L;
+		Tree src = makeTree(N);
+		for (int i = 0; i &lt; L; i++) {
+			Tree tmp = makeTree(N);
+			if (cheak(src, tmp, 0, 0)) printf(&quot;Yes\n&quot;);
+			else printf(&quot;No\n&quot;);
 		}
-		else {
-			tree[i].left = -1;
-		}
-		if (cr != &quot;-&quot;) {
-			tree[i].right = stoi(cr);
-			sum += tree[i].right;
-		}
-		else {
-			tree[i].right = -1;
-		}
+		cin &gt;&gt; N;
 	}
-	int root = (0 + N - 1)*N / 2 - sum;//树的根结点
-
-	//接下去层序遍历
-	queue&lt;int&gt; Q;
-	vector&lt;int&gt; out;
-
-	Q.push(root);
-	
-	while (!Q.empty()) {
-		Node tmp = tree[Q.front()];
-		if (tmp.left != -1) {
-			Q.push(tmp.left);
-		}
-		if (tmp.right != -1) {
-			Q.push(tmp.right);
-		}
-		if ((tmp.left == -1) &amp;&amp; (tmp.right == -1)) {
-			out.push_back(Q.front());
-		}
-		Q.pop();
-	}
-
-	//输出
-	for(int i = 0; i &lt; out.size()-1; i++) {
-		printf(&quot;%d &quot;, out.at(i));
-	}
-	printf(&quot;%d&quot;, out.back());
 
 	return 0;
 }
@@ -419,7 +479,7 @@ int main() {
                 
               
             
-              <span id="/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%912-list-leaves-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" class="leancloud_visitors" data-flag-title="数据结构 树2 List Leaves 二叉树的层序遍历">
+              <span id="/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-04-%E6%A0%914-%E6%98%AF%E5%90%A6%E5%90%8C%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" class="leancloud_visitors" data-flag-title="数据结构 04 树4 是否同一棵二叉搜索树">
                 <span class="post-meta-item-text">文章阅读量 </span>
                 <span class="leancloud-visitors-count">1000000</span>
                 <p></p>
@@ -446,7 +506,7 @@ int main() {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/" data-tooltip="数据结构_树的重构">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%912-list-leaves-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" data-tooltip="数据结构 树2 List Leaves 二叉树的层序遍历">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -454,7 +514,7 @@ int main() {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-04-%E6%A0%914-%E6%98%AF%E5%90%A6%E5%90%8C%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" data-tooltip="数据结构 04 树4 是否同一棵二叉搜索树">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -504,7 +564,7 @@ int main() {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/" data-tooltip="数据结构_树的重构">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%912-list-leaves-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" data-tooltip="数据结构 树2 List Leaves 二叉树的层序遍历">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -512,7 +572,7 @@ int main() {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-04-%E6%A0%914-%E6%98%AF%E5%90%A6%E5%90%8C%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" data-tooltip="数据结构 04 树4 是否同一棵二叉搜索树">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
