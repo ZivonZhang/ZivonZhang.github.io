@@ -8,25 +8,25 @@
 <meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Zhang Zivon">
 <meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
-<meta name="description" content="浙大数据结构的编程题——Root of AVL Tree">
+<meta name="description" content="浙大数据结构的编程题——堆中的路径">
 
 
-<meta property="og:description" content="浙大数据结构的编程题——Root of AVL Tree">
+<meta property="og:description" content="浙大数据结构的编程题——堆中的路径">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构 Root_of_AVL_Tree">
-<meta name="twitter:title" content="数据结构 Root_of_AVL_Tree">
-<meta property="og:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-root_of_avl_tree/">
-<meta property="twitter:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-root_of_avl_tree/">
+<meta property="og:title" content="数据结构 堆中的路径">
+<meta name="twitter:title" content="数据结构 堆中的路径">
+<meta property="og:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/">
 <meta property="og:site_name" content="Zivon的探索之路">
-<meta property="og:description" content="浙大数据结构的编程题——Root of AVL Tree">
-<meta name="twitter:description" content="浙大数据结构的编程题——Root of AVL Tree">
+<meta property="og:description" content="浙大数据结构的编程题——堆中的路径">
+<meta name="twitter:description" content="浙大数据结构的编程题——堆中的路径">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2019-11-09T17:32:54">
+    <meta property="article:published_time" content="2019-11-09T22:22:05">
   
   
-    <meta property="article:modified_time" content="2019-11-09T17:32:54">
+    <meta property="article:modified_time" content="2019-11-09T22:22:05">
   
   
   
@@ -55,8 +55,8 @@
   <meta property="twitter:image" content="https://zivonzhang.github.io/images/data_structure.jpg">
 
 
-  <meta property="og:image" content="https://zivonzhang.github.io/images/cover-2.jpg">
-  <meta property="twitter:image" content="https://zivonzhang.github.io/images/cover-2.jpg">
+  <meta property="og:image" content="https://zivonzhang.github.io/images/onTheRoad.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/onTheRoad.jpg">
 
 
 
@@ -65,14 +65,14 @@
   <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
 
 
-    <title>数据结构 Root_of_AVL_Tree</title>
+    <title>数据结构 堆中的路径</title>
 
     <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-root_of_avl_tree/">
+    <link rel="canonical" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -217,19 +217,19 @@
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('/images/cover-2.jpg')"
+       style="background-image:url('/images/onTheRoad.jpg')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      数据结构 Root_of_AVL_Tree
+      数据结构 堆中的路径
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-11-09T17:32:54&#43;08:00">
+      <time itemprop="datePublished" datetime="2019-11-09T22:22:05&#43;08:00">
         
   十一月 9, 2019
 
@@ -262,93 +262,73 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>浙大数据结构的编程题——Root of AVL Tree</p>
+              <p>浙大数据结构的编程题——堆中的路径</p>
 
 <h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
 <ul>
-<li><a href="#数据结构-root-of-avl-tree">数据结构-Root of AVL Tree</a>
-<ul>
-<li><a href="#input-specification">Input Specification:</a></li>
-<li><a href="#output-specification">Output Specification:</a></li>
-<li><a href="#sample-input-1">Sample Input 1:</a></li>
-<li><a href="#sample-output-1">Sample Output 1:</a></li>
-<li><a href="#sample-input-2">Sample Input 2:</a></li>
-<li><a href="#sample-output-2">Sample Output 2:</a></li>
+<li><a href="#堆中的路径">堆中的路径</a></li>
+<li><a href="#输入格式">输入格式:</a></li>
+<li><a href="#输出格式">输出格式：</a></li>
+<li><a href="#输入样例">输入样例:</a></li>
+<li><a href="#输出样例">输出样例:</a></li>
 <li><a href="#思路">思路</a>
 <ul>
-<li><a href="#插入结点">插入结点</a></li>
-<li><a href="#检查结点">检查结点</a></li>
-</ul></li>
+<li><a href="#什么是堆">什么是堆？？</a></li>
+<li><a href="#堆与优先队列的关系">堆与优先队列的关系</a></li>
+<li><a href="#heap的实现">heap的实现</a></li>
 <li><a href="#code">Code</a></li>
 </ul></li>
 </ul>
 </nav>
 
-<h1 id="数据结构-root-of-avl-tree">数据结构-Root of AVL Tree</h1>
+<h1 id="堆中的路径">堆中的路径</h1>
 
-<p>An AVL tree is a self-balancing binary search tree. In an AVL tree, the heights of the two child subtrees of any node differ by at most one; if at any time they differ by more than one, rebalancing is done to restore this property. Figures 1-4 illustrate the rotation rules.
-<img src="https://images.ptausercontent.com/31" alt="Figure1" />   <img src="https://images.ptausercontent.com/32" alt="Figure2" />
-<img src="https://images.ptausercontent.com/33" alt="Figure3" />
-<img src="https://images.ptausercontent.com/34" alt="Figure4" />
-Now given a sequence of insertions, you are supposed to tell the root of the resulting AVL tree.</p>
+<p>将一系列给定数字插入一个初始为空的小顶堆H[]。随后对任意给定的下标i，打印从H[i]到根结点的路径。</p>
 
-<h2 id="input-specification">Input Specification:</h2>
+<h1 id="输入格式">输入格式:</h1>
 
-<p>Each input file contains one test case. For each case, the first line contains a positive integer N (≤20) which is the total number of keys to be inserted. Then N distinct integer keys are given in the next line. All the numbers in a line are separated by a space.</p>
+<p>每组测试第1行包含2个正整数N和M(≤1000)，分别是插入元素的个数、以及需要打印的路径条数。下一行给出区间[-10000, 10000]内的N个要被插入一个初始为空的小顶堆的整数。最后一行给出M个下标。</p>
 
-<h2 id="output-specification">Output Specification:</h2>
+<h1 id="输出格式">输出格式：</h1>
 
-<p>For each test case, print the root of the resulting AVL tree in one line.</p>
+<p>对输入中给出的每个下标i，在一行中输出从H[i]到根结点的路径上的数据。数字间以1个空格分隔，行末不得有多余空格。</p>
 
-<h2 id="sample-input-1">Sample Input 1:</h2>
+<h1 id="输入样例">输入样例:</h1>
 
-<pre><code>5
-88 70 61 96 120
+<pre><code>5 3
+46 23 26 24 10
+5 4 3
 </code></pre>
 
-<h2 id="sample-output-1">Sample Output 1:</h2>
+<h1 id="输出样例">输出样例:</h1>
 
-<pre><code>70
+<pre><code>24 23 10
+46 23 10
+26 10
 </code></pre>
 
-<h2 id="sample-input-2">Sample Input 2:</h2>
+<h1 id="思路">思路</h1>
 
-<pre><code>7
-88 70 61 96 120 90 65
-</code></pre>
+<h2 id="什么是堆">什么是堆？？</h2>
 
-<h2 id="sample-output-2">Sample Output 2:</h2>
+<p>堆(Heap)是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵完全二叉树的数组对象。</p>
 
-<pre><code>88
-</code></pre>
+<p>完全二叉树是效率很高的数据结构，完全二叉树是由满二叉树而引出来的。对于深度为K的，有n个结点的二叉树，当且仅当其每一个结点都与深度为K的满二叉树中编号从1至n的结点一一对应时称之为完全二叉树。</p>
 
-<h2 id="思路">思路</h2>
-
-<p>本题主要分为两部分内容，一是插入结点，二是检查结点插入后树是否平衡，若不平衡，则通过LL、RR、LR、RL旋转使树重新平衡。</p>
-
-<h3 id="插入结点">插入结点</h3>
-
-<p>此处可以参考是否同一颗二叉搜索树这题的<a href="http://blog.zivon.xyz/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-04-%E6%A0%914-%E6%98%AF%E5%90%A6%E5%90%8C%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">思路与code</a>.</p>
-
-<h3 id="检查结点">检查结点</h3>
-
-<p>检查结点在插入之后，插入完成时，程序递归返回，顺势检查返回路径是否有失衡问题，即左右子树高度相差绝对值为2的情况。
-然后判断失衡情况的类型：</p>
+<h2 id="堆与优先队列的关系">堆与优先队列的关系</h2>
 
 <ol>
-<li>插入结点在发现失衡的结点的左子树的左侧  -&gt; LL旋转</li>
-<li>插入结点在发现失衡的结点的左子树的右侧  -&gt; LR旋转</li>
-<li>插入结点在发现失衡的结点的右子树的左侧  -&gt; RL旋转</li>
-<li>插入结点在发现失衡的结点的右子树的右侧  -&gt; RR旋转</li>
+<li>堆是优先队列（Priority Queue）的一种实现形式。另、普通队列（Queue），先进先出。</li>
+<li>堆是一种具体的数据结构，而优先队列时一种抽象的数据结构，可以使用不同的底层数据结构来实现</li>
+
+<li><p>二叉树可以和二叉树一样使用左右节点的方式来实现，但是我们可以看到我们现在是一层一层按顺序排放的，所以我们可以用更巧妙的方式来实现（数组）————即当前结点n的左子结点为2 * n，右结点为2 * n+1</p>
+
+<h2 id="heap的实现">heap的实现</h2>
+
+<p>heap是完全二叉树,可用数组来实现其存储。</p></li>
 </ol>
 
-<p>L也叫左旋，为顺时针旋转。</p>
-
-<p>R同理。</p>
-
-<p>以LR旋转为例，插入结点在发现失衡的结点的左子树的右侧，则发现结点的左子树要先进行一次右旋，再在发现结点进行一次左旋。</p>
-
-<p>RL同理。</p>
+<p>每次插入时，新增结点的位置是确定的，所要做的是比较插入的结点与其父节点的大小关系。若是满足最小或者最大堆的关系，则进行插入。否则，将交换位置，将其父节点与新结点交换。此时继续与父节点比较，符合则插入，不符则交换。以此循环。</p>
 
 <h2 id="code">Code</h2>
 
@@ -364,139 +344,47 @@ Now given a sequence of insertions, you are supposed to tell the root of the res
 #include &lt;queue&gt;
 using namespace std;
 
-#define ElementType int
-typedef struct AVLNode *Position;
-typedef Position AVLTree; /* AVL树类型 */
-AVLTree SingleLeftRotation(AVLTree A);
+#define MAXN 1001
+#define MINH -10001
 
-struct AVLNode {
-	ElementType Data; /* 结点数据 */
-	AVLTree Left;     /* 指向左子树 */
-	AVLTree Right;    /* 指向右子树 */
-	int Height;       /* 树高 */
-};
 
-int Max(int a, int b)
-{
-	return a &gt; b ? a : b;
+int H[MAXN], size1;
+
+void Create() {
+	size1 = 0;
+	H[0] = MINH;
 }
 
-int GetHeight(AVLTree T) {
-	if(T)
-		return T-&gt;Height;
-	else 
-		return -1;
-}
-
-AVLTree SingleLeftRotation(AVLTree A)
-{ /* 注意：A必须有一个左子结点B */
-  /* 将A与B做左单旋，更新A与B的高度，返回新的根结点B */
-	 
-	AVLTree B = A-&gt;Left;
-	A-&gt;Left = B-&gt;Right;
-	B-&gt;Right = A;
-	A-&gt;Height = Max(GetHeight(A-&gt;Left), GetHeight(A-&gt;Right)) + 1;
-	B-&gt;Height = Max(GetHeight(B-&gt;Left), A-&gt;Height) + 1;
-
-	return B;
-}
-
-AVLTree SingleRightRotation(AVLTree A)
-{
-	//右单旋
-	AVLTree B = A-&gt;Right;
-	A-&gt;Right = B-&gt;Left;
-	B-&gt;Left = A;
-
-	A-&gt;Height = Max(GetHeight(A-&gt;Left), GetHeight(A-&gt;Right)) + 1;
-	B-&gt;Height = Max(GetHeight(B-&gt;Left), GetHeight(B-&gt;Right)) + 1;
-	
-	return B;
-}
-
-
-
-AVLTree DoubleLeftRightRotation(AVLTree A)
-{ /* 注意：A必须有一个左子结点B，且B必须有一个右子结点C */
-  /* 将A、B与C做两次单旋，返回新的根结点C */
-
-	/* 将B与C做右单旋，C被返回 */
-	A-&gt;Left = SingleRightRotation(A-&gt;Left);
-	/* 将A与C做左单旋，C被返回 */
-	return SingleLeftRotation(A);
-}
-
-AVLTree DoubleRightLeftRotation(AVLTree A)
-{ 
-	//插入结点在发现不平衡的结点的右子树的左侧
-
-	/* 将B与C做左单旋，C被返回 */
-	A-&gt;Right = SingleLeftRotation(A-&gt;Right);
-	/* 将A与C做左单旋，C被返回 */
-	return SingleRightRotation(A);
-}
-
-
-/*************************************/
-/* 对称的右单旋与右-左双旋请自己实现 */
-/*************************************/
-
-AVLTree Insert(AVLTree T, ElementType X)
-{ /* 将X插入AVL树T中，并且返回调整后的AVL树 */
-	if (!T) { /* 若插入空树，则新建包含一个结点的树 */
-		T = (AVLTree)malloc(sizeof(struct AVLNode));
-		T-&gt;Data = X;
-		T-&gt;Height = 0;
-		T-&gt;Left = T-&gt;Right = NULL;
-	} /* if (插入空树) 结束 */
-
-	else if (X &lt; T-&gt;Data) {
-		/* 插入T的左子树 */
-		T-&gt;Left = Insert(T-&gt;Left, X);
-		//先插入，再检查 
-		/* 如果需要左旋 */
-		if (GetHeight(T-&gt;Left) - GetHeight(T-&gt;Right) == 2)
-			if (X &lt; T-&gt;Left-&gt;Data)
-				T = SingleLeftRotation(T);      /* 左单旋 */
-			else
-				T = DoubleLeftRightRotation(T); /* 左-右双旋 */
-	} /* else if (插入左子树) 结束 */
-
-	else if (X &gt; T-&gt;Data) {
-		/* 插入T的右子树 */
-		T-&gt;Right = Insert(T-&gt;Right, X);
-		/* 如果需要右旋 */
-		if (GetHeight(T-&gt;Left) - GetHeight(T-&gt;Right) == -2)
-			if (X &gt; T-&gt;Right-&gt;Data)
-				T = SingleRightRotation(T);     /* 右单旋 */
-			else
-				T = DoubleRightLeftRotation(T); /* 右-左双旋 */
-	} /* else if (插入右子树) 结束 */
-
-	/* else X == T-&gt;Data，无须插入 */
-
-	/* 别忘了更新树高 */
-	T-&gt;Height = Max(GetHeight(T-&gt;Left), GetHeight(T-&gt;Right)) + 1;
-
-	return T;
+void Insert(int X) {
+	int i = ++size1;
+	for (; X &lt; H[i / 2]; i /= 2) {
+		H[i] = H[i / 2];
+	}
+	H[i] = X;
 }
 
 int main() {
 	//begin:			end:
 	ios::sync_with_stdio(false);
-	int N;
-	ElementType data;
-	AVLTree T=NULL; 
 
-	scanf(&quot;%d\n&quot;, &amp;N);
-	for (int i = 0; i &lt; N; i++) {
-		scanf(&quot;%d&quot;, &amp;data);
-		T = Insert(T, data);
+	int n, m, x;
+
+	cin &gt;&gt; n &gt;&gt; m;
+	Create();
+	for (int i = 0; i &lt; n; i++) {
+		cin &gt;&gt; x;
+		Insert(x);
 	}
-	if (T)
-		printf(&quot;%d&quot;, T-&gt;Data);
-
-
+	for (int i = 0; i &lt; m; i++) {
+		int j;
+		cin &gt;&gt; j;
+		cout &lt;&lt; H[j];
+		while (j &gt; 1) {
+			j /= 2;
+			cout &lt;&lt; &quot; &quot; &lt;&lt; H[j];
+		}
+		cout &lt;&lt; endl;
+	}
 	return 0;
 }
 </code></pre>
@@ -519,7 +407,7 @@ int main() {
                 
               
             
-              <span id="/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-root_of_avl_tree/" class="leancloud_visitors" data-flag-title="数据结构 Root_of_AVL_Tree">
+              <span id="/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" class="leancloud_visitors" data-flag-title="数据结构 堆中的路径">
                 <span class="post-meta-item-text">文章阅读量 </span>
                 <span class="leancloud-visitors-count">1000000</span>
                 <p></p>
@@ -546,7 +434,7 @@ int main() {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-04-%E6%A0%914-%E6%98%AF%E5%90%A6%E5%90%8C%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" data-tooltip="数据结构 04 树4 是否同一棵二叉搜索树">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-root_of_avl_tree/" data-tooltip="数据结构 Root_of_AVL_Tree">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -554,7 +442,7 @@ int main() {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" data-tooltip="数据结构 堆中的路径">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -604,7 +492,7 @@ int main() {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-04-%E6%A0%914-%E6%98%AF%E5%90%A6%E5%90%8C%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" data-tooltip="数据结构 04 树4 是否同一棵二叉搜索树">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-root_of_avl_tree/" data-tooltip="数据结构 Root_of_AVL_Tree">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -612,7 +500,7 @@ int main() {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" data-tooltip="数据结构 堆中的路径">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
