@@ -8,25 +8,25 @@
 <meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Zhang Zivon">
 <meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
-<meta name="description" content="浙大数据结构的编程题——堆中的路径">
+<meta name="description" content="浙大数据结构的编程题——-图-列出连通集">
 
 
-<meta property="og:description" content="浙大数据结构的编程题——堆中的路径">
+<meta property="og:description" content="浙大数据结构的编程题——-图-列出连通集">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构 堆中的路径">
-<meta name="twitter:title" content="数据结构 堆中的路径">
-<meta property="og:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/">
-<meta property="twitter:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/">
+<meta property="og:title" content="数据结构 图 列出连通集">
+<meta name="twitter:title" content="数据结构 图 列出连通集">
+<meta property="og:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE-%E5%88%97%E5%87%BA%E8%BF%9E%E9%80%9A%E9%9B%86/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE-%E5%88%97%E5%87%BA%E8%BF%9E%E9%80%9A%E9%9B%86/">
 <meta property="og:site_name" content="Zivon的探索之路">
-<meta property="og:description" content="浙大数据结构的编程题——堆中的路径">
-<meta name="twitter:description" content="浙大数据结构的编程题——堆中的路径">
+<meta property="og:description" content="浙大数据结构的编程题——-图-列出连通集">
+<meta name="twitter:description" content="浙大数据结构的编程题——-图-列出连通集">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2019-11-09T22:22:05">
+    <meta property="article:published_time" content="2019-11-10T17:03:17">
   
   
-    <meta property="article:modified_time" content="2019-11-09T22:22:05">
+    <meta property="article:modified_time" content="2019-11-10T17:03:17">
   
   
   
@@ -65,14 +65,14 @@
   <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
 
 
-    <title>数据结构 堆中的路径</title>
+    <title>数据结构 图 列出连通集</title>
 
     <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/">
+    <link rel="canonical" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE-%E5%88%97%E5%87%BA%E8%BF%9E%E9%80%9A%E9%9B%86/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -223,15 +223,15 @@
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      数据结构 堆中的路径
+      数据结构 图 列出连通集
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-11-09T22:22:05&#43;08:00">
+      <time itemprop="datePublished" datetime="2019-11-10T17:03:17&#43;08:00">
         
-  十一月 9, 2019
+  十一月 10, 2019
 
       </time>
     
@@ -262,73 +262,155 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>浙大数据结构的编程题——堆中的路径</p>
+              <p>浙大数据结构的编程题——-图-列出连通集</p>
 
 <h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
 <ul>
-<li><a href="#堆中的路径">堆中的路径</a></li>
+<li><a href="#数据结构-图-列出连通集">数据结构-图-列出连通集</a>
+<ul>
 <li><a href="#输入格式">输入格式:</a></li>
-<li><a href="#输出格式">输出格式：</a></li>
+<li><a href="#输出格式">输出格式:</a></li>
 <li><a href="#输入样例">输入样例:</a></li>
-<li><a href="#输出样例">输出样例:</a></li>
+<li><a href="#输出样例">输出样例：</a></li>
 <li><a href="#思路">思路</a>
 <ul>
-<li><a href="#什么是堆">什么是堆？？</a></li>
-<li><a href="#堆与优先队列的关系">堆与优先队列的关系</a></li>
-<li><a href="#heap的实现">heap的实现</a></li>
+<li><a href="#基础概念">基础概念</a>
+<ul>
+<li><a href="#两者区别">两者区别</a></li>
+</ul></li>
+<li><a href="#解题思路">解题思路</a></li>
+</ul></li>
 <li><a href="#code">Code</a></li>
 </ul></li>
 </ul>
 </nav>
 
-<h1 id="堆中的路径">堆中的路径</h1>
+<h1 id="数据结构-图-列出连通集">数据结构-图-列出连通集</h1>
 
-<p>将一系列给定数字插入一个初始为空的小顶堆H[]。随后对任意给定的下标i，打印从H[i]到根结点的路径。</p>
+<p>给定一个有N个顶点和E条边的无向图，请用DFS和BFS分别列出其所有的连通集。假设顶点从0到N−1编号。进行搜索时，假设我们总是从编号最小的顶点出发，按编号递增的顺序访问邻接点。</p>
 
-<h1 id="输入格式">输入格式:</h1>
+<h2 id="输入格式">输入格式:</h2>
 
-<p>每组测试第1行包含2个正整数N和M(≤1000)，分别是插入元素的个数、以及需要打印的路径条数。下一行给出区间[-10000, 10000]内的N个要被插入一个初始为空的小顶堆的整数。最后一行给出M个下标。</p>
+<p>输入第1行给出2个整数N(0&lt;N≤10)和E，分别是图的顶点数和边数。随后E行，每行给出一条边的两个端点。每行中的数字之间用1空格分隔。</p>
 
-<h1 id="输出格式">输出格式：</h1>
+<h2 id="输出格式">输出格式:</h2>
 
-<p>对输入中给出的每个下标i，在一行中输出从H[i]到根结点的路径上的数据。数字间以1个空格分隔，行末不得有多余空格。</p>
+<p>按照&rdquo;{ v​1
+​​  v
+​2
+​​  &hellip; v
+​k
+​​  }&ldquo;的格式，每行输出一个连通集。先输出DFS的结果，再输出BFS的结果。</p>
 
-<h1 id="输入样例">输入样例:</h1>
+<h2 id="输入样例">输入样例:</h2>
 
-<pre><code>5 3
-46 23 26 24 10
-5 4 3
+<pre><code>8 6
+0 7
+0 1
+2 0
+4 1
+2 4
+3 5
 </code></pre>
 
-<h1 id="输出样例">输出样例:</h1>
+<h2 id="输出样例">输出样例：</h2>
 
-<pre><code>24 23 10
-46 23 10
-26 10
+<pre><code>{ 0 1 4 2 7 }
+{ 3 5 }
+{ 6 }
+{ 0 1 2 7 4 }
+{ 3 5 }
+{ 6 }
 </code></pre>
 
-<h1 id="思路">思路</h1>
+<h2 id="思路">思路</h2>
 
-<h2 id="什么是堆">什么是堆？？</h2>
+<h3 id="基础概念">基础概念</h3>
 
-<p>堆(Heap)是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵完全二叉树的数组对象。</p>
+<p>边没有方向的图称为无向图。</p>
 
-<p>完全二叉树是效率很高的数据结构，完全二叉树是由满二叉树而引出来的。对于深度为K的，有n个结点的二叉树，当且仅当其每一个结点都与深度为K的满二叉树中编号从1至n的结点一一对应时称之为完全二叉树。</p>
+<p>dfs(深度优先搜索)是两个搜索中先理解并使用的，其实就是暴力把所有的路径都搜索出来，它运用了回溯，保存这次的位置，深入搜索，都搜索完了便回溯回来，搜下一个位置，直到把所有最深位置都搜一遍，要注意的一点是，搜索的时候有记录走过的位置，标记完后可能要改回来；可用递归进行实现。</p>
 
-<h2 id="堆与优先队列的关系">堆与优先队列的关系</h2>
+<p>bfs宽度优先搜索算法（又称广度优先搜索）是最简便的图的搜索算法之一，这一算法也是很多重要的图的算法的原型。Dijkstra单源最短路径算法和Prim最小生成树算法都采用了和宽度优先搜索类似的思想。其别名又叫BFS，属于一种盲目搜寻法，目的是系统地展开并检查图中的所有节点，以找寻结果。换句话说，它并不考虑结果的可能位置，彻底地搜索整张图，直到找到结果为止。</p>
 
-<ol>
-<li>堆是优先队列（Priority Queue）的一种实现形式。另、普通队列（Queue），先进先出。</li>
-<li>堆是一种具体的数据结构，而优先队列时一种抽象的数据结构，可以使用不同的底层数据结构来实现</li>
+<h4 id="两者区别">两者区别</h4>
 
-<li><p>二叉树可以和二叉树一样使用左右节点的方式来实现，但是我们可以看到我们现在是一层一层按顺序排放的，所以我们可以用更巧妙的方式来实现（数组）————即当前结点n的左子结点为2 * n，右结点为2 * n+1</p>
+<p>深度优先搜索用栈（stack）来实现，整个过程可以想象成一个倒立的树形：
+1. 把根节点压入栈中。
+2. 每次从栈中弹出一个元素，搜索所有在它下一级的元素，把这些元素压入栈中。并把这个元素记为它下一级元素的前驱。
+3. 找到所要找的元素时结束程序。
+4. 如果遍历整个树还没有找到，结束程序。
+5. 类似于树的前序遍历</p>
 
-<h2 id="heap的实现">heap的实现</h2>
+<p>其伪代码如下：</p>
 
-<p>heap是完全二叉树,可用数组来实现其存储。</p></li>
-</ol>
+<pre><code>DFS(int u){                                 //DFS函数
+    vis[u]=true;                            //用数组vis记录结点是否被访问
+    for(从u出发所能到达的所有顶点v){            //枚举所有u能到达的顶点v
+        if(vis[v]==false){                  //如果未被访问，递归进行访问
+            DFS(v);
+        }
+    }
+}
 
-<p>每次插入时，新增结点的位置是确定的，所要做的是比较插入的结点与其父节点的大小关系。若是满足最小或者最大堆的关系，则进行插入。否则，将交换位置，将其父节点与新结点交换。此时继续与父节点比较，符合则插入，不符则交换。以此循环。</p>
+DFSTrave(G){                                //DFS的驱动函数
+    for(G的所有顶点u){                        //对每一个连通分量都进行DFS遍历
+        if(vis[u]==false){
+            DFS(u)
+        }
+    }
+}
+</code></pre>
+
+<p>广度优先搜索使用队列（queue）来实现，整个过程也可以看做一个倒立的树形：
+1. 把根节点放到队列的末尾。
+2. 每次从队列的头部取出一个元素，查看这个元素所有的下一级元素，把它们放到队列的末尾。并把这个元素记为它下一级元素的前驱。
+3. 找到所要找的元素时结束程序。
+4. 如果遍历整个树还没有找到，结束程序。
+5. 类似于树的层序遍历</p>
+
+<p>其伪代码如下：</p>
+
+<pre><code>BFS(u){
+    queue q;
+    q.push(u);                                  //起始顶点入队并标记
+    vis[u]=ture;
+    while(队列q不空){
+        取出队首元素u进行访问;
+        for(从U出发可达到的所有顶点v){
+            if(vis[v]==false){                  //如果v未曾加入过队列，入队并标记 
+                将v入队;
+                vis[v]=ture; 
+            }
+        } 
+    } 
+} 
+BFSTrave(G){
+    for(G的所有顶点u，依此访问){
+        if(vis[u]==false){
+            BFS(u);
+        }
+    } 
+} 
+</code></pre>
+
+<h3 id="解题思路">解题思路</h3>
+
+<p>首先要建立图，存储图。表示图主要有两种方式：
+1. 邻接矩阵G[N][N]：
+   1. 用二维数组表示，直观易于理解。
+   2. 方便检查任意一对顶点间是否存在边
+   3. 方便查找任一顶点的所有“邻接点”（有边相连的顶点）
+   4. 方便计算任一顶点的“度”（对应行列非0元素个数）
+   5. 缺点：稀疏图浪费空间，数边时间复杂度较高
+2. 邻接表 G[N]为指针数组，对应矩阵每行一个链表，只存非0元素。
+   1. 方便查找任一顶点的所有“邻接点”（有边相连的顶点）
+   2. 节约稀疏图空间
+   3. 方便计算任一顶点的“度” ，其对应链表元素个数
+   4.  缺点：检查顶点间是否存在边需要遍历对应数组</p>
+
+<p>建立图后，先输出DFS的结果，再输出BFS的结果
+在每次有新的结点被遍历后，将新的被遍历的结点输出。</p>
 
 <h2 id="code">Code</h2>
 
@@ -344,46 +426,85 @@
 #include &lt;queue&gt;
 using namespace std;
 
-#define MAXN 1001
-#define MINH -10001
+#define Graph vector&lt;vector&lt;int&gt;&gt;
 
-
-int H[MAXN], size1;
-
-void Create() {
-	size1 = 0;
-	H[0] = MINH;
+void DFS(Graph G,int node, vector&lt;int&gt; &amp;visited) {
+	visited.push_back(node);
+	for (int i = 0 ; i &lt; G.size(); i++) {
+		if (G[node][i] == 1 ) {//枚举所有u能到达的顶点v,如果未被访问，递归进行访问
+			if(find(visited.begin(),visited.end(),i)== visited.end())
+				DFS(G, i, visited);
+		}
+	}
 }
 
-void Insert(int X) {
-	int i = ++size1;
-	for (; X &lt; H[i / 2]; i /= 2) {
-		H[i] = H[i / 2];
+void BFS(Graph G, int node, vector&lt;int&gt; &amp;visited) {
+	queue&lt;int&gt; q;
+	q.push(node);
+	while (!q.empty())
+	{
+		int u = q.front();
+		//u被访问过，则跳出,
+		if (find(visited.begin(), visited.end(), u) != visited.end()) {
+			q.pop();
+			continue;
+		}
+		//u未被访问过,访问u
+		visited.push_back(u);
+		for (int i = 0; i &lt; G.size(); i++) {
+			if (G[u][i] == 1) {//枚举所有u能到达的顶点v,压入queue
+				q.push(i);
+			}
+		}
 	}
-	H[i] = X;
 }
 
 int main() {
 	//begin:			end:
 	ios::sync_with_stdio(false);
+	//建立图，邻接矩阵
+	int N,E; //分别是图的顶点数和边数
+	cin &gt;&gt; N &gt;&gt; E;
+	Graph G(N, vector&lt;int&gt;(N,0));//初始化
 
-	int n, m, x;
-
-	cin &gt;&gt; n &gt;&gt; m;
-	Create();
-	for (int i = 0; i &lt; n; i++) {
-		cin &gt;&gt; x;
-		Insert(x);
+	int x, y;
+	for (int i = 0; i &lt; E; i++) {
+		cin &gt;&gt; x &gt;&gt; y;
+		G[x][y] = 1;
+		G[y][x] = 1;
 	}
-	for (int i = 0; i &lt; m; i++) {
-		int j;
-		cin &gt;&gt; j;
-		cout &lt;&lt; H[j];
-		while (j &gt; 1) {
-			j /= 2;
-			cout &lt;&lt; &quot; &quot; &lt;&lt; H[j];
+	//DFS
+	int DFS_out=0;//可以存个数
+	vector&lt;int&gt; visited;
+	for (int i = 0; i &lt; N; i++) {
+		if (find(visited.begin(), visited.end(), i) == visited.end()) {
+			DFS(G, i, visited);
+			if (visited.size() &gt; DFS_out) {//如有新访问的结点，则输出
+				cout &lt;&lt; &quot;{ &quot;;
+				for (int i = DFS_out; i &lt; visited.size(); i++) {
+					cout &lt;&lt; visited[i] &lt;&lt; &quot; &quot;;
+				}
+				DFS_out = visited.size();
+				cout &lt;&lt; &quot;}&quot; &lt;&lt; endl;
+			}
 		}
-		cout &lt;&lt; endl;
+	}
+
+	//BFS
+	int BFS_out = 0;
+	visited.clear();
+	for (int i = 0; i &lt; N; i++) {
+		if (find(visited.begin(), visited.end(), i) == visited.end()) {
+			BFS(G, i, visited);
+			if (visited.size() &gt; BFS_out) {//如有新访问的结点，则输出
+				cout &lt;&lt; &quot;{ &quot;;
+				for (int i = BFS_out; i &lt; visited.size(); i++) {
+					cout &lt;&lt; visited[i] &lt;&lt; &quot; &quot;;
+				}
+				BFS_out = visited.size();
+				cout &lt;&lt; &quot;}&quot; &lt;&lt; endl;
+			}
+		}
 	}
 	return 0;
 }
@@ -407,7 +528,7 @@ int main() {
                 
               
             
-              <span id="/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" class="leancloud_visitors" data-flag-title="数据结构 堆中的路径">
+              <span id="/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE-%E5%88%97%E5%87%BA%E8%BF%9E%E9%80%9A%E9%9B%86/" class="leancloud_visitors" data-flag-title="数据结构 图 列出连通集">
                 <span class="post-meta-item-text">文章阅读量 </span>
                 <span class="leancloud-visitors-count">1000000</span>
                 <p></p>
@@ -434,7 +555,7 @@ int main() {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-root_of_avl_tree/" data-tooltip="数据结构 Root_of_AVL_Tree">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" data-tooltip="数据结构 堆中的路径">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -442,7 +563,7 @@ int main() {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE-%E5%88%97%E5%87%BA%E8%BF%9E%E9%80%9A%E9%9B%86/" data-tooltip="数据结构 图 列出连通集">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -492,7 +613,7 @@ int main() {
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-root_of_avl_tree/" data-tooltip="数据结构 Root_of_AVL_Tree">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/" data-tooltip="数据结构 堆中的路径">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -500,7 +621,7 @@ int main() {
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9B%BE-%E5%88%97%E5%87%BA%E8%BF%9E%E9%80%9A%E9%9B%86/" data-tooltip="数据结构 图 列出连通集">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
