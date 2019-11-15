@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Zhang Zivon">
+<meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
+<meta name="description" content="LeetCode Python Try 两数之和">
+
+
+<meta property="og:description" content="LeetCode Python Try 两数之和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode Try 两数之和">
+<meta name="twitter:title" content="Leetcode Try 两数之和">
+<meta property="og:url" content="https://zivonzhang.github.io/2019/11/leetcode-try-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2019/11/leetcode-try-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
+<meta property="og:site_name" content="Zivon的探索之路">
+<meta property="og:description" content="LeetCode Python Try 两数之和">
+<meta name="twitter:description" content="LeetCode Python Try 两数之和">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-11-15T22:15:38">
+  
+  
+    <meta property="article:modified_time" content="2019-11-15T22:15:38">
+  
+  
+  
+    
+      <meta property="article:section" content="LeetCode">
+    
+  
+  
+    
+      <meta property="article:tag" content="Python">
+    
+      <meta property="article:tag" content="LeetCode">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/leetcode.svg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/leetcode.svg">
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/onTheRoad.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/onTheRoad.jpg">
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/bear.png">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
+
+
+    <title>Leetcode Try 两数之和</title>
+
+    <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://zivonzhang.github.io/2019/11/leetcode-try-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://zivonzhang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://zivonzhang.github.io/">Zivon的探索之路</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://zivonzhang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://zivonzhang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Zhang Zivon</h4>
+        
+          <h5 class="sidebar-profile-bio">对世界的好奇终难停脚步。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/ZivonZhang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+	<div class="sidebar-profile">
+		<iframe frameborder="no"  marginwidth="0" marginheight="0" width=86 height=86 src="//music.163.com/outchain/player?type=2&id=421091290&auto=1&height=66"></iframe>
+    </div>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/onTheRoad.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      Leetcode Try 两数之和
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-11-15T22:15:38&#43;08:00">
+        
+  十一月 15, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://zivonzhang.github.io/categories/leetcode">LeetCode</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">万丈高楼平地起</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>LeetCode Python Try 两数之和</p>
+
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#leetcode-try-两数之和">Leetcode-try-两数之和</a>
+<ul>
+<li><a href="#code1">Code1</a></li>
+<li><a href="#code2">Code2</a></li>
+</ul></li>
+</ul>
+</nav>
+
+<h1 id="leetcode-try-两数之和">Leetcode-try-两数之和</h1>
+
+<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+
+<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+
+<p>示例:</p>
+
+<pre><code>给定 nums = [2, 7, 11, 15], target = 9
+
+因为 nums[0] + nums[1] = 2 + 7 = 9
+所以返回 [0, 1]
+</code></pre>
+
+<h2 id="code1">Code1</h2>
+
+<pre><code>class Solution:
+    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:
+        for i in range(len(nums)):
+            for j in range(i+1,len(nums)):
+                if nums[i]+nums[j]==target:
+                    return [i,j]
+</code></pre>
+
+<h2 id="code2">Code2</h2>
+
+<p>code1为最容易想到的方法。时间复杂度为 <code>$O\left ( N^2 \right )$</code>,时间主要消耗在确定一个数后，去遍历查找是否有匹配的另一个数。为了对运行时间复杂度进行优化，我们需要一种更有效的方法来检查数组中是否存在目标元素。如果存在，我们需要找出它的索引。保持数组中的每个元素与其索引相互对应的最好方法是什么？哈希表。
+通过以空间换取速度的方式，我们可以将查找时间从 <code>O(n)O(n)</code> 降低到 <code>O(1)O(1)</code>。哈希表正是为此目的而构建的，它支持以 近似 恒定的时间进行快速查找。我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到 <code>O(n)O(n)</code>。但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为 <code>O(1)O(1)</code>。</p>
+
+<pre><code>class Solution:
+    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:
+        #dic=['num':position]
+        dic = dict()
+        for i in range(len(nums)):
+            if target-nums[i] in dic:
+                return [dic.get(target-nums[i]),i]
+            else:
+                dic[nums[i]] = i
+</code></pre>
+
+<pre><code>29/29 cases passed (64 ms)
+Your runtime beats 91.39 % of python3 submissions
+Your memory usage beats 5.05 % of python3 submissions (15.1 MB)
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/python/">Python</a>
+
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/leetcode/">LeetCode</a>
+
+                  </div>
+                
+              
+            
+              <span id="/2019/11/leetcode-try-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" class="leancloud_visitors" data-flag-title="Leetcode Try 两数之和">
+                <span class="post-meta-item-text">文章阅读量 </span>
+                <span class="leancloud-visitors-count">1000000</span>
+                <p></p>
+              </span>
+              <div id="vcomments"></div>
+              <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+              <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+              <script type="text/javascript">
+                new Valine({
+                  el: '#vcomments' ,
+                  appId: 'PQNUpEjIN1DS9ARm5rzzEm8T-gzGzoHsz',
+                  appKey: 'BJTf3bw5U30Xh2PKO7CC75bg',
+                  notify: 'false',
+                  verify: '',
+                  avatar:'mp', 
+                  placeholder: '欢迎留言，留下邮箱信息在得到回复时将会有邮件提醒',
+                  visitor: 'true'
+                });
+              </script>
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3-python%E7%9A%84%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7/" data-tooltip="编程相关 Python的常用特性">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/leetcode-%E6%8E%92%E5%BA%8F-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/" data-tooltip="Leetcode 排序 合并区间">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 Zhang Zivon. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3-python%E7%9A%84%E5%B8%B8%E7%94%A8%E7%89%B9%E6%80%A7/" data-tooltip="编程相关 Python的常用特性">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/leetcode-%E6%8E%92%E5%BA%8F-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/" data-tooltip="Leetcode 排序 合并区间">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Zhang Zivon</h4>
+    
+      <div id="about-card-bio">对世界的好奇终难停脚步。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        南京
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://zivonzhang.github.io/images/onTheRoad.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://zivonzhang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://zivonzhang.github.io/js/clicklove.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

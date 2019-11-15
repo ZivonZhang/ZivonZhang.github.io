@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Zhang Zivon">
+<meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
+<meta name="description" content="论文阅读-去雾-GridDehazeNet-Attention-Based Multi-Scale Network for Image Dehazing">
+
+
+<meta property="og:description" content="论文阅读-去雾-GridDehazeNet-Attention-Based Multi-Scale Network for Image Dehazing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读 去雾 GridDehazeNet Attention Based Multi Scale Network for Image Dehazing">
+<meta name="twitter:title" content="论文阅读 去雾 GridDehazeNet Attention Based Multi Scale Network for Image Dehazing">
+<meta property="og:url" content="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E5%8E%BB%E9%9B%BE-griddehazenet-attention-based-multi-scale-network-for-image-dehazing/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E5%8E%BB%E9%9B%BE-griddehazenet-attention-based-multi-scale-network-for-image-dehazing/">
+<meta property="og:site_name" content="Zivon的探索之路">
+<meta property="og:description" content="论文阅读-去雾-GridDehazeNet-Attention-Based Multi-Scale Network for Image Dehazing">
+<meta name="twitter:description" content="论文阅读-去雾-GridDehazeNet-Attention-Based Multi-Scale Network for Image Dehazing">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-11-15T22:42:54">
+  
+  
+    <meta property="article:modified_time" content="2019-11-15T22:42:54">
+  
+  
+  
+    
+      <meta property="article:section" content="论文阅读">
+    
+  
+  
+    
+      <meta property="article:tag" content="论文">
+    
+      <meta property="article:tag" content="去雾">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/Paper.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/Paper.jpg">
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/cover.jpg">
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/bear.png">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
+
+
+    <title>论文阅读 去雾 GridDehazeNet Attention Based Multi Scale Network for Image Dehazing</title>
+
+    <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E5%8E%BB%E9%9B%BE-griddehazenet-attention-based-multi-scale-network-for-image-dehazing/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://zivonzhang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://zivonzhang.github.io/">Zivon的探索之路</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://zivonzhang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://zivonzhang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Zhang Zivon</h4>
+        
+          <h5 class="sidebar-profile-bio">对世界的好奇终难停脚步。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/ZivonZhang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+	<div class="sidebar-profile">
+		<iframe frameborder="no"  marginwidth="0" marginheight="0" width=86 height=86 src="//music.163.com/outchain/player?type=2&id=421091290&auto=1&height=66"></iframe>
+    </div>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/cover.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      论文阅读 去雾 GridDehazeNet Attention Based Multi Scale Network for Image Dehazing
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-11-15T22:42:54&#43;08:00">
+        
+  十一月 15, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://zivonzhang.github.io/categories/%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb">论文阅读</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">对世界的好奇终难停脚步</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>论文阅读-去雾-GridDehazeNet-Attention-Based Multi-Scale Network for Image Dehazing</p>
+
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#论文阅读-去雾-griddehazenet-attention-based-multi-scale-network-for-image-dehazing">论文阅读-去雾-GridDehazeNet-Attention-Based Multi-Scale Network for Image Dehazing</a>
+<ul>
+<li><a href="#abatract">Abatract</a></li>
+<li><a href="#摘要">摘要</a></li>
+<li><a href="#training-and-testing-dataset">Training and Testing Dataset</a></li>
+<li><a href="#psnr-ssim-评价指标">PSNR, SSIM 评价指标</a>
+<ul>
+<li><a href="#psnr">PSNR</a></li>
+<li><a href="#ssim">SSIM</a></li>
+</ul></li>
+<li><a href="#相关工作">相关工作</a></li>
+<li><a href="#griddehazenet">GridDehazeNet</a>
+<ul>
+<li><a href="#network-architecture">Network Architecture</a></li>
+<li><a href="#信息融合与通道自适应的注意力机制">信息融合与通道自适应的注意力机制</a></li>
+</ul></li>
+<li><a href="#实验结果">实验结果</a></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul>
+</nav>
+
+<h1 id="论文阅读-去雾-griddehazenet-attention-based-multi-scale-network-for-image-dehazing">论文阅读-去雾-GridDehazeNet-Attention-Based Multi-Scale Network for Image Dehazing</h1>
+
+<p><a href="https://xiaohongliu.ca/GridDehazeNet/">HomePage</a>
+<a href="https://github.com/proteus1991/GridDehazeNet">Code</a></p>
+
+<h2 id="abatract">Abatract</h2>
+
+<p>The GridDehazeNet consists of three
+modules: <strong>pre-processing, backbone, and post-processing</strong>
+1. <strong>pre-processing:</strong> The trainable pre-processing module can generate learned inputs with better diversity and more pertinent features as compared to those derived inputs produced by handselected pre-processing methods.
+2. <strong>backbone:</strong> The backbone module implements a novel attention-based multi-scale estimation on a grid network, which can effectively alleviate the bottleneck issue often encountered in the conventional multi-scale approach.
+3. <strong>post-processing:</strong> The post-processing module helps to reduce the artifacts in the final output.</p>
+
+<h2 id="摘要">摘要</h2>
+
+<p>我们提出了一个端到端的可训练卷积神经网络（CNN），名为GridDehazeNet，用于单图像去雾。GridDehazeNet由三个模块组成：<strong>预处理，主干网络和后处理</strong>。
+1. <strong>预处理：</strong> 与通过手工选择的预处理方法产生的那些衍生输入相比，可训练的预处理模块可以生成具有更好多样性和更相关特征的学习输入。
+2. <strong>骨干模块：</strong> 骨干模块在网格网络上实现了一种新颖的基于注意力的多尺度估计，可以有效缓解传统的多尺度方法经常遇到的瓶颈问题。
+3. <strong>后处理模块：</strong> 有助于减少最终输出中的伪像。</p>
+
+<p>实验结果表明，GridDehazeNet在合成图像和真实图像上均优于最新技术。论文提出的加雾（hazing）方法不依赖于大气散射模型，并且我们提供了一个解释，说明为什么利用大气散射模型降维不一定是有利于来进行图像除雾，即使是在合成图像上的去雾结果也是如此。</p>
+
+<h2 id="training-and-testing-dataset">Training and Testing Dataset</h2>
+
+<p>一般来说，收集大量真实世界中有雾霾的图像和无雾霾的图像是不现实的。因此,数据驱动去雾（dehazing）方法通常需要依赖合成有雾图像。有雾图像基于大气散射模型，通过适当选择散射系数β和大气光强度a，将原本清晰的图像转换而成。在本文中,我们采用一个大规模的  <strong>合成数据集</strong> <a href="https://sites.google.com/view/reside-dehaze-datasets/reside-standard">RESIDE</a>,用于GridDehazeNet训练和测试。</p>
+
+<p>RESIDE包含室内和室外场景的合成模糊图像。RESIDE的室内训练集(ITS)共包含13990幅模糊的室内图像，由1399幅清晰图像生成。</p>
+
+<p>此外，为了比较 <strong>真实世界的图像</strong> ，我们使用的数据集来自<a href="https://www.cse.huji.ac.il/~raananf/projects/dehaze_cl/">Dehazing using Color-Lines</a>.</p>
+
+<h2 id="psnr-ssim-评价指标">PSNR, SSIM 评价指标</h2>
+
+<h3 id="psnr">PSNR</h3>
+
+<ol>
+<li><strong>PSNR</strong> 是“Peak Signal to Noise Ratio”的缩写，即峰值信噪比，是一种评价图像的客观标准，它具有局限性，一般是用于最大值信号和背景噪音之间的一个工程项目。</li>
+<li>PSNR=10*log10((2^n-1)^2/MSE).其中，MSE是原图像与处理图像之间均方误差。<img src="https://markdown-1256656879.cos.ap-shanghai.myqcloud.com/PSNR.jpg" alt="公式" /></li>
+<li>Peak就是指8bits表示法的最大值255。MSE指MeanSquareError，I(角标n)指原始影像第n个pixel值，P(角标n)指经处理后的影像第n个pixel值。PSNR的单位为dB。所以PSNR值越大，就代表失真越少。</li>
+<li><strong>优缺点：</strong> PSNR是最普遍，最广泛使用的评鉴画质的客观量测法，不过许多实验结果都显示，PSNR的分数无法和人眼看到的视觉品质完全一致，有可能PSNR较高者看起来反而比PSNR较低者差。这是因为人眼的视觉对于误差的敏感度并不是绝对的，其感知结果会受到许多因素的影响而产生变化（例如：人眼对空间频率较低的对比差异敏感度较高，人眼对亮度对比差异的敏感度较色度高，人眼对一个区域的感知结果会受到其周围邻近区域的影响）。</li>
+</ol>
+
+<h3 id="ssim">SSIM</h3>
+
+<ol>
+<li><strong>SSIM(structural similarity index)</strong>，结构相似性，是一种衡量两幅图像相似度的指标。该指标首先由德州大学奥斯丁分校的图像和视频工程实验室(Laboratory for Image and Video Engineering)提出。SSIM使用的两张图像中，一张为未经压缩的无失真图像，另一张为失真后的图像。</li>
+<li>给定两个图像 <code>x</code> 和 <code>y</code> , 两张图像的结构相似性可按照以下方式求出<img src="https://markdown-1256656879.cos.ap-shanghai.myqcloud.com/SSIM.jpg" alt="SSIM" />————结构相似性的范围为0到 1。当两张图像一模一样时，SSIM的值等于1。</li>
+<li>作为结构相似性理论的实现，结构相似度指数从图像组成的角度将结构信息定义为独立于亮度、对比度的，反映场景中物体结构的属性，并将失真建模为亮度、对比度和结构三个不同因素的组合。用均值作为亮度的估计，标准差作为对比度的估计，协方差作为结构相似程度的度量。</li>
+</ol>
+
+<h2 id="相关工作">相关工作</h2>
+
+<p>早期的图像去雾工作要么需要在不同的条件下拍摄同一场景的多个图像[30,32,20,22,24]，要么需要从其他来源获得的侧信息[23,12]。</p>
+
+<p>在没有附加信息的情况下，单幅图像去雾的难度要大得多。人们提出了许多方法来应对这一挑战。传统的方法是根据一定的假设或先验估计透射图t(x)和全球大气光强A(或其变体)，然后将式(1)转化为去雾图像。这方面的代表性著作包括[36,5,9,37,42]。具体来说，[36]提出了一种局部对比度最大化的去雾方法，该方法是基于观察到清晰的图像比模糊的图像具有更高的对比度;在假设透射图和表面阴影局部不相关的情况下，通过对反照率的分析实现对[5]霾的去除;[9]中引入的去雾方法利用了暗通道先验(Dark Channel Prior, DCP)，该方法断言非霾斑块中的像素在至少一个颜色通道中具有低强度;[37]提出了一种机器学习方法，该方法利用随机森林回归器的四个与雾霾相关的特征;[42]采用颜色衰减先验，发展了一种监督学习的图像去雾方法。虽然这些方法取得了不同程度的成功，但它们的性能在本质上受到所采用的假设/先验对目标场景的准确性的限制。</p>
+
+<p>随着深度学习技术的进步和大型综合数据集[37]的可用性，近年来数据驱动的图像去雾方法越来越受欢迎。这些方法很大程度上遵循了上面提到的传统策略，但是减少了对手工制作的先验的依赖。例如，[1]中提出的去雾方法DehazeNet使用三层CNN从给定的模糊图像直接估计传输图;[26]采用了一个多尺度CNN (MSCNN)，它能够执行精确的传输估计。</p>
+
+<p>AOD-Net[13]代表着与传统策略的背离。具体来说，在[13]中引入了公式(1)的一个重新公式，以绕过透射图和大气光强的估计。仔细观察就会发现，这种重新配方实际上使大气散射模型变得完全多余(虽然在[13]中没有认识到这一点)。[27]更进一步，在算法设计中明确放弃了大气散射模型。[27]中提出的门控融合网络(GFN)利用了手工选择的预处理方法和多尺度估计，这些方法本质上是通用的，有待改进。</p>
+
+<h2 id="griddehazenet">GridDehazeNet</h2>
+
+<p>提出的GridDehazeNet是一个具有三个重要特征的端到端可训练网络。
+1. 不依赖于大气散射模型
+2. 可训练的预处理模块
+3. 以多尺度估计</p>
+
+<h3 id="network-architecture">Network Architecture</h3>
+
+<p>GridDehazeNet由预处理模块、主干模块和后处理模块三部分组成。下图给出了该网络的总体结构。
+<img src="https://xiaohongliu.ca/GridDehazeNet/resource/GridDehazeNet_main.png" alt="The architecture of GridDehazeNet." />
+1. <strong>预处理模块</strong> 由卷积层(w/o激活函数)和残差密集块(RDB)[41]组成。其产生16个feature map ，这些feature map是从含雾图像中学习产生的。
+2. <strong>主干模块</strong> 是GridNet[7]的增强版，最初提出用于语义分割。基于预处理模块产生的学习输入进行基于注意的多尺度估计。在本文中，我们选择了一个三行六列的网格网络。每一行对应不同的比例，由5个RDB块组成，保持特征映射的数量不变。每一列都可以看作是通过上/下采样块连接不同尺度的桥梁。在每个上采样(下采样)块中，特征图的大小减少(增加)了2倍，而特征图的数量增加(减少)了相同的因素。在这里，上/下采样是使用卷积层来实现的，而不是传统的方法，如双线性或双三次插值。图4详细地说明了RDB块，上采样块和下采样块。每个RDB块由5个卷积层组成:前4个层用于增加feature map的数量，而最后一层融合这些feature map，其输出与该RDB块的输入通过通道添加的方式结合。<img src="https://xiaohongliu.ca/GridDehazeNet/resource/GridDehazeNet_block.png" alt="GridDehazeNet_block" /><br />
+3. 从主干模块的输出直接构造的去雾图像往往含有伪影。因此，我们引入了一个后处理模块来提高去雾图像的质量。后处理模的结构块与预处理模块是对称的。</p>
+
+<h3 id="信息融合与通道自适应的注意力机制">信息融合与通道自适应的注意力机制</h3>
+
+<p>针对不同尺度的特征映射可能具有不同的重要性，我们提出了一种基于[40]的信道感知注意机制，用于生成可训练的特征融合权值。值得注意的是，人们可以通过选择适当的注意力权重来删除(或停用)部分建议的GridDehazeNet，并作为一个特例恢复一些现有的网络。例如，图3中的红色路径展示了一个可以通过修剪GridDehazeNet来获得的编码器-解码器网络。</p>
+
+<h2 id="实验结果">实验结果</h2>
+
+<p><img src="https://xiaohongliu.ca/GridDehazeNet/resource/SOTS.png" alt="result1" />
+<img src="https://xiaohongliu.ca/GridDehazeNet/resource/Real_world.png" alt="r2" />
+<img src="https://xiaohongliu.ca/GridDehazeNet/resource/Comparisons.png" alt="r3" /></p>
+
+<h2 id="总结">总结</h2>
+
+<p>这篇文章可以看到效果不错,但是预处理、后处理步骤复杂。
+基础网络也是计算量与参数量非常高，还使用了通道注意力机制。但实验效果很好，不错的刷分论文，但貌似没有看到有趣的点。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/%E8%AE%BA%E6%96%87/">论文</a>
+
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/%E5%8E%BB%E9%9B%BE/">去雾</a>
+
+                  </div>
+                
+              
+            
+              <span id="/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E5%8E%BB%E9%9B%BE-griddehazenet-attention-based-multi-scale-network-for-image-dehazing/" class="leancloud_visitors" data-flag-title="论文阅读 去雾 GridDehazeNet Attention Based Multi Scale Network for Image Dehazing">
+                <span class="post-meta-item-text">文章阅读量 </span>
+                <span class="leancloud-visitors-count">1000000</span>
+                <p></p>
+              </span>
+              <div id="vcomments"></div>
+              <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+              <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+              <script type="text/javascript">
+                new Valine({
+                  el: '#vcomments' ,
+                  appId: 'PQNUpEjIN1DS9ARm5rzzEm8T-gzGzoHsz',
+                  appKey: 'BJTf3bw5U30Xh2PKO7CC75bg',
+                  notify: 'false',
+                  verify: '',
+                  avatar:'mp', 
+                  placeholder: '欢迎留言，留下邮箱信息在得到回复时将会有邮件提醒',
+                  visitor: 'true'
+                });
+              </script>
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/leetcode-%E6%8E%92%E5%BA%8F-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/" data-tooltip="Leetcode 排序 合并区间">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 Zhang Zivon. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/leetcode-%E6%8E%92%E5%BA%8F-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/" data-tooltip="Leetcode 排序 合并区间">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Zhang Zivon</h4>
+    
+      <div id="about-card-bio">对世界的好奇终难停脚步。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        南京
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://zivonzhang.github.io/images/onTheRoad.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://zivonzhang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://zivonzhang.github.io/js/clicklove.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

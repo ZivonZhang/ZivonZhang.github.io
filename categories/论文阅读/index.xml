@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>论文阅读 on Zivon的探索之路</title>
+    <link>https://zivonzhang.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
+    <description>Recent content in 论文阅读 on Zivon的探索之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Nov 2019 22:42:54 +0800</lastBuildDate>
+    
+	<atom:link href="https://zivonzhang.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>论文阅读 去雾 GridDehazeNet Attention Based Multi Scale Network for Image Dehazing</title>
+      <link>https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E5%8E%BB%E9%9B%BE-griddehazenet-attention-based-multi-scale-network-for-image-dehazing/</link>
+      <pubDate>Fri, 15 Nov 2019 22:42:54 +0800</pubDate>
+      
+      <guid>https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E5%8E%BB%E9%9B%BE-griddehazenet-attention-based-multi-scale-network-for-image-dehazing/</guid>
+      <description>&lt;p&gt;论文阅读-去雾-GridDehazeNet-Attention-Based Multi-Scale Network for Image Dehazing&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Zhang Zivon">
+<meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
+<meta name="description" content="LeetCode Python 排序 合并区间">
+
+
+<meta property="og:description" content="LeetCode Python 排序 合并区间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 排序 合并区间">
+<meta name="twitter:title" content="Leetcode 排序 合并区间">
+<meta property="og:url" content="https://zivonzhang.github.io/2019/11/leetcode-%E6%8E%92%E5%BA%8F-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2019/11/leetcode-%E6%8E%92%E5%BA%8F-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/">
+<meta property="og:site_name" content="Zivon的探索之路">
+<meta property="og:description" content="LeetCode Python 排序 合并区间">
+<meta name="twitter:description" content="LeetCode Python 排序 合并区间">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-11-15T22:18:09">
+  
+  
+    <meta property="article:modified_time" content="2019-11-15T22:18:09">
+  
+  
+  
+    
+      <meta property="article:section" content="LeetCode">
+    
+  
+  
+    
+      <meta property="article:tag" content="Python">
+    
+      <meta property="article:tag" content="LeetCode">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/leetcode.svg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/leetcode.svg">
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/onTheRoad.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/onTheRoad.jpg">
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/bear.png">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
+
+
+    <title>Leetcode 排序 合并区间</title>
+
+    <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://zivonzhang.github.io/2019/11/leetcode-%E6%8E%92%E5%BA%8F-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://zivonzhang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://zivonzhang.github.io/">Zivon的探索之路</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://zivonzhang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://zivonzhang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Zhang Zivon</h4>
+        
+          <h5 class="sidebar-profile-bio">对世界的好奇终难停脚步。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/ZivonZhang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+	<div class="sidebar-profile">
+		<iframe frameborder="no"  marginwidth="0" marginheight="0" width=86 height=86 src="//music.163.com/outchain/player?type=2&id=421091290&auto=1&height=66"></iframe>
+    </div>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/onTheRoad.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      Leetcode 排序 合并区间
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-11-15T22:18:09&#43;08:00">
+        
+  十一月 15, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://zivonzhang.github.io/categories/leetcode">LeetCode</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">万丈高楼平地起</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>LeetCode Python 排序 合并区间</p>
+
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#leetcode-排序-合并区间">Leetcode-排序-合并区间</a>
+<ul>
+<li><a href="#直觉">直觉</a></li>
+<li><a href="#算法">算法</a></li>
+<li><a href="#code-1">code-1</a>
+<ul>
+<li><a href="#result1">result1</a></li>
+</ul></li>
+<li><a href="#code-2">code-2</a>
+<ul>
+<li><a href="#result2">result2</a></li>
+</ul></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul>
+</nav>
+
+<h1 id="leetcode-排序-合并区间">Leetcode-排序-合并区间</h1>
+
+<pre><code>#
+# @lc app=leetcode.cn id=56 lang=python3
+#
+# [56] 合并区间
+#
+# https://leetcode-cn.com/problems/merge-intervals/description/
+#
+# algorithms
+# Medium (39.12%)
+# Likes:    213
+# Dislikes: 0
+# Total Accepted:    37.1K
+# Total Submissions: 94.8K
+# Testcase Example:  '[[1,3],[2,6],[8,10],[15,18]]'
+#
+# 给出一个区间的集合，请合并所有重叠的区间。
+# 
+# 示例 1:
+# 
+# 输入: [[1,3],[2,6],[8,10],[15,18]]
+# 输出: [[1,6],[8,10],[15,18]]
+# 解释: 区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
+# 
+# 
+# 示例 2:
+# 
+# 输入: [[1,4],[4,5]]
+# 输出: [[1,5]]
+# 解释: 区间 [1,4] 和 [4,5] 可被视为重叠区间。
+</code></pre>
+
+<h2 id="直觉">直觉</h2>
+
+<p>如果我们按照区间的 start 大小排序，那么在这个排序的列表中可以合并的区间一定是连续的。</p>
+
+<h2 id="算法">算法</h2>
+
+<p>首先，我们将列表按上述方式排序。然后，我们将第一个区间插入 merged 数组中，然后按顺序考虑之后的每个区间：如果当前区间的左端点在前一个区间的右端点之后，那么他们不会重合，我们可以直接将这个区间插入 merged 中；否则，他们重合，我们用当前区间的右端点更新前一个区间的右端点 end 如果前者数值比后者大的话。</p>
+
+<h2 id="code-1">code-1</h2>
+
+<pre><code>class Solution:
+    def merge(self, intervals: List[List[int]]) -&gt; List[List[int]]:
+        intervals.sort()
+        out=list()
+        i=0
+        while(i&lt;len(intervals)):
+            t_begin = intervals[i][0]
+            t_end = intervals[i][1]
+
+            while(i&lt;len(intervals) and intervals[i][0]&lt;=t_end):#区间起点在范围内
+                if intervals[i][1]&gt;t_end:#区间终点在范围外，更新区间
+                    t_end=intervals[i][1]
+                i+=1
+            # 完成一个区间
+            out.append([t_begin,t_end])
+        
+        return out
+</code></pre>
+
+<h3 id="result1">result1</h3>
+
+<pre><code>169/169 cases passed (156 ms)
+Your runtime beats 23.21 % of python3 submissions
+Your memory usage beats 80.31 % of python3 submissions (15.7 MB)
+</code></pre>
+
+<h2 id="code-2">code-2</h2>
+
+<pre><code>class Solution:
+    def merge(self, intervals: List[List[int]]) -&gt; List[List[int]]:
+        intervals.sort(key = lambda x:x[0])
+        out=list()
+        i=0
+        while(i&lt;len(intervals)):
+            t_begin = intervals[i][0]
+            t_end = intervals[i][1]
+
+            while(i&lt;len(intervals) and intervals[i][0]&lt;=t_end):#区间起点在范围内
+                if intervals[i][1]&gt;t_end:#区间终点在范围外，更新区间
+                    t_end=intervals[i][1]
+                i+=1
+            # 完成一个区间
+            out.append([t_begin,t_end])
+        
+        return out
+</code></pre>
+
+<h3 id="result2">result2</h3>
+
+<pre><code>169/169 cases passed (108 ms)
+Your runtime beats 91.66 % of python3 submissions
+Your memory usage beats 63.13 % of python3 submissions (15.8 MB)
+</code></pre>
+
+<h2 id="总结">总结</h2>
+
+<p>看来排序占用时间很多，code1与2的差别只在于，根据前面[0]排序，与[0,1]都排序，时间差距就有40%多</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/python/">Python</a>
+
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/leetcode/">LeetCode</a>
+
+                  </div>
+                
+              
+            
+              <span id="/2019/11/leetcode-%E6%8E%92%E5%BA%8F-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/" class="leancloud_visitors" data-flag-title="Leetcode 排序 合并区间">
+                <span class="post-meta-item-text">文章阅读量 </span>
+                <span class="leancloud-visitors-count">1000000</span>
+                <p></p>
+              </span>
+              <div id="vcomments"></div>
+              <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+              <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+              <script type="text/javascript">
+                new Valine({
+                  el: '#vcomments' ,
+                  appId: 'PQNUpEjIN1DS9ARm5rzzEm8T-gzGzoHsz',
+                  appKey: 'BJTf3bw5U30Xh2PKO7CC75bg',
+                  notify: 'false',
+                  verify: '',
+                  avatar:'mp', 
+                  placeholder: '欢迎留言，留下邮箱信息在得到回复时将会有邮件提醒',
+                  visitor: 'true'
+                });
+              </script>
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/leetcode-try-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" data-tooltip="Leetcode Try 两数之和">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E5%8E%BB%E9%9B%BE-griddehazenet-attention-based-multi-scale-network-for-image-dehazing/" data-tooltip="论文阅读 去雾 GridDehazeNet Attention Based Multi Scale Network for Image Dehazing">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 Zhang Zivon. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/leetcode-try-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" data-tooltip="Leetcode Try 两数之和">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E5%8E%BB%E9%9B%BE-griddehazenet-attention-based-multi-scale-network-for-image-dehazing/" data-tooltip="论文阅读 去雾 GridDehazeNet Attention Based Multi Scale Network for Image Dehazing">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Zhang Zivon</h4>
+    
+      <div id="about-card-bio">对世界的好奇终难停脚步。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        南京
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://zivonzhang.github.io/images/onTheRoad.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://zivonzhang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://zivonzhang.github.io/js/clicklove.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
