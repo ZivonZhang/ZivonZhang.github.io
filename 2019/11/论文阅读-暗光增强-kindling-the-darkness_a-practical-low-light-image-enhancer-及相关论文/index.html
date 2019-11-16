@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Zhang Zivon">
+<meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
+<meta name="description" content="论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文">
+
+
+<meta property="og:description" content="论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文">
+<meta name="twitter:title" content="论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文">
+<meta property="og:url" content="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E6%9A%97%E5%85%89%E5%A2%9E%E5%BC%BA-kindling-the-darkness_a-practical-low-light-image-enhancer-%E5%8F%8A%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E6%9A%97%E5%85%89%E5%A2%9E%E5%BC%BA-kindling-the-darkness_a-practical-low-light-image-enhancer-%E5%8F%8A%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87/">
+<meta property="og:site_name" content="Zivon的探索之路">
+<meta property="og:description" content="论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文">
+<meta name="twitter:description" content="论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-11-16T21:21:26">
+  
+  
+    <meta property="article:modified_time" content="2019-11-16T21:21:26">
+  
+  
+  
+    
+      <meta property="article:section" content="论文阅读">
+    
+  
+  
+    
+      <meta property="article:tag" content="论文">
+    
+      <meta property="article:tag" content="去雾">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/Paper.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/Paper.jpg">
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/cover.jpg">
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/bear.png">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
+
+
+    <title>论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文</title>
+
+    <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E6%9A%97%E5%85%89%E5%A2%9E%E5%BC%BA-kindling-the-darkness_a-practical-low-light-image-enhancer-%E5%8F%8A%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://zivonzhang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://zivonzhang.github.io/">Zivon的探索之路</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://zivonzhang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://zivonzhang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Zhang Zivon</h4>
+        
+          <h5 class="sidebar-profile-bio">对世界的好奇终难停脚步。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/ZivonZhang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+	<div class="sidebar-profile">
+		<iframe frameborder="no"  marginwidth="0" marginheight="0" width=86 height=86 src="//music.163.com/outchain/player?type=2&id=421091290&auto=1&height=66"></iframe>
+    </div>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/cover.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-11-16T21:21:26&#43;08:00">
+        
+  十一月 16, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://zivonzhang.github.io/categories/%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb">论文阅读</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">对世界的好奇终难停脚步</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文</p>
+
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#论文阅读-暗光增强-kindling-the-darkness-a-practical-low-light-image-enhancer">论文阅读-暗光增强-Kindling the Darkness_ A Practical Low-light Image Enhancer</a>
+<ul>
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#一些理解">一些理解</a>
+<ul>
+<li><a href="#问题1">问题1</a></li>
+</ul></li>
+<li><a href="#相关工作">相关工作</a></li>
+<li><a href="#文章的贡献">文章的贡献</a></li>
+<li><a href="#数据使用与先验">数据使用与先验</a></li>
+<li><a href="#层分解网络-估计图像光照图与反射图">层分解网络-（估计图像光照图与反射图）</a></li>
+<li><a href="#retinexnet-deep-retinex-decomposition-for-low-light-enhancement">【RetinexNet】Deep Retinex Decomposition for Low-Light Enhancement</a>
+<ul>
+<li><a href="#摘要">摘要</a></li>
+<li><a href="#网络结构">网络结构</a></li>
+</ul></li>
+<li><a href="#crm-a-new-low-light-image-enhancement-algorithm-using-camera-response-model">【CRM】A new low-light image enhancement algorithm using camera response model</a>
+<ul>
+<li><a href="#摘要-1">摘要</a></li>
+</ul></li>
+<li><a href="#bimef-a-bio-inspired-multi-exposure-fusion-framework-for-low-light-image-enhancement">【BIMEF】A Bio-Inspired Multi-Exposure Fusion Framework for Low-light Image Enhancement</a></li>
+<li><a href="#lime-low-light-image-enhancement-via-illumination-map-estimation">【LIME】: Low-Light Image Enhancement via Illumination Map Estimation</a></li>
+<li><a href="#retinex-theory">Retinex theory</a></li>
+</ul></li>
+</ul>
+</nav>
+
+<h1 id="论文阅读-暗光增强-kindling-the-darkness-a-practical-low-light-image-enhancer">论文阅读-暗光增强-Kindling the Darkness_ A Practical Low-light Image Enhancer</h1>
+
+<h2 id="abstract">Abstract</h2>
+
+<p><strong>摘要:</strong> 在弱光条件下拍摄的图像通常会出现(部分)能见度低的问题。除了不理想的照明，多种类型的退化，如噪音和由于相机的质量有限的颜色失真，隐藏在黑暗中。换句话说，仅仅提高黑暗区域的亮度将不可避免地放大隐藏的artifacts。这项工作建立了一个简单而有效的点燃黑暗的网络(表示为种类)，它的灵感来自Retinex theory，将图像分解成两个部分。一个组件(illumination)负责光的调节，而另一个组件(reflectance)负责降解去除。这样，原始空间就解耦成两个更小的子空间，期望得到更好的正则化/学习。值得注意的是，我们的网络是使用在不同曝光条件下拍摄的成对图像进行训练的，而不是使用任何地面真实反射率和光照信息。我们进行了大量的实验来证明我们的设计的有效性，以及它相对于最先进的替代品的优越性。我们的产品对严重的视觉缺陷有很强的抵抗力，而且用户界面友好，可以任意调节光的亮度。此外，我们的模型在2080Ti GPU上处理VGA分辨率的图像花费不到50ms。以上优点使我们的产品具有实用价值。</p>
+
+<h2 id="一些理解">一些理解</h2>
+
+<p>本文没有开源，做的低光照图像增强，论文标题很有意思。三作是天津大学的郭晓杰，有好几篇相关文章，应该比较靠谱。</p>
+
+<p>这篇文章有意思的一个点是其网络训练时没有使用GT，只是使用一对不同光照程度的图像。这使得这个方法有更好的迁移性，毕竟很多图像处理领域很难找到合适的训练GT。</p>
+
+<p>在网络架构上，其使用了两个分支分别对应反射率和照度。从功能上讲，也可以分为三个模块，分别是层分解、反射率恢复和光照调节。
+<img src="https://i.loli.net/2019/11/15/hKC8FEV3nR1gu4O.png" alt="struc.png" /></p>
+
+<p>看了一遍还是不太明白。</p>
+
+<h3 id="问题1">问题1</h3>
+
+<p>光照图的Loss是怎么设计的，什么样子应该大？</p>
+
+<p>照明映射<code>$[L_l,L_h]$</code>应该是分段光滑和相互一致的。</p>
+
+<h2 id="相关工作">相关工作</h2>
+
+<p>人们已经提出了大量的微光图像增强方案。在接下来的文章中，我们将简要回顾与我们密切相关的经典和当代作品。</p>
+
+<p><strong>普通的方法</strong>。直观地说，对于全局光线较弱的图像，可以通过直接增大像素值来增强其可视性。但是，如图1的第一种情况所示，包括噪声和颜色失真在内的视觉缺陷在细节处显示出来。对于包含明亮区域的图像，例如图1中的最后两张，这种操作很容易导致(部分)饱和/过度曝光。以直方图均衡化(histogram equalization, HE)[1]、[2]、[3]及其后续[4]、[5]为代表的一条技术线，试图将取值范围映射到[0,1]中，平衡输出的直方图，避免截断问题。这些方法实际上是为了提高图像的对比度。另一种映射方式是伽马校正(GC)，它以非线性的方式在每个像素上单独执行。虽然GC可以提高亮度，特别是暗像素的亮度，但是它并没有考虑某个像素与其相邻像素之间的关系。plain方法的主要缺点是几乎不考虑真实的光照因素，这通常使增强的结果在视觉上很脆弱，并且与真实场景不一致。</p>
+
+<p><strong>传统的Illumination-based方法</strong>。与普通方法不同的是，这类策略都意识到光照的概念。由Retinex理论[6]得到的关键假设是(彩色)图像可以分解为两个部分，即反射率和光照。早期的尝试包括单标度Retinex (SSR)[7]和多标度Retinex (MSR)[8]。由于受到生成最终结果的方式的限制，输出结果常常看起来不自然，而且在某些地方过度增强了。Wang等人提出了一种名为NPE[9]的方法，该方法可以联合增强对比度并保持光照的自然度。Fu等人开发了一种方法[10]，该方法通过融合初始估计的光照图的多个导数来调整光照。然而，这种方法有时会牺牲那些包含丰富纹理的区域的真实感。<strong>Lime</strong>：Guo等人着重于从一个初始的[11]来估计结构化光照图。这些方法通常假定图像是无噪声和无色彩失真的，并且没有明确考虑图像的退化。在[12]中，为了获得更好的反射率和光照层，设计了一种同时进行反射率和光照估计的加权变分模型(SRIE)，然后通过对光照的处理生成目标图像。在[11]之后，Li等人进一步引入了一个额外的术语来表示主机噪声[13]。虽然[12]和[13]都可以抑制图像中轻微的噪声，但它们在处理颜色失真和较大噪声方面能力不足。</p>
+
+<p><strong>基于深度学习的方法</strong>。随着深度学习的出现，一些低层次的视觉任务从深度模型中受益，如[14]、去噪[15]、超分辨率[16]、去压缩伪影[17]、去雾[18]。针对本文的目标任务，[19]中提出的微光网(low-light net, LLNet)构建了一个深度网络，同时作为对比度增强和去噪模块。Shen等人认为多尺度视网膜相当于具有不同高斯卷积核的前馈卷积神经网络。受此启发，他们构建了一个卷积神经网络(MSR-net)[20]来学习黑暗和明亮图像之间的端到端映射。Wei等人设计了一个深度网络，称为RetinexNet[21]，它集成了图像分解和光照映射。请注意，Retinex-Net额外使用了一个现成的去噪工具(BM3D[22])来清洁反射率组件。这些策略都假定存在具有“地面真实”光的图像，而没有考虑到噪声对具有不同光的区域有不同的影响。简单地说，在提取了光照因子后，黑暗区域的反射率比明亮区域的噪声水平要高得多。在这种情况下，采用/训练具有均匀图像(反射率)能力的去噪器不再合适。此外，上述方法并没有明确地处理颜色失真的退化，这在真实图像中并不少见。最近，Chen等人提出了一种基于全卷积网络[23]端到端训练的低光图像处理管道，可以联合处理噪声和颜色失真。但是，这项工作只针对原始格式的数据，限制了它的适用场景。如[23]中所述，如果修改网络以接受JPEG格式的数据，性能会显著下降。</p>
+
+<p>大多数现有的方法通过伽玛校正来控制光照，在精心构建的训练数据中指定一个水平，或融合。对于伽玛校正，它可能无法反映不同的光(曝光)水平之间的关系。至于第二种方式，严格限制在指定的职等是否包含在训练数据中。而对于最后一个，它甚至没有提供操作选项。因此，需要学习一种映射函数，可以任意地将一个光(曝光)级别转换为另一个光(曝光)级别，为用户提供灵活的调节。</p>
+
+<p><strong>图像去噪方法。</strong> 在图像处理、多媒体和计算机视觉领域，图像去噪一直是一个热门话题，在过去的几十年里提出了许多技术。经典模型利用自然图像的某些特定先验，如非局部自相似、分段平滑、信号(表示)稀疏性等，对问题进行建模/正则化。最流行的方案可能是BM3D[22]和WNNM[24]。由于测试优化过程的复杂性，以及合适参数的搜索空间较大，这些传统方法在实际应用中往往表现出较差的性能。最近，基于深度学习的去噪器在去噪任务上显示出了优越性。代表性的研究工作，如利用可训练的非线性反应扩散[27]进行叠式稀疏去噪的自动编码器[25]、[26]、TNRD、带有残差学习的DnCNN、批量归一化[15]等，在测试阶段只涉及前馈卷积运算，节省了计算量。然而，这些深度模型仍然存在图像盲去噪的困难。可以针对不同的层次训练多个模型，也可以训练一个具有大量参数的模型，这在实践中显然是不灵活的。通过在任务中考虑循环思想，这个问题得到了缓解。但是，上述方法都没有考虑到光增强图像的不同区域承载不同级别的噪声。同样的问题也发生在颜色失真上。</p>
+
+<h2 id="文章的贡献">文章的贡献</h2>
+
+<ul>
+<li>受视神经网络理论的启发，该网络将图像分解为反射率和光照两个分量，将原始空间解耦为两个较小的空间</li>
+<li>该网络使用在不同光线/曝光条件下捕获的成对图像进行训练，而不是使用任何地面真实反射率和照明信息</li>
+<li>我们设计的模型提供了一个映射功能，可以根据用户的不同需求灵活地调整光的亮度。</li>
+<li>提出的网络还包含一个模块，该模块能够通过亮暗区域有效地消除放大的视觉缺陷。</li>
+<li>我们进行了大量的实验，以证明我们的设计的有效性和它的优越性，比目前最先进的选择。</li>
+</ul>
+
+<h2 id="数据使用与先验">数据使用与先验</h2>
+
+<p>在光照条件下没有明确的地面真相。此外，真实图像的地面真值反射率和光照图很少。层分解问题本质上是欠定的，因此附加的先验/正则化因子很重要。假设图像没有退化，某个场景的不同镜头应该具有相同的反射率。而光照图虽然可以强烈变化，但结构简单，相互一致。在实际情况中，在低光图像中体现的退化往往比在明亮图像中体现的退化更严重，这些退化将被转移到反射率部分。这启发了我们，在明亮的光线下，来自图像的反射率可以作为参考(地面真相)，从退化的低光中学习修复者。有人可能会问，为什么不使用合成数据呢?因为它很难合成。这种降解不是简单的形式，而是根据不同的传感器而变化的。请注意，反射率(定义良好的)的使用完全不同于使用(相对)明亮的光作为参考的低光的图像。</p>
+
+<h2 id="层分解网络-估计图像光照图与反射图">层分解网络-（估计图像光照图与反射图）</h2>
+
+<p>从一个图像中恢复两个组件是一个高度不适定的问题。由于没有基于事实的信息指导，具有良好设计的约束的损失是很重要的。幸运的是，我们已经将不同的光/曝光配置的图像配对<code>$[I_l,I_h]$</code>。回想一下，某个场景的反射率应该在不同的图像之间共享，我们将分解的反射率对<code>$[R_l,R_h]$</code>调整为接近(如果没有退化，理想情况下是相同的)。此外，照明映射<code>$[L_l,L_h]$</code>应该是分段光滑和相互一致的。采用下列约束条件。
+* We simply use <code>$ L_{rs}^{LD}:=\left \| R_l-R_h \right \|_{2}^{2} $</code> regularize the reflectance similarity, where <code>$ \left \| \cdot  \right \|_2$</code> means the <code>$ l_2 $</code> norm (MSE).
+* The illumination smoothness is constrained by<img src="https://i.loli.net/2019/11/16/OBni5hJD49g7Gbv.png" alt="image.png" />,<code>$ \bigtriangledown $</code>stands for the first order derivative operator containing <code>$ \bigtriangledown _x $</code>(horizontal) and <code>$ \bigtriangledown _y $</code>(vertiacl) directions, and  <code>$ \left \| \cdot  \right \|_1$</code> means the <code>$l^1 $</code> norm.In addition, <code>$ \epsilon $</code> is a small positive constant (0.01 in this work) for avoiding zero denominator, and <code>$ \left | \cdot  \right |$</code> means the absolute value operator.
+*  这个平滑项测量了照明相对于输入的相对结构。对于I中的一个边缘位置，L上的惩罚很小;而对于I中平坦区域的位置，惩罚会很大。至于相互之间的一致性，我们采用<code>$\mathcal{L}_{m c}^{L D}:=\|\mathbf{M} \circ \exp (-c \cdot \mathbf{M})\|_{1}$</code> with <code>$\mathbf{M}:=\left|\nabla \mathbf{L}_{l}\right|+\left| \nabla \mathbf{L}_{h}\right|$</code>图4为<code>u◦exp(−c·u)</code>的功能行为，其中c为控制功能形状的参数,从图4可以看出，随着u的增加，惩罚先是上升，然后下降到0。这一特性很好地符合了相互的一致性，即保留较强的一致性边缘，抑制弱边缘。我们注意到，设置<code>c=0</code>会导致损失函数简化为 <code>$ l_1 $</code>损失函数。
+* 此外，分解后的两层应该再现输入，这受到重构误差的限制，</p>
+
+<pre><code class="language-math">\mathcal{L}^{L D}:=\mathcal{L}_{r e c}^{L D}+0.01 \mathcal{L}_{r s}^{L D}+0.08 \mathcal{L}_{i s}^{L D}+0.1 \mathcal{L}_{m c}^{L D}
+</code></pre>
+
+<p>层分解网络包含两个分支，分别对应反射率和光照。反射支路采用典型的5层UNet[29]，随后是卷积(conv)层和Sigmoid层。光照分支由两个conv+ReLU层和一个conv层组成，它们连接在反射率分支的特征映射上(可能会将纹理排除在光照之外)，最后是一个Sigmoid层。详细的层分解网络配置如表1所示.</p>
+
+<h2 id="retinexnet-deep-retinex-decomposition-for-low-light-enhancement">【RetinexNet】Deep Retinex Decomposition for Low-Light Enhancement</h2>
+
+<p><a href="https://daooshee.github.io/BMVC2018website/">homepage-code</a></p>
+
+<h3 id="摘要">摘要</h3>
+
+<p>视网膜模型是一种有效的低光图像增强工具。它假设观测到的图像可以分解成反射率和照度。大多数现有的基于视网膜的方法都为这种高度不适定的分解精心设计了手工约束和参数，在各种场景中应用时可能受到模型容量的限制。在本文中，我们收集了一个包含低/正常光图像对的低光数据集(LOL)，并提出了一个在此数据集上学习的深度视黄醇网络，包括用于分解的解码器和用于照明调节的增强器。在解解网的训练过程中，没有分解反射率和光照的地面真值。该网络只在关键约束条件下学习，包括由低/常光图像共享的一致反射率和光照的平滑度。在分解的基础上，通过增强网络增强光照，进行后续的明度增强;在联合去噪中，对反射率进行去噪。视网膜网是端到端的可训练的，所以学习的分解本质上有利于亮度调整。大量的实验结果表明，该方法不仅具有良好的低光增强效果，而且具有良好的图像分解效果。</p>
+
+<h3 id="网络结构">网络结构</h3>
+
+<p><img src="https://daooshee.github.io/BMVC2018website/images/zhan-tie-tu-xiang-740.png" alt="Retinex" /></p>
+
+<h2 id="crm-a-new-low-light-image-enhancement-algorithm-using-camera-response-model">【CRM】A new low-light image enhancement algorithm using camera response model</h2>
+
+<h3 id="摘要-1">摘要</h3>
+
+<p>微光图像由于能见度低，不利于人类的观察和计算机视觉算法。为了解决这一问题，人们提出了许多图像增强技术。然而，现有的技术不可避免地会在增加可见性时引入颜色和亮度失真。为了降低失真，我们提出了一种利用摄像机的响应特性进行增强的新方法。首先，我们研究了两幅不同曝光的图像之间的关系，以获得一个准确的相机响应模型。然后我们借用光照估计技术来估计曝光比图。最后，我们使用相机响应模型，根据估计的曝光率图调整每个像素的曝光值。实验结果表明，与现有的几种增强方法相比，该方法可以获得较低的色彩和亮度失真的增强效果。</p>
+
+<p>看上去也是传统方法，重点应该在于camera response model：</p>
+
+<p><strong>相机响应模型</strong>由两部分组成:CRF模型和BTF模型。CRF模型的参数仅由相机决定，而BTF模型的参数由相机和曝光比决定。在本小节中，我们首先提出了基于两幅不同曝光图像观测的BTF模型。然后通过求解比较方程得到相应的CRF模型。最后，讨论了如何确定模型参数，给出了g的最终形式</p>
+
+<h2 id="bimef-a-bio-inspired-multi-exposure-fusion-framework-for-low-light-image-enhancement">【BIMEF】A Bio-Inspired Multi-Exposure Fusion Framework for Low-light Image Enhancement</h2>
+
+<p>微光图像由于能见度低，不利于人类的观察和计算机视觉算法。虽然许多图像增强技术已经被提出来解决这个问题，但现有的方法不可避免地会引入对比度过增强和欠增强。受人类视觉系统的启发，我们设计了一种用于微光图像增强的多曝光融合框架。基于该框架，我们提出了一种双曝光融合算法，以提供准确的对比度和亮度增强。具体来说，我们首先设计了基于光照es的图像融合权矩阵。</p>
+
+<p><a href="https://baidut.github.io/BIMEF/">Homepage</a>
+<a href="https://github.com/baidut/BIMEF">BIMEF-Code</a></p>
+
+<h2 id="lime-low-light-image-enhancement-via-illumination-map-estimation">【LIME】: Low-Light Image Enhancement via Illumination Map Estimation</h2>
+
+<p>当一个人在弱光条件下拍摄图像时，图像的能见度通常很低。除了降低图像的视觉美感外，这种低质量还可能显著降低许多主要为高质量输入而设计的计算机视觉和多媒体算法的性能。本文提出了一种简单有效的微光图像增强方法。更具体地说，首先通过在R、G和B通道中寻找最大值来单独估计每个像素的光照。在此基础上，对初始光照图进行了细化.</p>
+
+<p>重点在于光照图怎么估计？
+Max-RGB[8]是最早的颜色恒常性方法之一，它试图通过寻找R、G、b三个颜色通道的最大值来估计光照，但这种估计只能提高全局光照。在本文中，对于不均匀的照度，我们交替采用以下初始估计:
+&hellip;详细见论文</p>
+
+<h2 id="retinex-theory">Retinex theory</h2>
+
+<p>中文名 视网膜大脑皮层理论</p>
+
+<p>1963年12月30日E. Land作为人类视觉的亮度和颜色感知的模型在俄亥俄州提出了一种颜色恒常知觉的计算理论——Retinex理论。Retinex是一个合成词，它的构成是retina（视网膜）+cortex（皮层）→ Retinex。40多年来，工作在IS&amp;T、NASA的J. J. McCann和D. J. Jobson、Zia-Ur Rahman、G. A. Woodell等人模仿人类视觉系统发展了Retinex算法，从单尺度Retinex算法（single scale retinex, SSR）改进成多尺度加权平均的Retinex算法（multi-scale retinex, MSR），再发展成带彩色恢复的多尺度Retinex算法（multi-scale retinex with color restoration, MSRCR）。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/%E8%AE%BA%E6%96%87/">论文</a>
+
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/%E5%8E%BB%E9%9B%BE/">去雾</a>
+
+                  </div>
+                
+              
+            
+              <span id="/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E6%9A%97%E5%85%89%E5%A2%9E%E5%BC%BA-kindling-the-darkness_a-practical-low-light-image-enhancer-%E5%8F%8A%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87/" class="leancloud_visitors" data-flag-title="论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文">
+                <span class="post-meta-item-text">文章阅读量 </span>
+                <span class="leancloud-visitors-count">1000000</span>
+                <p></p>
+              </span>
+              <div id="vcomments"></div>
+              <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+              <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+              <script type="text/javascript">
+                new Valine({
+                  el: '#vcomments' ,
+                  appId: 'PQNUpEjIN1DS9ARm5rzzEm8T-gzGzoHsz',
+                  appKey: 'BJTf3bw5U30Xh2PKO7CC75bg',
+                  notify: 'false',
+                  verify: '',
+                  avatar:'mp', 
+                  placeholder: '欢迎留言，留下邮箱信息在得到回复时将会有邮件提醒',
+                  visitor: 'true'
+                });
+              </script>
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/leetcode-%E9%93%BE%E8%A1%A8%E6%8C%87%E9%92%88-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" data-tooltip="Leetcode 链表指针 两数相加">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 Zhang Zivon. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/leetcode-%E9%93%BE%E8%A1%A8%E6%8C%87%E9%92%88-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" data-tooltip="Leetcode 链表指针 两数相加">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Zhang Zivon</h4>
+    
+      <div id="about-card-bio">对世界的好奇终难停脚步。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        南京
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://zivonzhang.github.io/images/onTheRoad.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://zivonzhang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://zivonzhang.github.io/js/clicklove.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

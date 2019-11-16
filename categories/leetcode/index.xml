@@ -6,10 +6,19 @@
     <description>Recent content in LeetCode on Zivon的探索之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Nov 2019 22:18:09 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 16 Nov 2019 21:18:18 +0800</lastBuildDate>
     
 	<atom:link href="https://zivonzhang.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Leetcode 链表指针 两数相加</title>
+      <link>https://zivonzhang.github.io/2019/11/leetcode-%E9%93%BE%E8%A1%A8%E6%8C%87%E9%92%88-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/</link>
+      <pubDate>Sat, 16 Nov 2019 21:18:18 +0800</pubDate>
+      
+      <guid>https://zivonzhang.github.io/2019/11/leetcode-%E9%93%BE%E8%A1%A8%E6%8C%87%E9%92%88-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/</guid>
+      <description>&lt;p&gt;LeetCode Python 链表指针 两数相加&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Leetcode 排序 合并区间</title>
