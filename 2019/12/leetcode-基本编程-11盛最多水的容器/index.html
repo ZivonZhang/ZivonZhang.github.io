@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Zhang Zivon">
+<meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
+<meta name="description" content="Leetcode-基本编程-11盛最多水的容器">
+
+
+<meta property="og:description" content="Leetcode-基本编程-11盛最多水的容器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 基本编程 11盛最多水的容器">
+<meta name="twitter:title" content="Leetcode 基本编程 11盛最多水的容器">
+<meta property="og:url" content="https://zivonzhang.github.io/2019/12/leetcode-%E5%9F%BA%E6%9C%AC%E7%BC%96%E7%A8%8B-11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2019/12/leetcode-%E5%9F%BA%E6%9C%AC%E7%BC%96%E7%A8%8B-11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/">
+<meta property="og:site_name" content="Zivon的探索之路">
+<meta property="og:description" content="Leetcode-基本编程-11盛最多水的容器">
+<meta name="twitter:description" content="Leetcode-基本编程-11盛最多水的容器">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-12-01T22:08:31">
+  
+  
+    <meta property="article:modified_time" content="2019-12-01T22:08:31">
+  
+  
+  
+    
+      <meta property="article:section" content="LeetCode">
+    
+  
+  
+    
+      <meta property="article:tag" content="Python">
+    
+      <meta property="article:tag" content="LeetCode">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/leetcode.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/leetcode.jpg">
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/onTheRoad.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/onTheRoad.jpg">
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/bear.png">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
+
+
+    <title>Leetcode 基本编程 11盛最多水的容器</title>
+
+    <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://zivonzhang.github.io/2019/12/leetcode-%E5%9F%BA%E6%9C%AC%E7%BC%96%E7%A8%8B-11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://zivonzhang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://zivonzhang.github.io/">Zivon的探索之路</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://zivonzhang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://zivonzhang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Zhang Zivon</h4>
+        
+          <h5 class="sidebar-profile-bio">对世界的好奇终难停脚步。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/ZivonZhang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+	<div class="sidebar-profile">
+		<iframe frameborder="no"  marginwidth="0" marginheight="0" width=86 height=86 src="//music.163.com/outchain/player?type=2&id=421091290&auto=1&height=66"></iframe>
+    </div>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/onTheRoad.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      Leetcode 基本编程 11盛最多水的容器
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-12-01T22:08:31&#43;08:00">
+        
+  十二月 1, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://zivonzhang.github.io/categories/leetcode">LeetCode</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">万丈高楼平地起</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Leetcode-基本编程-11盛最多水的容器</p>
+
+<h1 id="table-of-contents">目录</h1>
+
+<p>#
+##描述</p>
+
+<pre><code># @lc app=leetcode.cn id=11 lang=python3
+#
+# [11] 盛最多水的容器
+#
+# https://leetcode-cn.com/problems/container-with-most-water/description/
+#
+# algorithms
+# Medium (59.34%)
+# Likes:    923
+# Dislikes: 0
+# Total Accepted:    104.2K
+# Total Submissions: 175.2K
+# Testcase Example:  '[1,8,6,2,5,4,8,3,7]'
+#
+# 给定 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i,
+# ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+# 
+# 说明：你不能倾斜容器，且 n 的值至少为 2。
+# 
+# 
+# 
+# 图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
+# 
+# 
+# 
+# 示例:
+# 
+# 输入: [1,8,6,2,5,4,8,3,7]
+# 输出: 49
+# 
+#
+</code></pre>
+
+<pre><code># @lc code=start
+class Solution:
+    def maxArea(self, height: List[int]) -&gt; int:
+        m=0
+        left = 0
+        right = len(height)-1
+
+        while(left&lt;right):
+            area = min(height[left],height[right])*(right-left)
+            if area&gt;m:
+                m=area
+            if height[left]&gt;height[right]:
+                right=right-1
+            else:
+                left=left+1
+        return m
+        
+# @lc code=end
+
+
+50/50 cases passed (156 ms)
+Your runtime beats 82.46 % of python3 submissions
+Your memory usage beats 5.18 % of python3 submissions (15.5 MB)
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/python/">Python</a>
+
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/leetcode/">LeetCode</a>
+
+                  </div>
+                
+              
+            
+              <span id="/2019/12/leetcode-%E5%9F%BA%E6%9C%AC%E7%BC%96%E7%A8%8B-11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" class="leancloud_visitors" data-flag-title="Leetcode 基本编程 11盛最多水的容器">
+                <span class="post-meta-item-text">文章阅读量 </span>
+                <span class="leancloud-visitors-count">1000000</span>
+                <p></p>
+              </span>
+              <div id="vcomments"></div>
+              <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+              <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+              <script type="text/javascript">
+                new Valine({
+                  el: '#vcomments' ,
+                  appId: 'PQNUpEjIN1DS9ARm5rzzEm8T-gzGzoHsz',
+                  appKey: 'BJTf3bw5U30Xh2PKO7CC75bg',
+                  notify: 'false',
+                  verify: '',
+                  avatar:'mp', 
+                  placeholder: '欢迎留言，留下邮箱信息在得到回复时将会有邮件提醒',
+                  visitor: 'true'
+                });
+              </script>
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E6%9A%97%E5%85%89%E5%A2%9E%E5%BC%BA-kindling-the-darkness_a-practical-low-light-image-enhancer-%E5%8F%8A%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87/" data-tooltip="论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 Zhang Zivon. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E6%9A%97%E5%85%89%E5%A2%9E%E5%BC%BA-kindling-the-darkness_a-practical-low-light-image-enhancer-%E5%8F%8A%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87/" data-tooltip="论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Zhang Zivon</h4>
+    
+      <div id="about-card-bio">对世界的好奇终难停脚步。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        南京
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://zivonzhang.github.io/images/onTheRoad.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://zivonzhang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://zivonzhang.github.io/js/clicklove.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
