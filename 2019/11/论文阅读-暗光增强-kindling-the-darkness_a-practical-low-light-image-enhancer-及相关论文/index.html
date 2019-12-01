@@ -111,6 +111,15 @@
     </a>
   
 </header>
+<style>
+    .hasJax{
+		font: inherit;
+		font-size: 100%;
+		background: inherit;
+		border: inherit;
+		 
+	} 
+</style>
 
       <nav id="sidebar" data-behavior="5">
   <div class="sidebar-container">
@@ -247,6 +256,7 @@
   </div>
 
 </div>
+
     
   </div>
 
@@ -346,14 +356,16 @@
 
 <h2 id="层分解网络-估计图像光照图与反射图">层分解网络-（估计图像光照图与反射图）</h2>
 
-<p>从一个图像中恢复两个组件是一个高度不适定的问题。由于没有基于事实的信息指导，具有良好设计的约束的损失是很重要的。幸运的是，我们已经将不同的光/曝光配置的图像配对<code>$[I_l,I_h]$</code>。回想一下，某个场景的反射率应该在不同的图像之间共享，我们将分解的反射率对<code>$[R_l,R_h]$</code>调整为接近(如果没有退化，理想情况下是相同的)。此外，照明映射<code>$[L_l,L_h]$</code>应该是分段光滑和相互一致的。采用下列约束条件。
-* We simply use <code>$ L_{rs}^{LD}:=\left \| R_l-R_h \right \|_{2}^{2} $</code> regularize the reflectance similarity, where <code>$ \left \| \cdot  \right \|_2$</code> means the <code>$ l_2 $</code> norm (MSE).
-* The illumination smoothness is constrained by<img src="https://i.loli.net/2019/11/16/OBni5hJD49g7Gbv.png" alt="image.png" />,<code>$ \bigtriangledown $</code>stands for the first order derivative operator containing <code>$ \bigtriangledown _x $</code>(horizontal) and <code>$ \bigtriangledown _y $</code>(vertiacl) directions, and  <code>$ \left \| \cdot  \right \|_1$</code> means the <code>$l^1 $</code> norm.In addition, <code>$ \epsilon $</code> is a small positive constant (0.01 in this work) for avoiding zero denominator, and <code>$ \left | \cdot  \right |$</code> means the absolute value operator.
-*  这个平滑项测量了照明相对于输入的相对结构。对于I中的一个边缘位置，L上的惩罚很小;而对于I中平坦区域的位置，惩罚会很大。至于相互之间的一致性，我们采用<code>$\mathcal{L}_{m c}^{L D}:=\|\mathbf{M} \circ \exp (-c \cdot \mathbf{M})\|_{1}$</code> with <code>$\mathbf{M}:=\left|\nabla \mathbf{L}_{l}\right|+\left| \nabla \mathbf{L}_{h}\right|$</code>图4为<code>u◦exp(−c·u)</code>的功能行为，其中c为控制功能形状的参数,从图4可以看出，随着u的增加，惩罚先是上升，然后下降到0。这一特性很好地符合了相互的一致性，即保留较强的一致性边缘，抑制弱边缘。我们注意到，设置<code>c=0</code>会导致损失函数简化为 <code>$ l_1 $</code>损失函数。
-* 此外，分解后的两层应该再现输入，这受到重构误差的限制，</p>
+<p>从一个图像中恢复两个组件是一个高度不适定的问题。由于没有基于事实的信息指导，具有良好设计的约束的损失是很重要的。幸运的是，我们已经将不同的光/曝光配置的图像配对<code>$[I_l,I_h]$</code>。回想一下，某个场景的反射率应该在不同的图像之间共享，我们将分解的反射率对<code>$[R_l,R_h]$</code>调整为接近(如果没有退化，理想情况下是相同的)。此外，照明映射<code>$[L_l,L_h]$</code>应该是分段光滑和相互一致的。采用下列约束条件。</p>
 
-<pre><code class="language-math">\mathcal{L}^{L D}:=\mathcal{L}_{r e c}^{L D}+0.01 \mathcal{L}_{r s}^{L D}+0.08 \mathcal{L}_{i s}^{L D}+0.1 \mathcal{L}_{m c}^{L D}
-</code></pre>
+<ul>
+<li>We simply use <code>$ L_{rs}^{LD}:=\left \| R_l-R_h \right \|_{2}^{2} $</code> regularize the reflectance similarity, where <code>$ \left \| \cdot  \right \|_2$</code> means the <code>$ l_2 $</code> norm (MSE).</li>
+<li>The illumination smoothness is constrained by<img src="https://i.loli.net/2019/11/16/OBni5hJD49g7Gbv.png" alt="image.png" />,<code>$ \bigtriangledown $</code>stands for the first order derivative operator containing <code>$ \bigtriangledown _x $</code>(horizontal) and <code>$ \bigtriangledown _y $</code>(vertiacl) directions, and  <code>$ \left \| \cdot  \right \|_1$</code> means the <code>$l^1 $</code> norm.In addition, <code>$ \epsilon $</code> is a small positive constant (0.01 in this work) for avoiding zero denominator, and <code>$ \left | \cdot  \right |$</code> means the absolute value operator.</li>
+<li>这个平滑项测量了照明相对于输入的相对结构。对于I中的一个边缘位置，L上的惩罚很小;而对于I中平坦区域的位置，惩罚会很大。至于相互之间的一致性，我们采用<code>$\mathcal{L}_{m c}^{L D}:=\|\mathbf{M} \circ \exp (-c \cdot \mathbf{M})\|_{1}$</code> with <code>$\mathbf{M}:=\left|\nabla \mathbf{L}_{l}\right|+\left| \nabla \mathbf{L}_{h}\right|$</code>图4为<code>u◦exp(−c·u)</code>的功能行为，其中c为控制功能形状的参数,从图4可以看出，随着u的增加，惩罚先是上升，然后下降到0。这一特性很好地符合了相互的一致性，即保留较强的一致性边缘，抑制弱边缘。我们注意到，设置<code>c=0</code>会导致损失函数简化为 <code>$ l_1 $</code>损失函数。</li>
+<li>此外，分解后的两层应该再现输入，这受到重构误差的限制，</li>
+</ul>
+
+<p><code>$$\mathcal{L}^{L D}:=\mathcal{L}_{r e c}^{L D}+0.01 \mathcal{L}_{r s}^{L D}+0.08 \mathcal{L}_{i s}^{L D}+0.1 \mathcal{L}_{m c}^{L D}$$</code></p>
 
 <p>层分解网络包含两个分支，分别对应反射率和光照。反射支路采用典型的5层UNet[29]，随后是卷积(conv)层和Sigmoid层。光照分支由两个conv+ReLU层和一个conv层组成，它们连接在反射率分支的特征映射上(可能会将纹理排除在光照之外)，最后是一个Sigmoid层。详细的层分解网络配置如表1所示.</p>
 
@@ -493,6 +505,22 @@ Max-RGB[8]是最早的颜色恒常性方法之一，它试图通过寻找R、G�
     &copy; 2019 Zhang Zivon. All Rights Reserved
   </span>
 </footer>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'],],
+            displayMath: [['$$','$$'],],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: { autoNumber: "AMS" },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
