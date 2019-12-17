@@ -8,37 +8,37 @@
 <meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="Zhang Zivon">
 <meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
-<meta name="description" content="Leetcode-基本编程-11盛最多水的容器">
+<meta name="description" content="浙大数据结构的期末复习笔记">
 
 
-<meta property="og:description" content="Leetcode-基本编程-11盛最多水的容器">
+<meta property="og:description" content="浙大数据结构的期末复习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode 基本编程 11盛最多水的容器">
-<meta name="twitter:title" content="Leetcode 基本编程 11盛最多水的容器">
-<meta property="og:url" content="https://zivonzhang.github.io/2019/12/leetcode-%E5%9F%BA%E6%9C%AC%E7%BC%96%E7%A8%8B-11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/">
-<meta property="twitter:url" content="https://zivonzhang.github.io/2019/12/leetcode-%E5%9F%BA%E6%9C%AC%E7%BC%96%E7%A8%8B-11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/">
+<meta property="og:title" content="数据结构 复习">
+<meta name="twitter:title" content="数据结构 复习">
+<meta property="og:url" content="https://zivonzhang.github.io/2019/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A4%8D%E4%B9%A0/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2019/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A4%8D%E4%B9%A0/">
 <meta property="og:site_name" content="Zivon的探索之路">
-<meta property="og:description" content="Leetcode-基本编程-11盛最多水的容器">
-<meta name="twitter:description" content="Leetcode-基本编程-11盛最多水的容器">
+<meta property="og:description" content="浙大数据结构的期末复习笔记">
+<meta name="twitter:description" content="浙大数据结构的期末复习笔记">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2019-12-01T22:08:31">
+    <meta property="article:published_time" content="2019-12-17T22:37:58">
   
   
-    <meta property="article:modified_time" content="2019-12-01T22:08:31">
+    <meta property="article:modified_time" content="2019-12-17T22:37:58">
   
-  
-  
-    
-      <meta property="article:section" content="LeetCode">
-    
   
   
     
-      <meta property="article:tag" content="Python">
+      <meta property="article:section" content="数据结构">
     
-      <meta property="article:tag" content="LeetCode">
+  
+  
+    
+      <meta property="article:tag" content="数据结构">
+    
+      <meta property="article:tag" content="C&#43;&#43;">
     
   
 
@@ -51,8 +51,8 @@
 
 
 
-  <meta property="og:image" content="https://zivonzhang.github.io/images/leetcode.jpg">
-  <meta property="twitter:image" content="https://zivonzhang.github.io/images/leetcode.jpg">
+  <meta property="og:image" content="https://zivonzhang.github.io/images/data_structure.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/data_structure.jpg">
 
 
   <meta property="og:image" content="https://zivonzhang.github.io/images/onTheRoad.jpg">
@@ -65,14 +65,14 @@
   <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
 
 
-    <title>Leetcode 基本编程 11盛最多水的容器</title>
+    <title>数据结构 复习</title>
 
     <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://zivonzhang.github.io/2019/12/leetcode-%E5%9F%BA%E6%9C%AC%E7%BC%96%E7%A8%8B-11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/">
+    <link rel="canonical" href="https://zivonzhang.github.io/2019/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A4%8D%E4%B9%A0/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -232,15 +232,15 @@
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      Leetcode 基本编程 11盛最多水的容器
+      数据结构 复习
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2019-12-01T22:08:31&#43;08:00">
+      <time itemprop="datePublished" datetime="2019-12-17T22:37:58&#43;08:00">
         
-  十二月 1, 2019
+  十二月 17, 2019
 
       </time>
     
@@ -249,7 +249,7 @@
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://zivonzhang.github.io/categories/leetcode">LeetCode</a>
+      <a class="category-link" href="https://zivonzhang.github.io/categories/%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84">数据结构</a>
     
   
 
@@ -272,70 +272,208 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Leetcode-基本编程-11盛最多水的容器</p>
+              <p>浙大数据结构的期末复习笔记</p>
 
-<h1 id="table-of-contents">目录</h1>
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#排序">排序</a>
+<ul>
+<li><a href="#基数排序">基数排序</a>
+<ul>
+<li><a href="#效率分析">效率分析</a></li>
+</ul></li>
+<li><a href="#希尔排序">希尔排序</a></li>
+</ul></li>
+<li><a href="#图">图</a>
+<ul>
+<li><a href="#最小生成树">最小生成树</a>
+<ul>
+<li><a href="#贪心算法">贪心算法</a></li>
+<li><a href="#prim">Prim</a></li>
+</ul></li>
+<li><a href="#拓扑排序">拓扑排序</a>
+<ul>
+<li><a href="#排序方法">排序方法</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#树">树</a>
+<ul>
+<li><a href="#二叉搜索树">二叉搜索树</a></li>
+<li><a href="#并查集">并查集</a></li>
+<li><a href="#平衡二叉树">平衡二叉树</a></li>
+<li><a href="#最小堆">最小堆</a></li>
+</ul></li>
+<li><a href="#哈夫曼树">哈夫曼树</a></li>
+<li><a href="#散列">散列</a>
+<ul>
+<li><a href="#冲突处理方法">冲突处理方法</a></li>
+<li><a href="#性能分析">性能分析</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
 
-<p>#
-##描述</p>
+<p>最后刚好90分。
+这个真的也不能随波逐流，要自己弄明白。</p>
 
-<pre><code># @lc app=leetcode.cn id=11 lang=python3
-#
-# [11] 盛最多水的容器
-#
-# https://leetcode-cn.com/problems/container-with-most-water/description/
-#
-# algorithms
-# Medium (59.34%)
-# Likes:    923
-# Dislikes: 0
-# Total Accepted:    104.2K
-# Total Submissions: 175.2K
-# Testcase Example:  '[1,8,6,2,5,4,8,3,7]'
-#
-# 给定 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i,
-# ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
-# 
-# 说明：你不能倾斜容器，且 n 的值至少为 2。
-# 
-# 
-# 
-# 图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
-# 
-# 
-# 
-# 示例:
-# 
-# 输入: [1,8,6,2,5,4,8,3,7]
-# 输出: 49
-# 
-#
-</code></pre>
+<ol>
+<li>
+<img src="https://i.loli.net/2019/12/17/tkafexFW5cHICsG.png" alt="image.png" />
+这一题，在对数上</li>
+</ol>
 
-<pre><code># @lc code=start
-class Solution:
-    def maxArea(self, height: List[int]) -&gt; int:
-        m=0
-        left = 0
-        right = len(height)-1
+<p>学过对数之后就会知道
+<code>n log n² = 2n log n</code>
+2.
+<img src="https://i.loli.net/2019/12/17/1OaVqFhJzEneXl3.png" alt="image.png" />
+CCC
+析：再散列将散列表扩大一倍，表长变为20，然后取最近的质数23作为表长。</p>
 
-        while(left&lt;right):
-            area = min(height[left],height[right])*(right-left)
-            if area&gt;m:
-                m=area
-            if height[left]&gt;height[right]:
-                right=right-1
-            else:
-                left=left+1
-        return m
-        
-# @lc code=end
+<h2 id="排序">排序</h2>
 
+<h3 id="基数排序">基数排序</h3>
 
-50/50 cases passed (156 ms)
-Your runtime beats 82.46 % of python3 submissions
-Your memory usage beats 5.18 % of python3 submissions (15.5 MB)
-</code></pre>
+<p>基数排序（radix sort）属于“分配式排序”（distribution sort），又称“桶子法”（bucket sort）或bin sort，顾名思义，它是透过键值的部份资讯，将要排序的元素分配至某些“桶”中，藉以达到排序的作用，基数排序法是属于稳定性的排序，其时间复杂度为O (nlog&reg;m)，其中r为所采取的基数，而m为堆数，在某些时候，基数排序法的效率高于其它的稳定性排序法。
+在r与m确定情况下，时间复杂度为线性。</p>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2019/03/radixSort.gif" alt="image" /></p>
+
+<p>LSD(次位优先)——MSD（主位优先）</p>
+
+<h4 id="效率分析">效率分析</h4>
+
+<p>时间效率 [1]  ：设待排序列为n个记录，d个关键码，关键码的取值范围为radix，则进行链式基数排序的时间复杂度为O(d(n+radix))，其中，一趟分配时间复杂度为O(n)，一趟收集时间复杂度为O(radix)，共进行d趟分配和收集。 空间效率：需要2*radix个指向队列的辅助空间，以及用于静态链表的n个指针。</p>
+
+<h3 id="希尔排序">希尔排序</h3>
+
+<p>希尔排序(Shell&rsquo;s Sort)是插入排序的一种又称“缩小增量排序”（Diminishing Increment Sort），是直接插入排序算法的一种更高效的改进版本。希尔排序是非稳定排序算法。该方法因D.L.Shell于1959年提出而得名。</p>
+
+<h2 id="图">图</h2>
+
+<p>在任一有向图中，所有顶点的入度之和等于所有顶点的出度之和</p>
+
+<h3 id="最小生成树">最小生成树</h3>
+
+<ol>
+<li>是一颗无回路的树</li>
+<li>是包含全部顶点的生成树</li>
+<li>边的权重和最小</li>
+<li>生成树存在-&gt;图连通</li>
+</ol>
+
+<h4 id="贪心算法">贪心算法</h4>
+
+<ol>
+<li>每一步都要最好的</li>
+<li>每次都选择权重最小的边</li>
+<li>约束：
+
+<ol>
+<li>只能用图原有的边</li>
+<li>只能正好用掉v-1条边</li>
+<li>不能有回路</li>
+</ol></li>
+</ol>
+
+<h4 id="prim">Prim</h4>
+
+<p>普里姆算法（Prim算法），图论中的一种算法，可在加权连通图里搜索最小生成树。</p>
+
+<p>大致思想是：设图G顶点集合为U，首先任意选择图G中的一点作为起始点a，将该点加入集合V，再从集合U-V中找到另一点b使得点b到V中任意一点的权值最小，此时将b点也加入集合V；以此类推，现在的集合V={a，b}，再从集合U-V中找到另一点c使得点c到V中任意一点的权值最小，此时将c点加入集合V，直至所有顶点全部被加入V，此时就构建出了一颗MST。因为有N个顶点，所以该MST就有N-1条边，每一次向集合V中加入一个点，就意味着找到一条MST的边。</p>
+
+<h3 id="拓扑排序">拓扑排序</h3>
+
+<blockquote>
+<p>对一个有向无环图(Directed Acyclic Graph简称DAG)G进行拓扑排序，是将G中所有顶点排成一个线性序列，使得图中任意一对顶点u和v，若边<u,v>∈E(G)，则u在线性序列中出现在v之前。通常，这样的线性序列称为满足拓扑次序(Topological Order)的序列，简称拓扑序列。简单的说，由某个集合上的一个偏序得到该集合上的一个全序，这个操作称之为拓扑排序。</p>
+</blockquote>
+
+<h4 id="排序方法">排序方法</h4>
+
+<p>随时将入度变为0的顶点放到容器里</p>
+
+<p>相关问题有<strong>关键路径问题</strong>——由绝对不允许延误的活动组成的路径</p>
+
+<h2 id="树">树</h2>
+
+<h3 id="二叉搜索树">二叉搜索树</h3>
+
+<ol>
+<li>非空左子树的所有键值小于其根结点的键值。</li>
+<li>非空右子树的所有键值大于其根结点的键值。</li>
+</ol>
+
+<h3 id="并查集">并查集</h3>
+
+<p>并查集问题可以用树进行实现，树的每个结点代表一个集合元素
+采用数组存储形式。每个结点包含两部分
+1. Data
+2. Parent
+3. 其中 Parent 负数表示根结点，非负数表示Rarent结点的下标
+4. 查找元素所在集合——返回根结点
+5. 并运算。找到各自的根结点，不同根，则将一个根结点的Parent指针设置成另一个根结点的数组下标</p>
+
+<h3 id="平衡二叉树">平衡二叉树</h3>
+
+<ol>
+<li>平衡因子：为左右子树高度的差值</li>
+<li>空树、任意节点平衡因子不大于1的树为平衡二叉树。</li>
+<li>结点数为N的AVL树的最大高度为<code>$O(log_{2N})$</code></li>
+<li>一棵平衡二叉树的所有非叶结点的平衡因子都是0，则其必为完美二叉树</li>
+</ol>
+
+<h3 id="最小堆">最小堆</h3>
+
+<ol>
+<li>结构满足完全二叉树</li>
+<li>对于任一子树都满足，根大于（或小于）左右子树的要求。一般为最小堆，是小于</li>
+<li>其插入时间复杂度为logN，</li>
+<li>插入——放入树的底层，满足完全二叉树，然后自下而上调整。</li>
+<li>删除，去除根结点，将树底层最右一个元素移动至根，然后自上而下调整。时间复杂度均为logN</li>
+</ol>
+
+<h2 id="哈夫曼树">哈夫曼树</h2>
+
+<ol>
+<li><strong>目的</strong>是根据结点不同的查找频率构造更有效的搜索树</li>
+<li>也叫，最优二叉树。即带权路径长度（WPL）最小的二叉树</li>
+<li>没有度为1的结点</li>
+<li>n个叶子结点共有2n-1个结点</li>
+<li>任意非叶节点的左右子树交换后仍然是哈夫曼树</li>
+<li>对于同一组权值，可能存在不同构的两颗哈夫曼树</li>
+<li>哈夫曼树的它的字母都在叶子节点上，因此不会出现一个字母的编码为另一个字母编码左起子串的情况。</li>
+</ol>
+
+<p>哈夫曼树是一棵满二叉树，树中只有两种类型的节点，即叶子节点和度为2的节点，所以树中任意节点的左子树和右子树同时存在。构建步骤如下：</p>
+
+<p>对字符集合按照字符频率进行升序排序，并构建一颗空树；
+遍历字符集合，将每一个字符添加到树中，添加规则为：
+1. 若树为空，则作为根节点；
+2. 若字符频率不大于根节点频率，则字符作为根节点的左兄弟，形成一个新的根节点，频率值为左、右子节点之和；
+3. 若字符频率大于根节点频率，则字符作为根节点的右兄弟，形成一个新的根节点，频率值为左右子节点之和。</p>
+
+<h2 id="散列">散列</h2>
+
+<h3 id="冲突处理方法">冲突处理方法</h3>
+
+<ol>
+<li>换个位置：<strong>开放地址法</strong>
+
+<ol>
+<li>线性探测</li>
+<li>平方探测：有定理显示，如果散列表长度TableSize是某个4k+3形式的<strong>素数</strong>时，其可以探查到整个散列表空间</li>
+<li>双散列：使用另一个散列函数，并保证所有散列存储单元都能被探测到</li>
+<li>开放地址法中，删除操作要很小心，只能懒惰删除。即只增加一个删除标记（Deleted）。确保查找时不会“断链”。其空间可以在下次插入时重用。</li>
+</ol></li>
+<li>同一位置的冲突对象组织在一起： <strong>链地址法</strong>——将相应位置上冲突的所有关键词存储在同一个单链表中</li>
+
+<li><p>再散列：装填因子过高时，拓展存储空间</p>
+
+<h3 id="性能分析">性能分析</h3>
+
+<p>平均查找长度（ASL）度量</p></li>
+</ol>
               
             </div>
           </div>
@@ -347,15 +485,15 @@ Your memory usage beats 5.18 % of python3 submissions (15.5 MB)
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">标签</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/python/">Python</a>
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
 
-  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/leetcode/">LeetCode</a>
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
 
                   </div>
                 
               
             
-              <span id="/2019/12/leetcode-%E5%9F%BA%E6%9C%AC%E7%BC%96%E7%A8%8B-11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" class="leancloud_visitors" data-flag-title="Leetcode 基本编程 11盛最多水的容器">
+              <span id="/2019/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A4%8D%E4%B9%A0/" class="leancloud_visitors" data-flag-title="数据结构 复习">
                 <span class="post-meta-item-text">文章阅读量 </span>
                 <span class="leancloud-visitors-count">1000000</span>
                 <p></p>
@@ -382,7 +520,7 @@ Your memory usage beats 5.18 % of python3 submissions (15.5 MB)
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E6%9A%97%E5%85%89%E5%A2%9E%E5%BC%BA-kindling-the-darkness_a-practical-low-light-image-enhancer-%E5%8F%8A%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87/" data-tooltip="论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/12/leetcode-%E5%9F%BA%E6%9C%AC%E7%BC%96%E7%A8%8B-11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" data-tooltip="Leetcode 基本编程 11盛最多水的容器">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -390,7 +528,7 @@ Your memory usage beats 5.18 % of python3 submissions (15.5 MB)
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A4%8D%E4%B9%A0/" data-tooltip="数据结构 复习">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -456,7 +594,7 @@ Your memory usage beats 5.18 % of python3 submissions (15.5 MB)
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-%E6%9A%97%E5%85%89%E5%A2%9E%E5%BC%BA-kindling-the-darkness_a-practical-low-light-image-enhancer-%E5%8F%8A%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87/" data-tooltip="论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/12/leetcode-%E5%9F%BA%E6%9C%AC%E7%BC%96%E7%A8%8B-11%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" data-tooltip="Leetcode 基本编程 11盛最多水的容器">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -464,7 +602,7 @@ Your memory usage beats 5.18 % of python3 submissions (15.5 MB)
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A4%8D%E4%B9%A0/" data-tooltip="数据结构 复习">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
