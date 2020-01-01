@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Zhang Zivon">
+<meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
+<meta name="description" content="GAN相关的论文概述">
+
+
+<meta property="og:description" content="GAN相关的论文概述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读 GAN相关">
+<meta name="twitter:title" content="论文阅读 GAN相关">
+<meta property="og:url" content="https://zivonzhang.github.io/2020/01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-gan%E7%9B%B8%E5%85%B3/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2020/01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-gan%E7%9B%B8%E5%85%B3/">
+<meta property="og:site_name" content="Zivon的探索之路">
+<meta property="og:description" content="GAN相关的论文概述">
+<meta name="twitter:description" content="GAN相关的论文概述">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-01-01T21:58:52">
+  
+  
+    <meta property="article:modified_time" content="2020-01-01T21:58:52">
+  
+  
+  
+    
+      <meta property="article:section" content="论文阅读">
+    
+  
+  
+    
+      <meta property="article:tag" content="论文">
+    
+      <meta property="article:tag" content="GAN">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/Paper.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/Paper.jpg">
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/cover.jpg">
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/bear.png">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
+
+
+    <title>论文阅读 GAN相关</title>
+
+    <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://zivonzhang.github.io/2020/01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-gan%E7%9B%B8%E5%85%B3/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://zivonzhang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://zivonzhang.github.io/">Zivon的探索之路</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://zivonzhang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+<style>
+    .hasJax{
+		font: inherit;
+		font-size: 100%;
+		background: inherit;
+		border: inherit;
+		 
+	} 
+</style>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://zivonzhang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Zhang Zivon</h4>
+        
+          <h5 class="sidebar-profile-bio">对世界的好奇终难停脚步。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/ZivonZhang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+	<div class="sidebar-profile">
+		<iframe frameborder="no"  marginwidth="0" marginheight="0" width=86 height=86 src="//music.163.com/outchain/player?type=2&id=421091290&auto=1&height=66"></iframe>
+    </div>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/cover.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      论文阅读 GAN相关
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-01-01T21:58:52&#43;08:00">
+        
+  一月 1, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://zivonzhang.github.io/categories/%e8%ae%ba%e6%96%87%e9%98%85%e8%af%bb">论文阅读</a>
+    
+  
+
+  </div>
+
+</div>
+
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">对世界的好奇终难停脚步</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h1 id="gan相关的论文概述">GAN相关的论文概述</h1>
+
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#gan相关的论文概述">GAN相关的论文概述</a>
+<ul>
+<li><a href="#什么是生成对抗网络">什么是生成对抗网络</a></li>
+<li><a href="#gan-的发展">GAN 的发展</a></li>
+<li><a href="#dcgan">DCGAN</a></li>
+<li><a href="#began-boundary-equilibrium-generative-adversarial-networks">BEGAN: Boundary Equilibrium Generative Adversarial Networks</a></li>
+<li><a href="#the-six-fronts-of-the-generative-adversarial-networks">The Six Fronts of the Generative Adversarial Networks</a></li>
+<li><a href="#cycle-gan">Cycle GAN</a>
+<ul>
+<li><a href="#cycle-consistency">Cycle Consistency</a></li>
+<li><a href="#怎么训练的">怎么训练的？</a></li>
+</ul></li>
+<li><a href="#biggan">BigGAN</a></li>
+<li><a href="#spade-空间自适应归一化">SPADE —— 空间自适应归一化</a>
+<ul>
+<li><a href="#数据集">数据集</a></li>
+</ul></li>
+<li><a href="#funit-few-shot-unsupervised-image-to-image-translation">FUNIT：Few-Shot Unsupervised Image-to-Image Translation</a></li>
+<li><a href="#网络结构">网络结构</a></li>
+<li><a href="#介绍">介绍</a></li>
+<li><a href="#相关工作">相关工作</a></li>
+<li><a href="#怎么训练的-1">怎么训练的？</a></li>
+</ul></li>
+<li><a href="#towards-unsupervised-single-image-dehazing-with-deep-learning">TOWARDS UNSUPERVISED SINGLE IMAGE DEHAZING WITH DEEP LEARNING</a></li>
+</ul>
+</nav>
+
+<p><a href="https://github.com/eriklindernoren/PyTorch-GAN#super-resolution-gan">https://github.com/eriklindernoren/PyTorch-GAN#super-resolution-gan</a></p>
+
+<h2 id="什么是生成对抗网络">什么是生成对抗网络</h2>
+
+<p>GANs是一个用于教学DL模型以捕获训练数据分布的框架，因此我们可以从相同的分布中生成新的数据。GANs由Ian Goodfellow在2014年发明，并首次在论文《生成式对抗网》中进行了描述。它们由两个不同的模型组成，一个生成器和一个鉴别器。生成器的工作是生成与训练图像相似的假图像。鉴别器的工作是查看图像并输出它是否是来自生成器的真实训练图像或假图像。在训练过程中，生成器不断尝试通过生成越来越好的假图像来智胜鉴别器，而鉴别器则努力成为更好的侦探，正确地对真假图像进行分类。这个游戏的平衡是当生成器生成看起来像是直接来自训练数据的完美假货时，鉴别器总是猜测生成器输出是真还是假的50%的可信度。</p>
+
+<p>现在，让我们定义一些符号，在整个教程中使用，从discriminator开始。设x为表示图像的数据。D(x)是输出x来自训练数据而不是生成器的(标量)概率的鉴别器网络。这里，因为我们处理的是图像，所以D(x)的输入是CHW大小为3x64x64的图像。直观地说，当x来自训练数据时，D(x)应该是高的，而当x来自生成器时，D(x)应该是低的。D(x)也可以看作是传统的二进制分类器。</p>
+
+<p>对于生成器s符号，设z为从标准正态分布中采样的潜在空间向量。G(z)表示将潜在向量z映射到数据空间的生成器函数。G的目标是估计训练数据来自的分布(pdata)，这样它就可以从估计的分布(pg)生成假样本。</p>
+
+<p>因此，D(G(z))是发生器G的输出是实像的概率(标量)。正如Goodfellow的论文所述，D和G玩一个极大极小的游戏，其中D试图最大限度地提高它正确分类实数和假货的概率(logD(x))，而G试图使D预测其输出为假货的概率最小(log(1−D(G(x)))。从文中可知，GAN损耗函数为</p>
+
+<pre><code class="language-math">\underset{G}{\text{min}} \underset{D}{\text{max}}V(D,G) = \mathbb{E}_{x\sim p_{data}(x)}\big[logD(x)\big] + \mathbb{E}_{z\sim p_{z}(z)}\big[log(1-D(G(z)))\big]
+</code></pre>
+
+<h2 id="gan-的发展">GAN 的发展</h2>
+
+<p><img src="https://i.loli.net/2019/12/10/mU1v2Rfeau9EVPJ.png" alt="image.png" />
+GAN 的时间线。就像我们的文本一样，我们将它分为六个方面(架构、条件技术、标准化和约束、损失函数、图像到图像的转换和验证度量)，每个方面都用不同的颜色和不同的线/边框样式表示</p>
+
+<h2 id="dcgan">DCGAN</h2>
+
+<p>DCGAN是上述GAN的直接扩展，只是它在鉴别器和生成器中分别显式地使用了卷积和卷积转置层。Radford等人在论文《深度卷积生成对抗网络的无监督表示学习》中首次对其进行了描述。该鉴别器由strided convolution layers, batch norm layers, and LeakyReLU activations 组成。 输入是一个3x64x64的输入图像， 输出是一个标量概率， 输入是来自真实数据分布。该生成器由卷积转置层、批处理规范层和ReLU激活组成。输入是一个潜在向量z，它来自标准正态分布，输出是一个3x64x64的RGB图像。条纹的对流转置层允许潜在向量被转换成与图像形状相同的体积。在这篇论文中，作者也给出了一些关于如何设置优化器，如何计算损失函数，以及如何初始化模型权重的技巧，所有这些将在接下来的章节中进行解释。</p>
+
+<h2 id="began-boundary-equilibrium-generative-adversarial-networks">BEGAN: Boundary Equilibrium Generative Adversarial Networks</h2>
+
+<h2 id="the-six-fronts-of-the-generative-adversarial-networks">The Six Fronts of the Generative Adversarial Networks</h2>
+
+<h2 id="cycle-gan">Cycle GAN</h2>
+
+<p>由于生活中成对的图片相对来说比较难取得，如果模型能从不配对的数据中学习，那么数据量会变得相对充足，于是Cycle gan就出现了。</p>
+
+<p><img src="https://i.loli.net/2019/12/14/PWIOhQvnqrp29bo.png" alt="image.png" />
+图像到图像的转换是一类视觉和图形问题，其目标是使用一组对齐的图像对来学习输入图像和输出图像之间的映射。然而，对于许多任务，成对的训练数据是不可用的。提出了一种学习方法，在没有成对实例的情况下，将图像从源域X转换为目标域Y。我们的目标是学习一个映射G: X→Y，使得来自G(X)的图像的分布可以通过一个有争议的损失从分布Y中得到。由于这种映射是高度欠约束的，我们可以将其与F: Y→X的逆映射进行组合，并引入一个循环一致性损失来强制F(G(X))≈X(反之亦然)。在不存在成对训练数据的情况下，定性分析结果被提出，包括集合样式转换、物体变形、季节转换、照片增强等。通过与已有方法的定量比较，证明了该方法的优越性。</p>
+
+<p><img src="https://i.loli.net/2019/12/14/CNaVneFklD84yo7.png" alt="image.png" />
+我们的模型包含两个映射函数G: X→Y和F: Y→X，以及相关的对抗鉴别器DY和DX。DY鼓励G X转化为输出的域Y,反之亦然,DX和F .进一步规范映射,我们介绍两个周期的一致性损失,捕捉直觉,如果我们翻译从一个域到另一个,回来我们应该到达我们开始的地方:(b)向前cycle-consistency失:X (X)→→G F (G (X))≈X, Y和&copy;向后cycle-consistency损失:→F (Y)→G (F (Y))≈Y</p>
+
+<h3 id="cycle-consistency">Cycle Consistency</h3>
+
+<p>使用传递性作为结构化数据正则化方法的思想由来已久。在视觉跟踪中，执行简单的前向-后向一致性几十年来一直是一个标准技巧[24,48]。在语言领域，通过“反向翻译和协调”来验证和改进翻译是人工翻译[3]和机器[17]使用的一种技术。近年来，高阶循环一致性被应用于从运动开始的结构[61]、三维形状匹配[21]、共分割[55]、密集语义对齐[65,64]和深度估计[14]。其中，Zhou等[64]和Go- dard等人的[14]与我们的工作最为相似，因为他们使用循环一致性损失作为一种利用传递性来支持CNN训练的方法。在这项工作中，我们引入了一个类似的损失来推动G和F相互一致。与我们的工作同时，在这些相同的过程中，Yi等人受机器翻译[17]中的双重学习启发，独立地使用一个类似的目标来进行非成对的图像到图像的翻译</p>
+
+<h3 id="怎么训练的">怎么训练的？</h3>
+
+<h2 id="biggan">BigGAN</h2>
+
+<p>丰富的背景和纹理图像的生成是各类生成模型追求的终极目标，ImageNet 的生成已然成为检验生成模型好坏的一个指标。</p>
+
+<p>在各类生成模型中，GAN 是这几年比较突出的，18 年新出的 SNGAN [1]、SAGAN [2] 让 GAN 在 ImageNet 的生成上有了长足的进步，其中较好的 SAGAN 在 ImageNet 的128x128 图像生成上的 Inception Score (IS) [3] 达到了 52 分。BigGAN 在 SAGAN 的基础上一举将 IS 提高了 100 分，达到了 166 分（真实图片也才 233 分），可以说 BigGAN 是太秀了，在 FID [4] 指标上也是有很大的超越。</p>
+
+<p><a href="https://zhuanlan.zhihu.com/p/46581611">https://zhuanlan.zhihu.com/p/46581611</a>
+计算资源要求太高了</p>
+
+<p>尽管生成图像建模最近取得了进展，但从ImageNet等复杂数据集中成功生成高分辨率、多样化的样本仍然是一个难以实现的目标。为此，我们尝试在最大的规模上训练生成的对抗网络，并研究针对这种规模的不稳定性。我们发现，应用正交正则化的生成器使它服从一个简单的截断技巧，允许通过减少生成器的输入的方差来精细地控制样本保真度和多样性之间的平衡。我们的修改导致模型设置新的艺术状态的类条件图像合成。当我们在ImageNet上以128 128的分辨率进行训练时，我们的模型(BigGANs)获得了一个初始值(IS)为166.5, Frechet Inception Distance(FID)为7.4，比之前的最佳值(52.52)和FID(18.65)有所提高。
+<img src="https://i.loli.net/2019/12/14/rvQm8UWIRAK7lhZ.png" alt="image.png" /></p>
+
+<p><a href="https://tfhub.dev/deepmind/biggan-deep-512/1">https://tfhub.dev/deepmind/biggan-deep-512/1</a></p>
+
+<h2 id="spade-空间自适应归一化">SPADE —— 空间自适应归一化</h2>
+
+<p><img src="https://i.loli.net/2019/12/09/pkNAjIL2rDHgwKZ.png" alt="image.png" /></p>
+
+<p><a href="https://github.com/NVlabs/SPADE">Code</a></p>
+
+<p>一些常见的归一化技术，比如批归一化（左图），往往在实际的归一化步骤之后应用学得的仿射层。而 SPADE 方法中的仿射层是从语义分割图中学习的。这与 Conditional Normalization 类似，不过 SPADE 中学得的仿射参数需要对空间自适应，也就是说对每个语义标签使用不同的 scaling 和偏置。使用这一简单的方法后，语义信号可以作用于所有层的输出，不受归一化过程的影响而丢失语义信息。此外，由于语义信息是由 SPADE 层提供的，因此随机 latent vector 可能作为网络的输入，来控制生成图像的风格。在 SPADE 中，掩码首先投射到一个嵌入空间，之后通过卷积运算生成调节参数（modulation parameter）γ 和 β。与已有的条件归一化方法不同，γ 和 β 不是向量，而是具有空间维度的张量。生成的 γ 和 β 经过乘法和加法后得到元素级的归一化激活值。</p>
+
+<h3 id="数据集">数据集</h3>
+
+<p>我们对几个数据集进行了实验。
+1. COCO- stuff[4]来源于COCO数据集[32]。它有118,000张训练图像和5,000张从不同场景捕获的验证图像。它有182个语义类。由于其巨大的多样性，现有的图像合成模型在这个数据集上表现很差。
+2. ADE20K[58]由20,210个训练和2,000个验证图像组成。与COCO类似，数据集包含150个语义类的具有挑战性的场景。
+3. ADE20K-outdoor是ADE20K数据集的子集，仅包含户外场景，在Qi等人的[43]中使用。
+4. Cityscapes数据集[9]包含德国城市的街景图像。培训和验证集的大小分别为3,000和500。最近的工作已经在Cityscapes数据集上获得了真实感语义图像合成结果[43,47]。
+5. Flickr的风景。我们从Flickr上收集了41,000张照片，并使用1,000个样本进行验证。为了避免昂贵的手工注释，我们使用一个训练有素的DeepLabV2[5]来计算输入分割掩码。</p>
+
+<p>我们在相同的训练集上训练相互竞争的语义图像合成方法，并在每个数据集的相同验证集上报告它们的结果。</p>
+
+<h2 id="funit-few-shot-unsupervised-image-to-image-translation">FUNIT：Few-Shot Unsupervised Image-to-Image Translation</h2>
+
+<p>文章一开始就指出，现有的image to image translation 尽管很成功，但在训练时需要很多来自source domain和target domain的图片。这篇文章的目标就是解决这种few-shot的问题，针对于此，本文设计了一种新的网络架构FUNIT，该网络可以利用测试时用少数图片学到source class到target class的映射。Image to image translation 发展到19年有两个问题：++</p>
+
+<p>无监督的图像到图像的转换方法学习将给定类中的图像映射到另一个类中的类似图像，利用图像的非结构化(非注册)数据集。虽然非常成功，但是当前的方法需要在训练时访问源类和目标类中的许多图像。我们认为这极大地限制了它们的使用。从人类从少量实例中提取新对象本质的能力中获得灵感，并从中进行归纳，我们寻求一种少镜头、无监督的图像到图像的翻译算法。</p>
+
+<p>无监督的图像到图像的转换方法学习将给定类中的图像映射到另一个类中的类似图像，利用图像的非结构化(非注册)数据集。虽然非常成功，但是当前的方法需要在训练时访问源类和目标类中的许多图像。我们认为这极大地限制了它们的使用。灵感从人类的能力捡一本小说的本质对象从一个小数量的例子和概括从那里,我们寻求few-shot,无监督image-to-image翻译算法,适用于前所未有的指定目标类,在测试时,只有几个例子图片。我们的模型通过将对抗训练方案与新颖的网络设计相结合，实现了这一能力。通过对基准数据集上几种基线方法的大量实验验证和比较，验证了该框架的有效性。我们的实现和数据集可以在<a href="https://github.com/NVlabs/FUNIT上找到。">https://github.com/NVlabs/FUNIT上找到。</a>
+<img src="https://github.com/NVlabs/FUNIT/raw/master/docs/images/animal.gif" alt="image" /></p>
+
+<h2 id="网络结构">网络结构</h2>
+
+<p><img src="https://i.loli.net/2019/12/10/6yvsOE5Fpf8iCIc.png" alt="image.png" /></p>
+
+<h2 id="介绍">介绍</h2>
+
+<p>人类非常擅长概括。例如，当我们看到一种以前从未见过的珍奇动物的图片时，我们可以在脑海中形成一幅相同动物以不同姿势的生动画面，尤其是当我们以前遇到过类似但不同的动物以这种姿势时。例如，一个人第一次看到一只站着的老虎时，他会毫不费力地想象出它躺下时的样子，因为他一生都在和其他动物打交道。</p>
+
+<p>虽然最近的无监督图像到图像的翻译算法在跨图像类传输复杂的外观变化方面非常成功[30,46,29,25,55,52]，但是基于先验知识从一个新类的几个样本中进行泛化的能力完全超出了它们的能力范围。具体来说，他们需要大的训练集在所有类别的图像，他们要执行翻译，即，不支持小样本的泛化。</p>
+
+<h2 id="相关工作">相关工作</h2>
+
+<p>我们的工作是基于部分共享的潜在空间假设，但设计的少镜头无监督的图像到图像的翻译任务。</p>
+
+<p>现有的无监督图像到图像的翻译模型虽然能够生成真实的翻译输出，但存在两个方面的局限性。首先，它们是样本效率低，如果在训练时只给出很少的图像，就会产生糟糕的翻译输出。其次，所学习的模型仅适用于在两个类之间转换图像。一个翻译任务的训练模型不能直接用于新任务，尽管新任务与原始任务之间存在相似性。例如，虽然cat和tiger有很大的相似之处，但是不能将husky-to-cat翻译模型用于husky-to-tiger翻译。</p>
+
+<p>最近，Benaim和Wolf提出了一个无监督的图像到图像的翻译框架来部分解决第一个方面。具体来说，他们使用由一个源类图像和多个目标类图像组成的训练数据集来训练一个模型，用于将单个源类图像转换为目标类的类似图像。我们的工作在几个主要方面与他们的不同。首先，我们假设有很多源类映像，但是很少有目标类映像。此外，我们假设少数目标类映像只在测试时可用，并且可以来自许多不同的对象类。</p>
+
+<p><strong>多类无监督图像到图像的翻译</strong>将无监督的图像到图像的转换方法扩展到多个类。我们的工作类似于这些方法。但是，我们不是在可见类之间转换图像，而是将可见类的图像转换为类似的、以前未见过的类的图像。</p>
+
+<p><strong>少镜头分类</strong>。与少镜头图像到图像的翻译不同，使用少量例子学习新类的分类器是一个长期研究的问题。早期的作品使用了外观的生成模型，这些模型以分层的方式在不同的类别之间共享先验[11,39]。最近的研究集中在使用元学习来快速调整模型以适应新的任务[12,35,38,34]。这些方法学习了更好的训练优化策略，使得仅看到少数例子的性能得到了提高。另一组作品关注于更适合少镜头学习的图像嵌入方法[49,43,44]。最近的一些研究提出通过生成与新类相对应的新特征向量来扩充少镜头分类任务的训练集[10,15,51]。我们的工作是为少镜头无监督的图像到图像的翻译。然而，它可以应用于少镜头分类，如实验部分所示。</p>
+
+<p><strong>少镜头翻译用于少镜头分类</strong>。我们使用动物和鸟类的数据集来评估FUNIT的少镜头分类。具体来说，我们使用经过训练的FUNIT模型为每个少镜头的类生成N(从1,50到100)张图像，并使用生成的图像训练分类器。我们发现FUNIT生成图像的分类器训练比Hariharan提出的few-shot分类方法S&amp;H持续取得更好的性能[15]。S&amp;H是基于功能幻觉,也有一个可控变量样本数量n的方法.实验结果如表3所示,详细给出了附录H。</p>
+
+<p>正如在主要论文中提到的，我们进行了一个实验，使用FUNIT生成器生成的图像，使用动物面孔和北美鸟类数据集，在一次性设置下训练新类别的分类器。根据Hariharan等人[15]的设置，我们创建了5个不同的一次性训练片段，每个片段都有一个训练集、验证集和测试集。训练集由|T|图像组成，每个|T|测试类中的一个图像。验证集由每个测试类的20-100个图像组成。测试集由剩余的测试类映像组成。</p>
+
+<p>我们使用FUNIT生成器生成一个合成训练集，使用分类训练集中的图像作为类图像输入，并从源类中随机采样图像作为内容图像输入。我们使用原始训练集和合成训练集来训练分类器。我们将我们的方法与Hariharan等人的Shrink and Hallucinate(S&amp;H)方法进行了比较，该方法学习生成与新类相对应的最终层特征。我们使用一个预训练的10层ResNet网络作为特征提取器，该特征提取器完全使用源类图像进行预训练，并在目标类上训练一个线性分类器。我们发现在生成的图像上对损失的权重要低于真实图像。我们使用验证集对权重值和权重衰减值进行了详尽的网格搜索，并报告了测试集的性能。为了进行公平的比较，我们还对S&amp;H方法进行了同样的详尽的搜索。</p>
+
+<p>在主要论文的表3中，我们报告了我们的方法和S&amp;H方法[15]在不同数量的生成样本上的性能。这是两项具有挑战性的细粒度分类任务。这两种方法的性能都优于基线分类器，后者仅对每个新类使用单一提供的真实图像。使用我们生成的图像，我们获得了大约2%的改进超过S&amp;H方法生成的特征.</p>
+
+<p>对基础10层ResNet网络进行90个epoch的训练，初始学习率为0.1，每30个epoch衰减10倍。线性分类器在新类上的权值衰减是从15个对数间隔值(包括0.000001和0.1)中选择的。生成的图像和特征的损失乘数是从7个对数间隔值(包括0.001和1)中选择的。权重衰减和损耗倍增器的值是根据在Split #1 上训练时获得的最佳验证集精度来选择的。然后这些值被固定，并用于所有剩余的Split#2-5。使用固定特征学习L2正则分类器的任务是一个凸优化问题，我们使用L-BFGS算法进行线性搜索，因此不必指定学习速率。</p>
+
+<p>在表6和表7中，我们报告了所有5个单次分割的动物面孔和北美鸟类数据集的测试准确性及其相关方差。在所有的实验中，我们只学习一个新的分类器层使用的特征提取的网络训练的一组类用来训练图像生成器。</p>
+
+<p>我们的方法也可以与现有的少镜头分类方法相结合。在表8中，我们展示了使用原型网络方法[43]获得的一次分类结果，该方法将从给定的几个火车样本中获得的最接近的原型(集群中心)的标签分配给一个测试样本。显然，使用我们生成的样本以及在测试时每个类提供的1个样本来计算类原型表示有助于提高这两个数据集的准确性(超过5.5%)。</p>
+
+<h2 id="怎么训练的-1">怎么训练的？</h2>
+
+<h1 id="towards-unsupervised-single-image-dehazing-with-deep-learning">TOWARDS UNSUPERVISED SINGLE IMAGE DEHAZING WITH DEEP LEARNING</h1>
+
+<p>基于Cycle GAN 做的，效果也没有很好，还是有很大提升空间的</p>
+
+<p>数据集是    RESIDE</p>
+
+<p>具体来说，高感知损失被引入来优化一个使用特征空间而不是像素空间[15]的单图像去雾模型。[16,17]利用基于gan的对抗损失进一步增强生成的干净图像的视觉质量。这种基于感知损失的数据驱动方法提高了整体去雾性能。然而，大多数最先进的数据驱动方法需要一组退化和地真深度/无雾图像对来学习增强给定退化图像的模型。虽然CycleGAN[15]中最近出现的周期一致性损失已经消除了成对训练数据的需要，但是干净的图像仍然是监督网络训练的必要条件。</p>
+
+<p><img src="https://i.loli.net/2019/12/16/8J4fv2dCHOan5zG.png" alt="image.png" /></p>
+
+<p>在提出的模型中，我们训练了一个端到端网络，该网络基于CycleGAN架构，将对抗损失与周期一致性损失相结合，从模糊的图像中获得清晰的图像。我们不使用生成网络从其朦胧的版本直接产生一个干净的图像。相反，我们利用生成器作为工具来提取烟雾掩膜，然后获得清洁图像使用重新制定的大气散射模型。我们的模型的训练策略是，当我们重新合成雾霾掩模和获得的清洁图像时，重建的雾霾图像应该与原始的雾霾图像相似。在这种方法中，我们的模型学习了什么是雾霾，而不是图像去雾的问题，这就免除了地面真实干净或深度图像的要求。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/%E8%AE%BA%E6%96%87/">论文</a>
+
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/gan/">GAN</a>
+
+                  </div>
+                
+              
+            
+              <span id="/2020/01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-gan%E7%9B%B8%E5%85%B3/" class="leancloud_visitors" data-flag-title="论文阅读 GAN相关">
+                <span class="post-meta-item-text">文章阅读量 </span>
+                <span class="leancloud-visitors-count">1000000</span>
+                <p></p>
+              </span>
+              <div id="vcomments"></div>
+              <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+              <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+              <script type="text/javascript">
+                new Valine({
+                  el: '#vcomments' ,
+                  appId: 'PQNUpEjIN1DS9ARm5rzzEm8T-gzGzoHsz',
+                  appKey: 'BJTf3bw5U30Xh2PKO7CC75bg',
+                  notify: 'false',
+                  verify: '',
+                  avatar:'mp', 
+                  placeholder: '欢迎留言，留下邮箱信息在得到回复时将会有邮件提醒',
+                  visitor: 'true'
+                });
+              </script>
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A4%8D%E4%B9%A0/" data-tooltip="数据结构 复习">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 Zhang Zivon. All Rights Reserved
+  </span>
+</footer>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'],],
+            displayMath: [['$$','$$'],],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: { autoNumber: "AMS" },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2019/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A4%8D%E4%B9%A0/" data-tooltip="数据结构 复习">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Zhang Zivon</h4>
+    
+      <div id="about-card-bio">对世界的好奇终难停脚步。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        南京
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://zivonzhang.github.io/images/onTheRoad.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://zivonzhang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://zivonzhang.github.io/js/clicklove.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+

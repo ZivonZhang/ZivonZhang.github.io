@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Zivon的探索之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Dec 2019 22:37:58 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2020 21:58:52 +0800</lastBuildDate>
     
 	<atom:link href="https://zivonzhang.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>论文阅读</title>
+      <link>https://zivonzhang.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
+      <pubDate>Wed, 01 Jan 2020 21:58:52 +0800</pubDate>
+      
+      <guid>https://zivonzhang.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>数据结构</title>
@@ -26,15 +35,6 @@
       <pubDate>Sun, 01 Dec 2019 22:08:31 +0800</pubDate>
       
       <guid>https://zivonzhang.github.io/categories/leetcode/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>论文阅读</title>
-      <link>https://zivonzhang.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
-      <pubDate>Sat, 16 Nov 2019 21:21:26 +0800</pubDate>
-      
-      <guid>https://zivonzhang.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</guid>
       <description></description>
     </item>
     

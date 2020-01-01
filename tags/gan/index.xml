@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GAN on Zivon的探索之路</title>
+    <link>https://zivonzhang.github.io/tags/gan/</link>
+    <description>Recent content in GAN on Zivon的探索之路</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Jan 2020 21:58:52 +0800</lastBuildDate>
+    
+	<atom:link href="https://zivonzhang.github.io/tags/gan/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>论文阅读 GAN相关</title>
+      <link>https://zivonzhang.github.io/2020/01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-gan%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Wed, 01 Jan 2020 21:58:52 +0800</pubDate>
+      
+      <guid>https://zivonzhang.github.io/2020/01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-gan%E7%9B%B8%E5%85%B3/</guid>
+      <description>&lt;h1 id=&#34;gan相关的论文概述&#34;&gt;GAN相关的论文概述&lt;/h1&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

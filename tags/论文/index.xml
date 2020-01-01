@@ -6,10 +6,19 @@
     <description>Recent content in 论文 on Zivon的探索之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Nov 2019 21:21:26 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2020 21:58:52 +0800</lastBuildDate>
     
 	<atom:link href="https://zivonzhang.github.io/tags/%E8%AE%BA%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>论文阅读 GAN相关</title>
+      <link>https://zivonzhang.github.io/2020/01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-gan%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Wed, 01 Jan 2020 21:58:52 +0800</pubDate>
+      
+      <guid>https://zivonzhang.github.io/2020/01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-gan%E7%9B%B8%E5%85%B3/</guid>
+      <description>&lt;h1 id=&#34;gan相关的论文概述&#34;&gt;GAN相关的论文概述&lt;/h1&gt;</description>
+    </item>
     
     <item>
       <title>论文阅读 暗光增强 Kindling the Darkness_A Practical Low Light Image Enhancer 及相关论文</title>
