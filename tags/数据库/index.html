@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Zhang Zivon">
+<meta name="keywords" content=", C, C&#43;&#43;, PAT">
+<meta name="description" content="Zivon的探索之路">
+
+
+<meta property="og:description" content="Zivon的探索之路">
+<meta property="og:type" content="website">
+<meta property="og:title" content="数据库">
+<meta name="twitter:title" content="数据库">
+<meta property="og:url" content="https://zivonzhang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+<meta property="og:site_name" content="Zivon的探索之路">
+<meta property="og:description" content="Zivon的探索之路">
+<meta name="twitter:description" content="Zivon的探索之路">
+<meta property="og:locale" content="zh-cn">
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/bear.png">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
+
+
+    <title>数据库</title>
+
+    <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
+    
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://zivonzhang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml">
+    
+
+    
+
+    <link rel="canonical" href="https://zivonzhang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://zivonzhang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="2">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://zivonzhang.github.io/">Zivon的探索之路</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://zivonzhang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+<style>
+    .hasJax{
+		font: inherit;
+		font-size: 100%;
+		background: inherit;
+		border: inherit;
+		 
+	} 
+</style>
+
+      <nav id="sidebar" data-behavior="2">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://zivonzhang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Zhang Zivon</h4>
+        
+          <h5 class="sidebar-profile-bio">对世界的好奇终难停脚步。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/ZivonZhang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+	<div class="sidebar-profile">
+		<iframe frameborder="no"  marginwidth="0" marginheight="0" width=86 height=86 src="//music.163.com/outchain/player?type=2&id=421091290&auto=1&height=66"></iframe>
+    </div>
+  </div>
+</nav>
+
+      
+        
+
+      
+      <div id="main" data-behavior="2"
+        class="
+               hasCoverMetaIn
+               ">
+        
+          <section class="postShorten-group main-content-wrap">
+            
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://zivonzhang.github.io/2021/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">
+          数据库的一些知识点总结
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-03-04T21:14:22&#43;08:00">
+        
+  三月 4, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://zivonzhang.github.io/categories/%e7%bc%96%e7%a8%8b%e7%9b%b8%e5%85%b3">编程相关</a>, 
+    
+      <a class="category-link" href="https://zivonzhang.github.io/categories/%e6%95%b0%e6%8d%ae%e5%ba%93">数据库</a>
+    
+  
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        <p>数据库的一些知识点总结</p>
+      
+      <p>
+        <a href="https://zivonzhang.github.io/2021/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" class="postShorten-excerpt_link link">阅读全文</a>
+        
+      </p>
+    </div>
+  </div>
+  
+    <a href="https://zivonzhang.github.io/2021/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">
+      <div class="postShorten-thumbnailimg">
+        <img alt="" itemprop="image" src="https://zivonzhang.github.io/images/database.jpg"/>
+      </div>
+    </a>
+  
+</article>
+
+            
+            
+
+          </section>
+        
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Zhang Zivon. All Rights Reserved
+  </span>
+  <div>
+    <img style="width: 20px; height: 20px;" src="http://www.beian.gov.cn/img/ghs.png" alt="备案标识" />
+    <a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener noreferrer">京ICP备18029402号-1</a>
+  </div>
+</footer>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'],],
+            displayMath: [['$$','$$'],],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: { autoNumber: "AMS" },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+      </div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Zhang Zivon</h4>
+    
+      <div id="about-card-bio">对世界的好奇终难停脚步。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        南京
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://i.loli.net/2020/01/10/tdcg6I4CG1EpSq7.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://zivonzhang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://zivonzhang.github.io/js/clicklove.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+
+    
+  </body>
+</html>
+

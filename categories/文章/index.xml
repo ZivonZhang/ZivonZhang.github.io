@@ -6,54 +6,18 @@
     <description>Recent content in 文章 on Zivon的探索之路</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Nov 2019 17:20:08 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 04 Mar 2021 21:14:22 +0800</lastBuildDate>
     
 	<atom:link href="https://zivonzhang.github.io/categories/%E6%96%87%E7%AB%A0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>数据结构_树的重构</title>
-      <link>https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/</link>
-      <pubDate>Fri, 01 Nov 2019 17:20:08 +0800</pubDate>
+      <title>数据库的一些知识点总结</title>
+      <link>https://zivonzhang.github.io/2021/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 04 Mar 2021 21:14:22 +0800</pubDate>
       
-      <guid>https://zivonzhang.github.io/2019/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%A0%91%E7%9A%84%E9%87%8D%E6%9E%84/</guid>
-      <description>&lt;p&gt;浙大数据结构的编程题——03-树的同构&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Tranquilpeak主题的Tag</title>
-      <link>https://zivonzhang.github.io/2019/10/tranquilpeak%E4%B8%BB%E9%A2%98%E7%9A%84tag/</link>
-      <pubDate>Tue, 22 Oct 2019 22:18:28 +0800</pubDate>
-      
-      <guid>https://zivonzhang.github.io/2019/10/tranquilpeak%E4%B8%BB%E9%A2%98%E7%9A%84tag/</guid>
-      <description>&lt;p&gt;本文介绍Tranquilpeak主题的Tag的使用方法&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Hugo博客常用功能与命令</title>
-      <link>https://zivonzhang.github.io/2019/10/hugo%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E4%B8%8E%E5%91%BD%E4%BB%A4/</link>
-      <pubDate>Tue, 22 Oct 2019 17:27:51 +0800</pubDate>
-      
-      <guid>https://zivonzhang.github.io/2019/10/hugo%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E4%B8%8E%E5%91%BD%E4%BB%A4/</guid>
-      <description>&lt;p&gt;一些常用的Hugo命令与Markdown语法&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>数据结构 线性结构4</title>
-      <link>https://zivonzhang.github.io/2019/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%844/</link>
-      <pubDate>Tue, 22 Oct 2019 17:23:08 +0800</pubDate>
-      
-      <guid>https://zivonzhang.github.io/2019/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%844/</guid>
-      <description>&lt;p&gt;浙大数据结构的编程题——02-线性结构4 Pop Sequence&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Try-第一篇文章</title>
-      <link>https://zivonzhang.github.io/2019/10/try-%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</link>
-      <pubDate>Sun, 20 Oct 2019 21:53:13 +0800</pubDate>
-      
-      <guid>https://zivonzhang.github.io/2019/10/try-%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</guid>
-      <description>&lt;p&gt;这里会显示概要。&lt;/p&gt;</description>
+      <guid>https://zivonzhang.github.io/2021/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
+      <description>&lt;p&gt;#缩略显示的梗概，这里把注释删去，写成文章的简介或者梗概，在首页时候可以只显示梗概&lt;/p&gt;</description>
     </item>
     
   </channel>

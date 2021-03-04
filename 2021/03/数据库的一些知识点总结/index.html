@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.57.2 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Zhang Zivon">
+<meta name="keywords" content="tech, C, C&#43;&#43;, PAT">
+<meta name="description" content="数据库的一些知识点总结">
+
+
+<meta property="og:description" content="数据库的一些知识点总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库的一些知识点总结">
+<meta name="twitter:title" content="数据库的一些知识点总结">
+<meta property="og:url" content="https://zivonzhang.github.io/2021/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">
+<meta property="twitter:url" content="https://zivonzhang.github.io/2021/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">
+<meta property="og:site_name" content="Zivon的探索之路">
+<meta property="og:description" content="数据库的一些知识点总结">
+<meta name="twitter:description" content="数据库的一些知识点总结">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2021-03-04T21:14:22">
+  
+  
+    <meta property="article:modified_time" content="2021-03-04T21:14:22">
+  
+  
+  
+    
+      <meta property="article:section" content="编程相关">
+    
+      <meta property="article:section" content="数据库">
+    
+  
+  
+    
+      <meta property="article:tag" content="数据库">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/database.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/database.jpg">
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/cover-2.jpg">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/cover-2.jpg">
+
+
+
+
+  <meta property="og:image" content="https://zivonzhang.github.io/images/bear.png">
+  <meta property="twitter:image" content="https://zivonzhang.github.io/images/bear.png">
+
+
+    <title>数据库的一些知识点总结</title>
+
+    <link rel="icon" href="https://zivonzhang.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://zivonzhang.github.io/2021/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://zivonzhang.github.io/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://zivonzhang.github.io/">Zivon的探索之路</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://zivonzhang.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+<style>
+    .hasJax{
+		font: inherit;
+		font-size: 100%;
+		background: inherit;
+		border: inherit;
+		 
+	} 
+</style>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://zivonzhang.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Zhang Zivon</h4>
+        
+          <h5 class="sidebar-profile-bio">对世界的好奇终难停脚步。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">类别</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/ZivonZhang" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://zivonzhang.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+	<div class="sidebar-profile">
+		<iframe frameborder="no"  marginwidth="0" marginheight="0" width=86 height=86 src="//music.163.com/outchain/player?type=2&id=421091290&auto=1&height=66"></iframe>
+    </div>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/cover-2.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      数据库的一些知识点总结
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2021-03-04T21:14:22&#43;08:00">
+        
+  三月 4, 2021
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://zivonzhang.github.io/categories/%e7%bc%96%e7%a8%8b%e7%9b%b8%e5%85%b3">编程相关</a>, 
+    
+      <a class="category-link" href="https://zivonzhang.github.io/categories/%e6%95%b0%e6%8d%ae%e5%ba%93">数据库</a>
+    
+  
+
+  </div>
+
+</div>
+
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">文章cover图片描述</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>数据库的一些知识点总结</p>
+
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li><a href="#数据库的一些知识点总结">数据库的一些知识点总结</a>
+<ul>
+<li><a href="#事务隔离">事务隔离</a>
+<ul>
+<li><a href="#隔离性">隔离性</a></li>
+</ul></li>
+<li><a href="#日志系统">日志系统</a>
+<ul>
+<li><a href="#redo-log-重做日志">redo log（重做日志）</a></li>
+<li><a href="#binlog-归档日志">binlog  （归档日志）</a></li>
+</ul></li>
+<li><a href="#基础架构">基础架构</a></li>
+</ul></li>
+<li><a href="#sql必知必会">SQL必知必会</a>
+<ul>
+<li><a href="#排序">排序</a>
+<ul>
+<li><a href="#over函数的用法">over函数的用法</a></li>
+</ul></li>
+<li><a href="#联结">联结</a>
+<ul>
+<li><a href="#1-创建联结">（1）创建联结</a></li>
+</ul></li>
+<li><a href="#索引">索引</a>
+<ul>
+<li><a href="#什么是索引">什么是索引</a></li>
+<li><a href="#数据结构">数据结构</a></li>
+<li><a href="#innodb的索引模型">InnoDB的索引模型</a>
+<ul>
+<li><a href="#普通索引">普通索引</a></li>
+<li><a href="#索引维护">索引维护</a></li>
+<li><a href="#覆盖索引">覆盖索引</a></li>
+<li><a href="#最左前缀原则">最左前缀原则</a></li>
+</ul></li>
+<li><a href="#为什么要创建索引">为什么要创建索引</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+<h1 id="数据库的一些知识点总结">数据库的一些知识点总结</h1>
+
+<h2 id="事务隔离">事务隔离</h2>
+
+<p>事务，就是要保证一组数据库操作，要么全部成功，要么全部失败。</p>
+
+<h3 id="隔离性">隔离性</h3>
+
+<ul>
+<li>读未提交</li>
+<li>读提交</li>
+<li>可重复读</li>
+<li>串行化（读写锁）</li>
+</ul>
+
+<h2 id="日志系统">日志系统</h2>
+
+<ul>
+<li>redo log （重做日志）</li>
+<li>binlog  （归档日志）</li>
+</ul>
+
+<h3 id="redo-log-重做日志">redo log（重做日志）</h3>
+
+<p>MySQL中，每一次更新操作都需要写进磁盘，然后磁盘也要找到对应的记录，然后再更新，整个过程IO成本、查找成本高</p>
+
+<ul>
+<li>WAL技术 全称 Write-Ahead Logging 关键在于先写日志，再写磁盘。</li>
+<li>具体：当有记录需要更新时，InnoDB引擎会先把记录写到redo log中，再系统比较空闲时更新至磁盘。</li>
+</ul>
+
+<p>有了redo log InnoDB可以保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为 crash-safe。</p>
+
+<h3 id="binlog-归档日志">binlog  （归档日志）</h3>
+
+<p>最开始的MySQL里无 InnoDB，
+MySQL自带的引擎是MyISAM，但其没有crash-safe能力
+* binlog是MySQL的Server层实现的，所有引擎都可以使用
+* redo为物理日志，记录具体修改的内容。二binlog是逻辑日志，记录语句原始逻辑
+* redo log是循环写的，空间会用尽；而binlog可追加写入</p>
+
+<h2 id="基础架构">基础架构</h2>
+
+<pre><code>graph LR
+客户端--&gt;连接器
+连接器--&gt;分析器
+分析器--&gt;优化器
+优化器--&gt;执行器
+</code></pre>
+
+<ol>
+<li>连接器&ndash;管理连接，权限验证</li>
+<li>分析器&ndash;词法分析，语法分析</li>
+<li>优化器&ndash;执行计划生成，索引选择</li>
+<li>存储引擎&ndash; 存储数据，提供读写接口</li>
+</ol>
+
+<h1 id="sql必知必会">SQL必知必会</h1>
+
+<ol>
+<li><p>关键字的顺序是不能颠倒的：</p>
+
+<pre><code>SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ... ORDER BY ...
+</code></pre></li>
+
+<li><p>执行顺序：
+FROM &gt; WHERE &gt; GROUP BY &gt; HAVING &gt; SELECT的字段 &gt; DISTINCT &gt; ORDER BY &gt; LIMIT</p></li>
+
+<li><p>降序 DESCENTING DESC</p></li>
+
+<li><p>BETWEEN AND</p></li>
+
+<li><p>通配符%</p></li>
+
+<li><p>_[^ab]%  第二位不为ab的串</p></li>
+
+<li><p>联结表</p>
+
+<ol>
+<li>普通联结 用 WHERE a.ID = b.ID</li>
+<li>内联结 a INNER JOIN b ON a.ID = b.ID</li>
+<li>联结表开销较大，尽量减少</li>
+<li>INNER JOIN（内联）：两个表a,b 相连接，取出符合连接条件的字段</li>
+<li>LEFT JOIN（左联）：先返回左表的所有行，再加上符合连接条件的匹配行</li>
+<li>RIGHT JOIN（右联）：先返回右表的所有行，再加上符合连接条件的匹配行</li>
+</ol></li>
+
+<li><p>删除：删除表中的数据的方法有delete,truncate, 其中TRUNCATE TABLE用于删除表中的所有行，而不记录单个行删除操作。TRUNCATE TABLE 与没有 WHERE 子句的 DELETE 语句类似；但是，TRUNCATE TABLE 速度更快，使用的系统资源和事务日志资源更少。</p></li>
+
+<li><p>MySQL IFNULL() 函数，IFNULL(expression, alt_value)   第一个参数为 NULL：
+SELECT IFNULL(NULL, &ldquo;RUNOOB&rdquo;);
+以上实例输出结果为：
+RUNOOB
+第一个参数不为 NULL：
+SELECT IFNULL(&ldquo;Hello&rdquo;, &ldquo;RUNOOB&rdquo;);
+以上实例输出结果为：
+Hello</p></li>
+</ol>
+
+<h2 id="排序">排序</h2>
+
+<p>1)rank函数：这个例子中是5位，5位，5位，8位，也就是如果有并列名次的行，会占用下一名次的位置。比如正常排名是1，2，3，4，但是现在前3名是并列的名次，结果是：1，1，1，4。</p>
+
+<p>2）dense_rank函数：这个例子中是5位，5位，5位，6位，也就是如果有并列名次的行，不占用下一名次的位置。比如正常排名是1，2，3，4，但是现在前3名是并列的名次，结果是：1，1，1，2。</p>
+
+<p>3）row_number函数：这个例子中是5位，6位，7位，8位，也就是不考虑并列名次的情况。比如前3名是并列的名次，排名是正常的1，2，3，4。</p>
+
+<p><img src="https://pic.leetcode-cn.com/729cc8ee48f55e4c4c448d764e6c0c1e1de50a7cb1674fd557abff50519651a8-1.png" alt="image" /></p>
+
+<h3 id="over函数的用法">over函数的用法</h3>
+
+<p>over不能单独使用，要和分析函数：rank(),dense_rank(),row_number()等一起使用。
+执行语句：select row_number() over(order by AID DESC) as rowid,* from bb</p>
+
+<p>作者：houzidata
+链接：<a href="https://leetcode-cn.com/problems/rank-scores/solution/tu-jie-sqlmian-shi-ti-jing-dian-pai-ming-wen-ti-by/">https://leetcode-cn.com/problems/rank-scores/solution/tu-jie-sqlmian-shi-ti-jing-dian-pai-ming-wen-ti-by/</a>
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+<h2 id="联结">联结</h2>
+
+<p>分解数据为多个表能更有效地存储，更方便地处理，并且具有更大的可伸缩性。如果该数据存储在多个表中，如何用单条select语句检索出数据？</p>
+
+<p>联结是一种机制，用来在一条select中关联表，因此称之为联结。SQL最强大的功能之一是能在数据检索查询的执行中联结(join)表。</p>
+
+<h3 id="1-创建联结">（1）创建联结</h3>
+
+<pre><code>Select vend_name,prod_name,prod_price
+From vendors,products
+Where vendors.vend_id = products.vend_id
+Order by vend_name,prod_name;
+</code></pre>
+
+<p>在上面的代码中，Select指定检索列，不过与之前的差别是其中的两个列在products表中，另一个在vendors表中。From指定了两个表，这两个表为select语句联结的两个表名。而Where子句指示MySQL匹配vendors中的vend_id和products中的vend_id，在这里要匹配的两个列使用完全限定列名进行指定。完全限定列名是指在引用的列可能出现二义性时，必须使用完全限定列名(用一个点分隔的表名和列名)。</p>
+
+<p>在一条select语句中联结几个表时，相应的关系是在运行中构造的。在表定义中不存在能指示MySQL如何对表进行联结的东西。在联结两个表时，实际上是将第一个表中的每一行与第二个表中的每一行配对，where子句作为过滤条件，它只包含那些匹配给定条件的行。没有where子句，无论它们逻辑上是否可以配在一起，第一个表中的每个行都将与第二个表中的每个行配对。</p>
+
+<p>上面所用的联结称为等值联结，它基于两个表之间的相等测试，也称为 <strong>内部联结</strong> 。也可以用不同的语法返回与前面例子完全相同的数据：</p>
+
+<h2 id="索引">索引</h2>
+
+<h3 id="什么是索引">什么是索引</h3>
+
+<p>目录，加快数据库的查询速度。类同于书的目录。</p>
+
+<pre><code>select * from table1 where id = 44
+</code></pre>
+
+<p>如果没有索引，必须遍历整个表，直到ID=44这行。时间复杂度为O(n),而有索引就可以在ID这一列找，使之快速定位。</p>
+
+<p>建立索引的目的是加快对表中记录的查找与排序。</p>
+
+<p>但是为表设置索引要付出代价。一是增加了数据库的存储空间，二是在插入与修改数据时要花费较多的时间（需要维护索引）</p>
+
+<h3 id="数据结构">数据结构</h3>
+
+<ul>
+<li>哈希表常用于等值查询的场景</li>
+<li>有序数组再等值和范围查询场景中性能都很优秀</li>
+<li>有序数组索引只适用于静态存储引擎，因为其需要更新数据时，时间复杂度是O(N),开销大</li>
+<li>二叉树是搜索效率最高的，但实际上大多数数据库存储使用多叉树</li>
+<li>由于磁盘读取耗时，二叉树的树较高，使用多叉树可以减少树高，降低IO次数</li>
+<li>InnoDB 这个N差不多1200</li>
+</ul>
+
+<h3 id="innodb的索引模型">InnoDB的索引模型</h3>
+
+<p>InnoDB使用了B+树作为索引模型，其表都是根据主键顺序以索引形式存放的。</p>
+
+<p>主键索引的叶子节点存的是整行数据。主键索引也被称为聚簇索引。</p>
+
+<p>非主键索引的叶子节点内容是主键的值。故其被称为二级索引。</p>
+
+<h4 id="普通索引">普通索引</h4>
+
+<p>普通索引完成一次查询后，需要先搜索其索引树，得到主键索引的值，<strong>回表</strong>至主键索引再搜索一次。故尽可能使用主键索引，少使用普通索引。</p>
+
+<h4 id="索引维护">索引维护</h4>
+
+<p>B+树为了维护索引有序性，再插入新值时需要做必要的维护。</p>
+
+<h4 id="覆盖索引">覆盖索引</h4>
+
+<p>覆盖索引不需要回表。普通索引就可覆盖查询需求。
+故其可以减少树的搜索次数，提升查询性能。但是依然会产生维护开销。</p>
+
+<h4 id="最左前缀原则">最左前缀原则</h4>
+
+<p>对于 （name，age）索引其实相当于（name，age）与（name）索引</p>
+
+<h3 id="为什么要创建索引">为什么要创建索引</h3>
+
+<ul>
+<li>创建唯一性索引，可保证数据库表中每一行数据的唯一性</li>
+<li>可以大大加快数据的检索速度，这是创建索引的最主要原因</li>
+<li>加速表与表之间的连接，？实现数据的参考完整性方面有意义</li>
+<li>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间</li>
+</ul>
+
+<p>B+ 树基于 B 树做出了改进，主流的 DBMS 都支持 B+ 树的索引方式，比如 MySQL。B+ 树和 B 树的差异在于以下几点：
+1. 有 k 个孩子的节点就有 k 个关键字。也就是孩子数量 = 关键字数，而 B 树中，孩子数量 = 关键字数 +1。
+2. 非叶子节点的关键字也会同时存在在子节点中，并且是在子节点中所有关键字的最大（或最小）。
+3. 非叶子节点仅用于索引，不保存数据记录，跟记录有关的信息都放在叶子节点中。而 B 树中，非叶子节点既保存索引，也保存数据记录。
+4. 所有关键字都在叶子节点出现，叶子节点构成一个有序链表，而且叶子节点本身按照关键字的大小从小到大顺序链接。</p>
+
+<p>一、数据库索引，为什么不适用用二叉树：
+1. 平衡二叉树必须满足（所有节点的左右子树高度差不超过1）。执行插入还是删除操作，只要不满足上述条件，就要通过旋转来保持平衡，而旋转是非常耗时的，所以AVL树适合用于查找多的情况。
+2. 二叉树的数据结构，会导致“深度”，比较深，这种“瘦高”的特性，加大了平均查询的磁盘IO次数，随着数据量的增多，查询效率也会受到影响；</p>
+
+<p>二、B+ 树和 B 树在构造和查询性能上有什么差异呢？
+B+ 树的中间节点并不直接存储数据。
+1. B+树的查询效率更加稳定：由于非终结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。所以任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当。
+2. B+树的磁盘读写代价更低：B+树的内部节点并没有指向关键字具体信息的指针，因此其内部节点相对B树更小，如果把所有同一内部节点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多，一次性读入内存的需要查找的关键字也就越多，相对IO读写次数就降低了。
+3、由于B+树的数据都存储在叶子结点中，分支结点均为索引，方便扫库，只需要扫一遍叶子结点即可，但是B树因为其分支结点同样存储着数据，我们要找到具体的数据，需要进行一次中序遍历按序来扫，所以B+树更加适合在区间查询的情况，所以通常B+树用于数据库索引。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://zivonzhang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+
+                  </div>
+                
+              
+            
+              <span id="/2021/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="数据库的一些知识点总结">
+                <span class="post-meta-item-text">文章阅读量 </span>
+                <span class="leancloud-visitors-count">1000000</span>
+                <p></p>
+              </span>
+              <div id="vcomments"></div>
+              <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+              <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+              <script type="text/javascript">
+                new Valine({
+                  el: '#vcomments' ,
+                  appId: 'PQNUpEjIN1DS9ARm5rzzEm8T-gzGzoHsz',
+                  appKey: 'BJTf3bw5U30Xh2PKO7CC75bg',
+                  notify: 'false',
+                  verify: '',
+                  avatar:'mp', 
+                  placeholder: '欢迎留言，留下邮箱信息在得到回复时将会有邮件提醒',
+                  visitor: 'true'
+                });
+              </script>
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2020/01/leetcode-%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF-%E5%85%A8%E6%8E%92%E5%88%97/" data-tooltip="LeetCode 递归回溯 全排列">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2021 Zhang Zivon. All Rights Reserved
+  </span>
+  <div>
+    <img style="width: 20px; height: 20px;" src="http://www.beian.gov.cn/img/ghs.png" alt="备案标识" />
+    <a href="http://beian.miit.gov.cn" target="_blank" rel="nofollow noopener noreferrer">京ICP备18029402号-1</a>
+  </div>
+</footer>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'],],
+            displayMath: [['$$','$$'],],
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: { autoNumber: "AMS" },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            }
+        }
+    });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://zivonzhang.github.io/2020/01/leetcode-%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF-%E5%85%A8%E6%8E%92%E5%88%97/" data-tooltip="LeetCode 递归回溯 全排列">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://zivonzhang.github.io/images/bear.png" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Zhang Zivon</h4>
+    
+      <div id="about-card-bio">对世界的好奇终难停脚步。</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        南京
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://i.loli.net/2020/01/10/tdcg6I4CG1EpSq7.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://zivonzhang.github.io/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+  
+    <script src="https://zivonzhang.github.io/js/clicklove.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
